@@ -90,6 +90,49 @@ img::-moz-selection {
   background: transparent;
 }
 
+#headerNav{
+    margin: auto;
+    position: relative;
+    border-bottom: 1px solid rgba(33, 37, 41, 0.1);
+    background-color: #fff;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+#headerNav .navbar-brand {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #F05F40;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+#headerNav .navbar-brand:focus, #headerNav .navbar-brand:hover {
+    color: #f05f40;
+}
+
+#headerNav .navbar-nav > li.nav-item > a.nav-link,
+#headerNav .navbar-nav > li.nav-item > a.nav-link:focus {
+    font-size: .9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #212529;
+}
+
+#headerNav .navbar-nav > li.nav-item > a.nav-link:hover,
+#headerNav .navbar-nav > li.nav-item > a.nav-link:focus:hover {
+    color: #F05F40;
+}
+
+#headerNav .navbar-nav > li.nav-item > a.nav-link.active,
+#headerNav .navbar-nav > li.nav-item > a.nav-link:focus.active {
+    color: #F05F40 !important;
+    background-color: transparent;
+}
+
+#headerNav .navbar-nav > li.nav-item > a.nav-link.active:hover,
+#headerNav .navbar-nav > li.nav-item > a.nav-link:focus.active:hover {
+    background-color: transparent;
+}
+
 #mainNav {
   border-bottom: 1px solid rgba(33, 37, 41, 0.1);
   background-color: #fff;
