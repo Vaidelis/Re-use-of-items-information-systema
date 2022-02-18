@@ -52,8 +52,21 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                    @auth
+                        <li class="nav-item">
+                            <a href="{{ url('/home') }}" class="nav-link js-scroll-trigger">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
                         @else
                         <li class="nav-item">
                             <a href="{{ route('login') }}" class="nav-link js-scroll-trigger" href="#contact">Login</a>
