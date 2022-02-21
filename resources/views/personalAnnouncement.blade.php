@@ -23,7 +23,7 @@
                 <td>{{ $announcement->price }}</td>
 
                     <td>
-                        <a href="">
+                        <a href="{{route('itemshow', $announcement->id)}}">
                             <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
                         </a>
                     </td>
@@ -47,7 +47,7 @@
                 <td>{{ $service->price }}</td>
 
                 <td>
-                    <a href="">
+                    <a href="{{route('serviceshow', $service->id)}}">
                         <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
                     </a>
                 </td>

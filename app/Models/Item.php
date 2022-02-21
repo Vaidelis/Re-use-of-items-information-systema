@@ -12,4 +12,9 @@ class Item extends Model
 
     protected $fillable = ['name', 'price', 'address', 'image','user_id'];
     public $primaryKey = 'id';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

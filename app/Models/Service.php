@@ -12,4 +12,9 @@ class Service extends Model
 
     protected $fillable = ['name', 'price','user_id'];
     public $primaryKey = 'id';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

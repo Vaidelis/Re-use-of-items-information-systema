@@ -130,6 +130,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/svgs" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/sprites" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/webfonts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravelcollective/html" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
