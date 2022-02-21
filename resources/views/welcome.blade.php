@@ -54,7 +54,7 @@
                 @if (Route::has('login'))
                     @auth
                         <li class="nav-item">
-                            <a href="{{ url('/home') }}" class="nav-link js-scroll-trigger">Home</a>
+                            <a href="{{ url('/home') }}" class="nav-link js-scroll-trigger">Profilis</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}"

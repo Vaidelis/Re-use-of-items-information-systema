@@ -20,6 +20,7 @@ class ItemController extends Controller
         $services = Service::all();
         return view('personalAnnouncement', compact('announcements', 'services'));
     }
+    //Item and services info and delete
     public function itemInfo($id){
         $item = Item::find($id);
         $name = $item->user->name;
@@ -42,4 +43,29 @@ class ItemController extends Controller
         $service->delete();
         return redirect()->route('personalAnn')->with('status', 'Skelbimas sėkmingai ištrintas');
     }
+    //update announcements
+    public function editItem($id){
+
+        $item = Item::find($id);
+
+        return view('itemEdit',compact('item')); //->with('messages','id');
+    }
+    public function updateItem(Request $request,$id){
+
+        $this->validate($request, [
+            'testName' => 'required',
+            'info' => 'required'
+
+        ]);
+        $post = Item::findOrFail($id);
+        $testName = $request->input('testName');
+        $info = $request->input('info');
+        $post->name = $testName;
+        $post->address = $info;
+
+
+        $post->save();
+        return redirect()->route('itemshow', $id)->with('status','Testo informacija atnaujinta');
+    }
+
 }

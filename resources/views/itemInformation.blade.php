@@ -19,7 +19,7 @@
                     {{Form::submit('Ištrinti', ['class'=>'deleteButton'])}}
                     {!! Form::close() !!}
                     @if(Auth::user()->id == $item->user_id)
-                        <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href=""><button style="cursor: pointer;">Redaguoti</button></a>
+                        <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itemedit', $item->id)}}"><button style="cursor: pointer;">Redaguoti</button></a>
                     @endif
                     @endif
                 </a>
