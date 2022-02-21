@@ -16,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//----Personal announcements
+Route::get('/personalAnnouncement', 'App\Http\Controllers\ItemController@index')->name('personalAnn');
 
+
+
+
+//----Auth
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

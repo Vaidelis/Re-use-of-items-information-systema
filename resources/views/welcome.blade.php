@@ -84,22 +84,29 @@
     </div>
 </nav>
 
+
 <header class="masthead text-center text-white d-flex">
     <div class="container my-auto">
         <div class="row">
             <div class="col-lg-10 mx-auto">
-                <h1 class="text-uppercase">
-                    <strong>Your Favorite Source of Free Bootstrap Themes</strong>
-                </h1>
+                <h2 class="text-uppercase">
+                    <strong>Daiktų antrinio panaudojimo skatininimo informacinė sistema</strong>
+                </h2>
                 <hr>
             </div>
-            <div class="col-lg-8 mx-auto">
-                <p class="text-faded mb-5">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Skelbimai</a>
+            </div>
+            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('personalAnn')}}">Mano skelbimai</a>
+            </div>
+            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Žinutės</a>
             </div>
         </div>
     </div>
 </header>
+
 
 <section class="bg-primary" id="about">
     <div class="container">
