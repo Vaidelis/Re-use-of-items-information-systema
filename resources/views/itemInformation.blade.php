@@ -37,9 +37,13 @@
 
         </div>
         <p>Skelbimo savininkas  - <b>{{ $name }}</b></p>
+        <p>Skelbimo kaina(eurai)  - <b>{{ $item->price }}</b></p>
+        <p>Skelbimo adresas  - <b>{{ $item->address }}</b></p>
         <div class="hairline"></div>
         <p class="infoHeader">Aprašymas</p>
-        <p class="info"><b>{{ $item->id }}</b><p>
+        <p class="info"><b>{{ $item->information }}</b><p>
+        <p class="infoHeader">Nuotraukos</p>
+        <p class="info"><b>{{ $item->image }}</b><p>
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href=""><button class="testProceedButton">Pirkti daiktą</button></a>
 
         </body>

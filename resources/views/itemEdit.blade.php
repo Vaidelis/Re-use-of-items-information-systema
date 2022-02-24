@@ -10,7 +10,7 @@
         <div style="display: flex; flex-direction: row;">
 
 
-            <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="" class="btn btn-primary"><button style="cursor: pointer;">Atgal</button></a><br>
+            <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('itemshow', $item->id)}}" class="btn btn-primary"><button style="cursor: pointer;">Atgal</button></a><br>
             {!! Form::close() !!}<br>
 
 
@@ -26,16 +26,26 @@
 
 
         <div class="edit">
-            {{Form::label('testName', 'Testo pavadinimas')}}
+            {{Form::label('name', 'Skelbimo pavadinimas')}}
             <br>
-            {{Form::text('testName', $item->name, ['class' => 'form-control', 'placeholder' => 'Skelbimo pavadinimas'])}}
+            {{Form::text('name', $item->name, ['class' => 'form-control', 'placeholder' => 'Skelbimo pavadinimas'])}}
         </div>
 
 
         <div class="edit">
-            {{Form::label('info', 'Testo informacija')}}
+            {{Form::label('address', 'Skelbimo adresas')}}
             <br>
-            {{Form::text('info', $item->address, ['class' => 'form-control', 'placeholder' => 'Pardavėjo adresas'])}}
+            {{Form::text('address', $item->address, ['class' => 'form-control', 'placeholder' => 'Pardavėjo adresas'])}}
+        </div>
+        <div class="edit">
+            {{Form::label('info', 'Skelbimo informacija')}}
+            <br>
+            {{Form::text('info', $item->information, ['class' => 'form-control', 'placeholder' => 'Skelbimo informacija'])}}
+        </div>
+        <div class="edit">
+            {{Form::label('price', 'Skelbimo kaina')}}
+            <br>
+            {{Form::text('price', $item->price, ['class' => 'form-control', 'placeholder' => 'Skelbimo kaina'])}}
         </div>
 
         <div class="form-group" style="width: 30%; margin: auto;">

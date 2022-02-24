@@ -53,19 +53,51 @@ class ItemController extends Controller
     public function updateItem(Request $request,$id){
 
         $this->validate($request, [
-            'testName' => 'required',
-            'info' => 'required'
+            'name' => 'required',
+            'info' => 'required',
+            'address' => 'required',
+            'price' => 'required'
 
         ]);
-        $post = Item::findOrFail($id);
-        $testName = $request->input('testName');
+        $item = Item::findOrFail($id);
+        $itemname = $request->input('name');
+        $address = $request->input('address');
         $info = $request->input('info');
-        $post->name = $testName;
-        $post->address = $info;
+        $price = $request->input('price');
+        $item->name = $itemname;
+        $item->address = $address;
+        $item->information = $info;
+        $item->price = $price;
 
 
-        $post->save();
+        $item->save();
         return redirect()->route('itemshow', $id)->with('status','Testo informacija atnaujinta');
+    }
+    public function editservice($id){
+
+        $service = Service::find($id);
+
+        return view('serviceEdit',compact('service'));
+    }
+    public function updateservice(Request $request,$id){
+
+        $this->validate($request, [
+            'name' => 'required',
+            'info' => 'required',
+            'price' => 'required'
+
+        ]);
+        $service = Service::findOrFail($id);
+        $name = $request->input('name');
+        $info = $request->input('info');
+        $price = $request->input('price');
+        $service->name = $name;
+        $service->information = $info;
+        $service->price = $price;
+
+
+        $service->save();
+        return redirect()->route('serviceshow', $id)->with('status','Skelbimo informacija atnaujinta');
     }
 
 }

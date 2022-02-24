@@ -19,7 +19,7 @@
                         {{Form::submit('Ištrinti', ['class'=>'deleteButton'])}}
                         {!! Form::close() !!}
                         @if(Auth::user()->id == $service->user_id)
-                            <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href=""><button style="cursor: pointer;">Redaguoti</button></a>
+                            <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('serviceedit', $service->id)}}"><button style="cursor: pointer;">Redaguoti</button></a>
                         @endif
                         @endif
                     </a>
@@ -37,9 +37,10 @@
 
             </div>
             <p>Skelbimo savininkas  - <b>{{ $name }}</b></p>
+            <p>Skelbimo kaina  - <b>{{ $service->price }}</b></p>
             <div class="hairline"></div>
             <p class="infoHeader">Aprašymas</p>
-            <p class="info"><b>{{ $service->id }}</b><p>
+            <p class="info"><b>{{ $service->information }}</b><p>
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href=""><button class="testProceedButton">Pirkti daiktą</button></a>
 
     </body>
