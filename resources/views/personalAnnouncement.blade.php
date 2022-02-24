@@ -6,7 +6,8 @@
     <div class="container">
         <h4 class="testListSplashText">Skelbimų sąrašas</h4>
 
-        <a href=""><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Sukurti naują skelbimą</button></a>
+        <a href="{{route('createitem')}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Sukurti daikto skelbimą</button></a>
+        <a href=""><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Sukurti paslaugų skelbimą</button></a>
         <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
     </div>
 

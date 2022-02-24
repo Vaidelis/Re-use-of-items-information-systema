@@ -43,7 +43,14 @@
         <p class="infoHeader">Aprašymas</p>
         <p class="info"><b>{{ $item->information }}</b><p>
         <p class="infoHeader">Nuotraukos</p>
-        <p class="info"><b>{{ $item->image }}</b><p>
+        @foreach($image as $image)
+            @if($image->post_id == $item->id && $image->see == 0)
+                <img src="{{asset($image->path)}}" alt="{{ $image->path }}" height="100px" width="100px" />
+                <hr />
+            @endif
+        @endforeach
+
+        @csrf
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href=""><button class="testProceedButton">Pirkti daiktą</button></a>
 
         </body>

@@ -31,6 +31,10 @@ Route::match(['put','patch'],'{id}/itemEdit', 'App\Http\Controllers\ItemControll
 Route::get('/personalAnnouncement/serviceInformation/{id}/serviceEdit', 'App\Http\Controllers\ItemController@editservice')->name('serviceedit');
 Route::match(['put','patch'],'{id}/serviceEdit', 'App\Http\Controllers\ItemController@updateservice')->name('serviceupdate');
 
+//Announcement create
+Route::get('/personalAnnouncement/create', 'App\Http\Controllers\ItemController@itemcreate')->name('createitem');
+Route::post('/personalAnnouncement/create/store', 'App\Http\Controllers\ItemController@itemstore')->name('storeitem');
+
 
 
 
