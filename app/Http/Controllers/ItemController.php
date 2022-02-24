@@ -150,4 +150,21 @@ class ItemController extends Controller
         return redirect()->route('personalAnn');
 
     }
+    public function servicecreate()
+    {
+        return view('serviceAnnouncementAdd');
+    }
+    public function servicestore(Request $request)
+    {
+        $service = new service;
+        $service->name = $request->get('name');
+        $service->price = $request->get('price');
+        $service->information = $request->get('info');
+
+        $service->user_id = Auth::user()->id;
+        $service->save();
+
+        return redirect()->route('personalAnn');
+
+    }
 }
