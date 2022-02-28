@@ -49,9 +49,12 @@
                 <hr />
             @endif
         @endforeach
-
+        <div>
+        <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/362821313740375921/"></a>
+        </div>
         @csrf
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href=""><button class="testProceedButton">Pirkti daiktą</button></a>
 
+        <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
         </body>
 @endsection

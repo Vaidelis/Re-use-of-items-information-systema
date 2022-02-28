@@ -40,7 +40,10 @@ class ItemController extends Controller
         $keywords = 'Old tables';
 
         $pins = $bot->pins->search($keywords)->toArray();
-        dd($pins);
+        //dd($pins[5]['id']);
+        $SMTH = $pins[6]['id'];
+        //dd($SMTH);
+        //dd($pins);
 
         return view('itemInformation', compact('item', 'image'))->with('name', $name);
     }
