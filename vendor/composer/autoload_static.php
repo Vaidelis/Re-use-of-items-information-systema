@@ -37,12 +37,17 @@ class ComposerStaticInitc1e89ff8e8d54cd39eefa7a79efcbc9d
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '5c2defbf7f7cf93c47ed4965a7eb595e' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Helpers/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'v' => 
         array (
             'voku\\' => 5,
+        ),
+        's' => 
+        array (
+            'seregazhuk\\PinterestBot\\' => 24,
         ),
         'p' => 
         array (
@@ -186,6 +191,10 @@ class ComposerStaticInitc1e89ff8e8d54cd39eefa7a79efcbc9d
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'seregazhuk\\PinterestBot\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
@@ -552,6 +561,7 @@ class ComposerStaticInitc1e89ff8e8d54cd39eefa7a79efcbc9d
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\Image' => __DIR__ . '/../..' . '/app/Models/Image.php',
         'App\\Models\\Item' => __DIR__ . '/../..' . '/app/Models/Item.php',
         'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -5584,6 +5594,58 @@ class ComposerStaticInitc1e89ff8e8d54cd39eefa7a79efcbc9d
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
         'phpDocumentor\\Reflection\\Utils' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/Utils.php',
+        'seregazhuk\\PinterestBot\\Api\\Contracts\\HttpClient' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Contracts/HttpClient.php',
+        'seregazhuk\\PinterestBot\\Api\\Contracts\\PaginatedResponse' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Contracts/PaginatedResponse.php',
+        'seregazhuk\\PinterestBot\\Api\\CurlHttpClient' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/CurlHttpClient.php',
+        'seregazhuk\\PinterestBot\\Api\\Error' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Error.php',
+        'seregazhuk\\PinterestBot\\Api\\Forms\\Form' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Forms/Form.php',
+        'seregazhuk\\PinterestBot\\Api\\Forms\\Profile' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Forms/Profile.php',
+        'seregazhuk\\PinterestBot\\Api\\Forms\\Registration' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Forms/Registration.php',
+        'seregazhuk\\PinterestBot\\Api\\ProvidersContainer' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/ProvidersContainer.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Auth' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Auth.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\BoardSections' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/BoardSections.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Boards' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Boards.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Comments' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Comments.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Core\\EntityProvider' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Core/EntityProvider.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Core\\FollowableProvider' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Core/FollowableProvider.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Core\\Provider' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Core/Provider.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Core\\ProviderWrapper' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Core/ProviderWrapper.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Inbox' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Inbox.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Interests' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Interests.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Keywords' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Keywords.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Password' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Password.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Pinners' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Pinners.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Pins' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Pins.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Suggestions' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Suggestions.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\Topics' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/Topics.php',
+        'seregazhuk\\PinterestBot\\Api\\Providers\\User' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Providers/User.php',
+        'seregazhuk\\PinterestBot\\Api\\Request' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Request.php',
+        'seregazhuk\\PinterestBot\\Api\\Response' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Response.php',
+        'seregazhuk\\PinterestBot\\Api\\SearchResponse' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/SearchResponse.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\BoardInvites' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/BoardInvites.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\CanBeDeleted' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/CanBeDeleted.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\CanBeShared' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/CanBeShared.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\HandlesRequest' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/HandlesRequest.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\HasEntityIdName' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/HasEntityIdName.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\HasPagination' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/HasPagination.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\HasProfileSettings' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/HasProfileSettings.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\HasRelatedTopics' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/HasRelatedTopics.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\ResolvesCurrentUser' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/ResolvesCurrentUser.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\Searchable' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/Searchable.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\SendsMessages' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/SendsMessages.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\SendsRegisterActions' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/SendsRegisterActions.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\TryIt' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/TryIt.php',
+        'seregazhuk\\PinterestBot\\Api\\Traits\\UploadsImages' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Api/Traits/UploadsImages.php',
+        'seregazhuk\\PinterestBot\\Exceptions\\AuthRequired' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Exceptions/AuthRequired.php',
+        'seregazhuk\\PinterestBot\\Exceptions\\InvalidRequest' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Exceptions/InvalidRequest.php',
+        'seregazhuk\\PinterestBot\\Exceptions\\PinterestBotException' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Exceptions/PinterestBotException.php',
+        'seregazhuk\\PinterestBot\\Exceptions\\WrongFollowingType' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Exceptions/WrongFollowingType.php',
+        'seregazhuk\\PinterestBot\\Exceptions\\WrongProvider' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Exceptions/WrongProvider.php',
+        'seregazhuk\\PinterestBot\\Factories\\PinterestBot' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Factories/PinterestBot.php',
+        'seregazhuk\\PinterestBot\\Helpers\\Cookies' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Helpers/Cookies.php',
+        'seregazhuk\\PinterestBot\\Helpers\\FileHelper' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Helpers/FileHelper.php',
+        'seregazhuk\\PinterestBot\\Helpers\\Pagination' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Helpers/Pagination.php',
+        'seregazhuk\\PinterestBot\\Helpers\\UrlBuilder' => __DIR__ . '/..' . '/seregazhuk/pinterest-bot/src/Helpers/UrlBuilder.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
 

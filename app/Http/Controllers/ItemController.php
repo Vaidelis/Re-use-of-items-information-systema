@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Storage;
 use Auth;
 use Session;
 
+require 'C:\xampp\htdocs\Re-use-of-items-information-systema/vendor/autoload.php';
+
+use seregazhuk\PinterestBot\Factories\PinterestBot;
+
 class ItemController extends Controller
 {
     public function __construct()
@@ -29,6 +33,14 @@ class ItemController extends Controller
         $item = Item::find($id);
         $image = Image::All();
         $name = $item->user->name;
+
+       $bot = PinterestBot::create();
+        // Login
+        //$result = $bot->auth->login('opaso80', '-'); //not working
+        $keywords = 'Old tables';
+
+        $pins = $bot->pins->search($keywords)->toArray();
+        dd($pins);
 
         return view('itemInformation', compact('item', 'image'))->with('name', $name);
     }

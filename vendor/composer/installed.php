@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ae314db440d664cd99efd12cb4c057474cc52c6a',
+        'reference' => '04f40b2d88603d05e42f472270dd7e78072f2ffe',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -400,7 +400,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ae314db440d664cd99efd12cb4c057474cc52c6a',
+            'reference' => '04f40b2d88603d05e42f472270dd7e78072f2ffe',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -991,6 +991,15 @@
             'aliases' => array(),
             'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
             'dev_requirement' => true,
+        ),
+        'seregazhuk/pinterest-bot' => array(
+            'pretty_version' => 'v5.9.1',
+            'version' => '5.9.1.0',
+            'type' => 'package',
+            'install_path' => __DIR__ . '/../seregazhuk/pinterest-bot',
+            'aliases' => array(),
+            'reference' => '9621d078fb3b0b6651ac5987841a2a8ccc4f2a2d',
+            'dev_requirement' => false,
         ),
         'swiftmailer/swiftmailer' => array(
             'pretty_version' => 'v6.3.0',
