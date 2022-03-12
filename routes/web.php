@@ -41,6 +41,8 @@ Route::post('/personalAnnouncement/servicecreate/store', 'App\Http\Controllers\I
 //User profile(change password)
 Route::post('/home', 'App\Http\Controllers\HomeController@updatePass')->name('UpdatePassword');
 
+//Messages
+
 
 
 

@@ -69,12 +69,12 @@
                         </li>
                         @else
                         <li class="nav-item">
-                            <a href="{{ route('login') }}" class="nav-link js-scroll-trigger" href="#contact">Login</a>
+                            <a href="{{ route('login') }}" class="nav-link js-scroll-trigger">Login</a>
                         </li>
 
                             @if (Route::has('register'))
                             <li class="nav-item">
-                                <a href="{{ route('register') }}" class="nav-link js-scroll-trigger" href="#contact">Register</a>
+                                <a href="{{ route('register') }}" class="nav-link js-scroll-trigger">Register</a>
                             </li>
                             @endif
                         @endauth
