@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\Service;
 use App\Models\Image;
 use App\Models\Tag;
+use App\Models\ItemHasTags;
 use Illuminate\Support\Facades\Storage;
 use App\Support\Collection;
 use Auth;
@@ -36,19 +37,22 @@ class ItemController extends Controller
         $image = Image::All();
         $name = $item->user->name;
 
-        //PinterestAPI
+        //PinterestAPI and keywords
        $bot = PinterestBot::create();
-        $keywords = Tag::All();
+        //$keywords = Tag::All(); //all tags
+
+        //takes only selected keywords from announcement creation
+        $test = ItemHasTags::where(['items_announcement_id' => $id])->get();
 
         //First keyword
-        $pins = $bot->pins->search($keywords[0]->name)->take(7)->toArray();
+        $pins = $bot->pins->search($test[0]->tags->name)->take(7)->toArray();
         $per_page = 1;
         $pins = (new Collection($pins))->paginate($per_page);
         //Second Keyword
-        $pins2 = $bot->pins->search($keywords[1]->name)->take(7)->toArray();
+        $pins2 = $bot->pins->search($test[1]->tags->name)->take(7)->toArray();
         $pins2 = (new Collection($pins2))->paginate($per_page);
         //Third keyword
-        $pins3 = $bot->pins->search($keywords[2]->name)->take(7)->toArray();
+        $pins3 = $bot->pins->search($test[2]->tags->name)->take(7)->toArray();
         $pins3 = (new Collection($pins3))->paginate($per_page);
 
         return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3'))->with('name', $name);

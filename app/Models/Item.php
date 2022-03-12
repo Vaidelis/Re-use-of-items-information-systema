@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     use HasFactory;
-    public $table = "items_announcement";
+    public $table = "items_announcements";
 
     protected $fillable = ['name', 'price', 'address', 'image','user_id'];
     public $primaryKey = 'id';
@@ -17,4 +17,5 @@ class Item extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
 }

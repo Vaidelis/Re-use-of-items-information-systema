@@ -12,4 +12,8 @@ class Tag extends Model
 
     protected $fillable = ['name', 'categorys_id'];
     public $primaryKey = 'id';
+
+    public function itemhastags(){
+        return $this->hasMany(ItemHasTags::class);
+    }
 }

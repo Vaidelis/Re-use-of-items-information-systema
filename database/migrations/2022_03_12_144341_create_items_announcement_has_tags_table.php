@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemsAnnouncementTable extends Migration
+class CreateItemsAnnouncementHasTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateItemsAnnouncementTable extends Migration
      */
     public function up()
     {
-        Schema::create('items_announcement', function (Blueprint $table) {
+        Schema::create('items_announcement_has_tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('price');
-            $table->string('address');
-            $table->string('information');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('items_announcement_id')->constrained();
+            $table->foreignId('tags_id')->constrained();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateItemsAnnouncementTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items_announcement');
+        Schema::dropIfExists('items_announcement_has_tags');
     }
 }
