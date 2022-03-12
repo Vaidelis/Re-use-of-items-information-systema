@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Service;
 use App\Models\Image;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
+use App\Support\Collection;
 use Auth;
 use Session;
 
@@ -34,18 +36,22 @@ class ItemController extends Controller
         $image = Image::All();
         $name = $item->user->name;
 
+        //PinterestAPI
        $bot = PinterestBot::create();
-        // Login
-        //$result = $bot->auth->login('opaso80', '-'); //not working
-        $keywords = 'Old tables';
+        $keywords = Tag::All();
 
-        $pins = $bot->pins->search($keywords)->toArray();
-        //dd($pins[5]['id']);
-        $SMTH = $pins[6]['id'];
-        //dd($SMTH);
-        //dd($pins);
+        //First keyword
+        $pins = $bot->pins->search($keywords[0]->name)->take(7)->toArray();
+        $per_page = 1;
+        $pins = (new Collection($pins))->paginate($per_page);
+        //Second Keyword
+        $pins2 = $bot->pins->search($keywords[1]->name)->take(7)->toArray();
+        $pins2 = (new Collection($pins2))->paginate($per_page);
+        //Third keyword
+        $pins3 = $bot->pins->search($keywords[2]->name)->take(7)->toArray();
+        $pins3 = (new Collection($pins3))->paginate($per_page);
 
-        return view('itemInformation', compact('item', 'image'))->with('name', $name);
+        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3'))->with('name', $name);
     }
     public function itemdelete($id){
         $item = Item::find($id);

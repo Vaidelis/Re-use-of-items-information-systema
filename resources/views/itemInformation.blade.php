@@ -49,12 +49,31 @@
                 <hr />
             @endif
         @endforeach
+        @foreach($pins as $pin)
         <div>
-        <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/362821313740375921/"></a>
-        </div>
+        <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
+
+        @endforeach
+        @foreach($pins2 as $pin2)
+
+                <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin2['id']}}/"></a>
+
+        @endforeach
+        @foreach($pins3 as $pin3)
+
+                <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin3['id']}}/"></a>
+            </div>
+        @endforeach
         @csrf
+        {{-- Pagination --}}
+            <div class="d-flex justify-content-center" name="action" value='html'>
+                <div class="bottom">
+                    {!! $pins->links() !!}
+                </div>
+            </div>
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href=""><button class="testProceedButton">Pirkti daiktą</button></a>
 
         <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    </div>
         </body>
 @endsection
