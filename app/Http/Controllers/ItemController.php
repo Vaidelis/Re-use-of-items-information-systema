@@ -198,4 +198,10 @@ class ItemController extends Controller
         $announcements = Item::all();
         return view('itemAnnouncementList', compact('announcements'));
     }
+    public function showServices()
+    {
+        //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
+        $services = Service::all();
+        return view('serviceAnnouncementList', compact( 'services'));
+    }
 }

@@ -40,8 +40,8 @@ Route::post('/personalAnnouncement/servicecreate/store', 'App\Http\Controllers\I
 //---------------------------------------------------
 //-------Announcements(Item)
 Route::get('/itemAnnouncementList', 'App\Http\Controllers\ItemController@showitems')->name('itemannounc');
-
-
+//-------Announcements(Services)
+Route::get('/serviceAnnouncementList', 'App\Http\Controllers\ItemController@showservices')->name('serviceannounc');
 //User profile(change password)
 Route::post('/home', 'App\Http\Controllers\HomeController@updatePass')->name('UpdatePassword');
 
