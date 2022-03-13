@@ -95,7 +95,10 @@
                 <hr>
             </div>
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Skelbimai</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
+            </div>
+            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Paslaugų skelbimai</a>
             </div>
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('personalAnn')}}">Mano skelbimai</a>

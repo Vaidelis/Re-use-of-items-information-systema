@@ -192,4 +192,10 @@ class ItemController extends Controller
         return redirect()->route('personalAnn');
 
     }
+    public function showItems()
+    {
+        //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
+        $announcements = Item::all();
+        return view('itemAnnouncementList', compact('announcements'));
+    }
 }
