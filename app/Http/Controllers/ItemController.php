@@ -11,6 +11,7 @@ use App\Models\Tag;
 use App\Models\ItemHasTags;
 use Illuminate\Support\Facades\Storage;
 use App\Support\Collection;
+use Validator;
 use Auth;
 use Session;
 
@@ -136,7 +137,8 @@ class ItemController extends Controller
     //create
     public function itemcreate()
     {
-        return view('itemAnnouncementAdd');
+        $tags = Tag::all();
+        return view('itemAnnouncementAdd', compact('tags'));
     }
     public function itemstore(Request $request)
     {
@@ -148,6 +150,29 @@ class ItemController extends Controller
 
         $item->user_id = Auth::user()->id;
         $item->save();
+        //Save tags to database
+          $rules = array(
+              'tags.*' => 'required'
+          );
+        $error = Validator::make($request->all(), $rules);
+        if ($error->fails()) {
+            return response()->json([
+                'error' => $error->errors()->all()
+            ]);
+        }
+        $tag = $request->tags;
+        for ($count = 0; $count < count($tag); $count++) {
+            //$testID[$count] = $item->id;
+            $data = array(
+                'tags_id' => $tag[$count],
+                'items_announcement_id' => $item->id
+            );
+            $insert_data[] = $data;
+        }
+
+        //dd($testID);
+        ItemHasTags::insert($insert_data);
+
 //FOTKE---------------------------------------------
         $request->validate([
             'images' => 'required',

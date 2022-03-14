@@ -39,6 +39,7 @@
             <p>Skelbimo savininkas  - <b>{{ $name }}</b></p>
             <p>Skelbimo kaina  - <b>{{ $service->price }}</b></p>
             <div class="hairline"></div>
+            <a style="position: center"  href="">Tiekėjo informacija</a>
             <p class="infoHeader">Aprašymas</p>
             <p class="info"><b>{{ $service->information }}</b><p>
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href=""><button class="testProceedButton">Pirkti daiktą</button></a>
