@@ -1,5 +1,4 @@
 
-
 <form method="post" action="{{route('storeitem')}}" enctype="multipart/form-data">
     <div class="form-group">
         @csrf
@@ -17,7 +16,7 @@
     <div class="form-group">
         <strong>Žymos:</strong>
             @foreach($tags as $tag)
-                <input name="tags[]" type="checkbox" wire:model="selectedTag" value="{{$tag->id}}">  {{$tag->name}}
+                <input class="single-checkbox" name="tags[]" type="checkbox" wire:model="selectedTag" value="{{$tag->id}}"<?php if(count($selectedTag) >= 3){ ?> onclick="return false;" <?php } ?>>  {{$tag->name}}
             @endforeach
     </div>
     @endif

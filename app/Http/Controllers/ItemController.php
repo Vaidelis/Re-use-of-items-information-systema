@@ -152,7 +152,7 @@ class ItemController extends Controller
         $item->save();
         //Save tags to database
           $rules = array(
-              'tags.*' => 'required'
+              'tags.*' => 'required|min:3'
           );
         $error = Validator::make($request->all(), $rules);
         if ($error->fails()) {
