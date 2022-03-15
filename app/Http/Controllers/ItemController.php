@@ -283,4 +283,9 @@ class ItemController extends Controller
         $rememberService = RememberService::where(['users_id' => Auth::User()->id])->get();
         return view('rememberAnnouncement', compact('rememberItem', 'rememberService'));
     }
+    public function forgetService($id){
+        $forgetservice = RememberService::where(['services_announcement_id' => $id]);
+        $forgetservice->delete();
+        return redirect()->route('rememberAnn');
+    }
 }

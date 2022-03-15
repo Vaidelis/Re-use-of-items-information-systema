@@ -25,7 +25,13 @@
                     </a>
 
                     <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{ url('personalAnnouncement') }}"><button style="cursor: pointer;">Atgal</button></a>
-                    <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('rememberservice', $service->id)}}"><button <?php if($remember != null){ ?> disabled <?php }?> style="cursor: pointer;">Įsiminti</button></a>
+                    <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('rememberservice', $service->id)}}"><button <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
+
+                    <form method="POST" action="{{route('serviceforget', $service->id)}}" id="deleteForm">
+                        @csrf
+                        @method('DELETE')
+                        <button <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
+                    </form>
             </div>
         </div>
 
