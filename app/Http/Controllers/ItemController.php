@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\ServiceHasTags;
 use App\Models\Image;
 use App\Models\Tag;
+use App\Models\RememberService;
 use App\Models\ItemHasTags;
 use Illuminate\Support\Facades\Storage;
 use App\Support\Collection;
@@ -69,9 +70,11 @@ class ItemController extends Controller
     }
     public function serviceInfo($id){
         $service = Service::find($id);
+        $remember = RememberService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
+        //dd($remember);
         $name = $service->user->name;
 
-        return view('serviceInformation', compact('service'))->with('name', $name);
+        return view('serviceInformation', compact('service', 'remember'))->with('name', $name);
     }
     public function servicedelete($id){
         $service = Service::find($id);
@@ -250,6 +253,15 @@ class ItemController extends Controller
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
         $services = Service::all();
-        return view('serviceAnnouncementList', compact( 'services'));
+        return view('serviceAnnouncementList', compact( 'services', 'rememberServ'));
+    }
+    public function rememberService($id)
+    {
+        $remember = new RememberService();
+        $remember->services_announcement_id = $id;
+        $remember->users_id = Auth::User()->id;
+
+        $remember->save();
+        return redirect()->route('serviceshow', $id);
     }
 }
