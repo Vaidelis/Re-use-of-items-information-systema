@@ -10,6 +10,7 @@ use App\Models\ServiceHasTags;
 use App\Models\Image;
 use App\Models\Tag;
 use App\Models\RememberService;
+use App\Models\RememberItem;
 use App\Models\ItemHasTags;
 use Illuminate\Support\Facades\Storage;
 use App\Support\Collection;
@@ -58,7 +59,9 @@ class ItemController extends Controller
         $pins3 = $bot->pins->search($test[2]->tags->name)->take(7)->toArray();
         $pins3 = (new Collection($pins3))->paginate($per_page);
 
-        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3'))->with('name', $name);
+        $remember = RememberItem::where(['items_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
+
+        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember'))->with('name', $name);
     }
     public function itemdelete($id){
         $item = Item::find($id);
@@ -253,7 +256,7 @@ class ItemController extends Controller
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
         $services = Service::all();
-        return view('serviceAnnouncementList', compact( 'services', 'rememberServ'));
+        return view('serviceAnnouncementList', compact( 'services'));
     }
     public function rememberService($id)
     {
@@ -263,5 +266,15 @@ class ItemController extends Controller
 
         $remember->save();
         return redirect()->route('serviceshow', $id);
+    }
+
+    public function rememberItem($id)
+    {
+        $remember = new RememberItem();
+        $remember->items_announcement_id = $id;
+        $remember->users_id = Auth::User()->id;
+
+        $remember->save();
+        return redirect()->route('itemshow', $id);
     }
 }

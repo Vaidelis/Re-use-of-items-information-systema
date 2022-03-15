@@ -40,6 +40,7 @@ Route::post('/personalAnnouncement/servicecreate/store', 'App\Http\Controllers\I
 //---------------------------------------------------
 //-------Announcements(Item)
 Route::get('/itemAnnouncementList', 'App\Http\Controllers\ItemController@showitems')->name('itemannounc');
+Route::get('/itemAnnouncementList/itemInformation/save/{id}', 'App\Http\Controllers\ItemController@rememberItem')->name('rememberitem');
 //-------Announcements(Services)
 Route::get('/serviceAnnouncementList', 'App\Http\Controllers\ItemController@showservices')->name('serviceannounc');
 Route::get('/serviceAnnouncementList/serviceInformation/save/{id}', 'App\Http\Controllers\ItemController@rememberService')->name('rememberservice');
