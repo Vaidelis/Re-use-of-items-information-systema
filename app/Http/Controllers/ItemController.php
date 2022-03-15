@@ -288,4 +288,10 @@ class ItemController extends Controller
         $forgetservice->delete();
         return redirect()->route('rememberAnn');
     }
+    public function forgetItem($id){
+        $forgetitem = RememberItem::where(['items_announcement_id' => $id]);
+        $forgetitem->delete();
+        return redirect()->route('rememberAnn');
+    }
+
 }

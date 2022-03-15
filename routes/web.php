@@ -48,7 +48,7 @@ Route::get('/serviceAnnouncementList/serviceInformation/save/{id}', 'App\Http\Co
 //remember announcements
 Route::get('/rememberAnnouncemenets', 'App\Http\Controllers\ItemController@showRememberAnnoun')->name('rememberAnn');
 Route::delete('/rememberAnnouncemenets/serviceInformation/delete/{id}', 'App\Http\Controllers\ItemController@forgetService')->name('serviceforget');
-
+Route::delete('/rememberAnnouncemenets/itemInformation/delete/{id}', 'App\Http\Controllers\ItemController@forgetItem')->name('itemforget');
 //User profile(change password)
 Route::post('/home', 'App\Http\Controllers\HomeController@updatePass')->name('UpdatePassword');
 
