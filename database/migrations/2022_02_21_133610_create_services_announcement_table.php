@@ -18,6 +18,7 @@ class CreateServicesAnnouncementTable extends Migration
             $table->string('name');
             $table->integer('price');
             $table->string('information');
+            $table->integer('hide')->default(0);
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

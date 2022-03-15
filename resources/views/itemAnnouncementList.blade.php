@@ -16,7 +16,7 @@
             </thead>
             <tbody>
             @foreach($announcements as $announcement)
-                @if(Auth::user()->id != $announcement->user_id)
+                @if(Auth::user()->id != $announcement->user_id && $announcement->hide == 0)
                 <tr >
                     <td>{{ $announcement->name }}</td>
                     <td>{{ $announcement->price }}</td>

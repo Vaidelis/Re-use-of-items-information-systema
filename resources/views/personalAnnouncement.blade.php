@@ -19,6 +19,7 @@
         </thead>
         <tbody>
         @foreach($announcements as $announcement)
+            @if($announcement->hide == 0)
             <tr >
                 <td>{{ $announcement->name }}</td>
                 <td>{{ $announcement->price }}</td>
@@ -28,6 +29,7 @@
                             <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
                         </a>
                     </td>
+                @endif
                 @endforeach
                     </td>
 
@@ -43,6 +45,7 @@
         </thead>
         <tbody>
         @foreach($services as $service)
+            @if($service->hide == 0)
             <tr >
                 <td>{{ $service->name }}</td>
                 <td>{{ $service->price }}</td>
@@ -52,6 +55,7 @@
                         <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
                     </a>
                 </td>
+                @endif
                 @endforeach
                 </td>
 

@@ -10,19 +10,11 @@
 
         <div style="display: flex; flex-direction: row;">
             @if(Auth::user()->id == $item->user_id)
-               <a style="height: 40px; margin-top:auto; margin-bottom: auto;">
-                    {!! Form::open(['action' => ['App\Http\Controllers\ItemController@itemdelete',$item->id],
-                                            'method'=>'POST']) !!}
-                    @csrf
-                    {{Form::hidden('_method','DELETE')}}
-
-                    {{Form::submit('Ištrinti', ['class'=>'deleteButton'])}}
-                    {!! Form::close() !!}
+                   <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('itemdestroy', $item->id)}}"><button style="cursor: pointer;">Išimti skelbimą</button></a>
                     @if(Auth::user()->id == $item->user_id)
                         <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itemedit', $item->id)}}"><button style="cursor: pointer;">Redaguoti</button></a>
                     @endif
                     @endif
-                </a>
 
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{ url('personalAnnouncement') }}"><button style="cursor: pointer;">Atgal</button></a>
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('rememberitem', $item->id)}}"><button <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>

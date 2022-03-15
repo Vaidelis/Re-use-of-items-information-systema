@@ -69,10 +69,9 @@ class ItemController extends Controller
     }
     public function itemdelete($id){
         $item = Item::find($id);
-        $images = Image::where(['post_id' => $id]);
+        $item->hide = 1;
+        $item->save();
 
-        $item->delete();
-        $images->delete();
         return redirect()->route('personalAnn')->with('status', 'Skelbimas sėkmingai ištrintas');
     }
     public function serviceInfo($id){
@@ -85,7 +84,8 @@ class ItemController extends Controller
     }
     public function servicedelete($id){
         $service = Service::find($id);
-        $service->delete();
+        $service->hide = 1;
+        $service->save();
         return redirect()->route('personalAnn')->with('status', 'Skelbimas sėkmingai ištrintas');
     }
     //update announcements
