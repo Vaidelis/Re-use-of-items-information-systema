@@ -33,6 +33,8 @@ return array(
     'App\\Models\\Image' => $baseDir . '/app/Models/Image.php',
     'App\\Models\\Item' => $baseDir . '/app/Models/Item.php',
     'App\\Models\\ItemHasTags' => $baseDir . '/app/Models/ItemHasTags.php',
+    'App\\Models\\RememberItem' => $baseDir . '/app/Models/RememberItem.php',
+    'App\\Models\\RememberService' => $baseDir . '/app/Models/RememberService.php',
     'App\\Models\\Service' => $baseDir . '/app/Models/Service.php',
     'App\\Models\\ServiceHasTags' => $baseDir . '/app/Models/ServiceHasTags.php',
     'App\\Models\\Tag' => $baseDir . '/app/Models/Tag.php',

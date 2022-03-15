@@ -107,7 +107,7 @@
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('rememberAnn')}}">Įsiminti skelbimai</a>
             </div>
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="">Nupirkti skelbimai</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('boughtitemshow')}}">Nupirkti daiktai</a>
             </div>
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
                 <x-a class="btn btn-primary btn-xl js-scroll-trigger" :href="route('openmessagelist')"

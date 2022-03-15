@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\BoughtItem;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Service;
@@ -41,6 +42,9 @@ class ItemController extends Controller
         $image = Image::All();
         $name = $item->user->name;
 
+        //too if item is bought or not
+        $bought = BoughtItem::where(['items_announcement_id' => $id])->value('id');
+
         //PinterestAPI and keywords
        $bot = PinterestBot::create();
         //$keywords = Tag::All(); //all tags
@@ -61,7 +65,7 @@ class ItemController extends Controller
 
         $remember = RememberItem::where(['items_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
 
-        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember'))->with('name', $name);
+        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember', 'bought'))->with('name', $name);
     }
     public function itemdelete($id){
         $item = Item::find($id);
@@ -258,6 +262,8 @@ class ItemController extends Controller
         $services = Service::all();
         return view('serviceAnnouncementList', compact( 'services'));
     }
+
+    //remember/forget services
     public function rememberService($id)
     {
         $remember = new RememberService();
@@ -292,6 +298,23 @@ class ItemController extends Controller
         $forgetitem = RememberItem::where(['items_announcement_id' => $id]);
         $forgetitem->delete();
         return redirect()->route('rememberAnn');
+    }
+
+    //------Buy items and services
+    public function buyItem($id){
+        $buy = new BoughtItem();
+        $buy->items_announcement_id = $id;
+        $buy->users_id = Auth::User()->id;
+
+        $buy->save();
+
+        return redirect()->route('itemshow', $id);
+    }
+    public function showBoughtItems()
+    {
+        //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
+        $announcements = BoughtItem::where(['users_id' => Auth::User()->id])->get();
+        return view('boughtItems', compact('announcements'));
     }
 
 }

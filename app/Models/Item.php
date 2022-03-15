@@ -21,5 +21,9 @@ class Item extends Model
     {
         return $this->hasMany(RememberItem::class);
     }
+    public function boughtitem()
+    {
+        return $this->hasMany(BoughtItem::class);
+    }
 
 }

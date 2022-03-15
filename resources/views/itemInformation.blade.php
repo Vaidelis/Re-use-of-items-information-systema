@@ -36,6 +36,9 @@
     </div>
 
     <div class="">
+        @if($bought != null)
+        <p style="color:red" class="name"><b>Daiktas yra nupirktas</b></p>
+        @endif
         <p class="name"><b>{{ $item->name }}</b></p>
         <div class="hairline"></div>
 
@@ -78,7 +81,7 @@
                     {!! $pins->links() !!}
                 </div>
             </div>
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href=""><button class="testProceedButton">Pirkti daiktą</button></a>
+                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', $item->id)}}"><button <?php if($bought != null){ ?> disabled <?php }?>  class="testProceedButton">Pirkti daiktą</button></a>
 
         <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     </div>
