@@ -48,7 +48,7 @@
             @endif
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-success" />
+            <input <?php if(count($selectedTag) <= 2){?> disabled <?php } ?> type="submit" class="btn btn-success" />
             <a href="{{ route('personalAnn') }}" class="btn btn-primary">Atgal</a>
         </div>
 </form>

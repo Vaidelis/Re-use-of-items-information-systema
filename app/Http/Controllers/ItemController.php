@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Service;
+use App\Models\ServiceHasTags;
 use App\Models\Image;
 use App\Models\Tag;
 use App\Models\ItemHasTags;
@@ -152,7 +153,7 @@ class ItemController extends Controller
         $item->save();
         //Save tags to database
           $rules = array(
-              'tags.*' => 'required|min:3'
+              'tags.*' => 'required'
           );
         $error = Validator::make($request->all(), $rules);
         if ($error->fails()) {
@@ -213,6 +214,28 @@ class ItemController extends Controller
 
         $service->user_id = Auth::user()->id;
         $service->save();
+
+        //Save tags to database
+        $rules = array(
+            'tags.*' => 'required'
+        );
+        $error = Validator::make($request->all(), $rules);
+        if ($error->fails()) {
+            return response()->json([
+                'error' => $error->errors()->all()
+            ]);
+        }
+        $tag = $request->tags;
+        for ($count = 0; $count < count($tag); $count++) {
+            //$testID[$count] = $item->id;
+            $data = array(
+                'tags_id' => $tag[$count],
+                'services_announcement_id' => $service->id
+            );
+            $insert_data[] = $data;
+        }
+
+        ServiceHasTags::insert($insert_data);
 
         return redirect()->route('personalAnn');
 

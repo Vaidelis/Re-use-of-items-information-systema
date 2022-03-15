@@ -1,36 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+
+        <script src="{{ mix('js/app.js') }}"></script>
+
+    </head>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Sukurti paslaugų skelbimą</div>
                     <div class="card-body">
-                        <form method="post" action="{{route('storeservice')}}" enctype="multipart/form-data">
-                            <div class="form-group">
-                                @csrf
-                                <label class="label">Skelbimo pavadinimas: </label>
-                                <input placeholder="Skelbimo pavadinimas" type="text" name="name" class="form-control" required/>
-                            </div>
-                            <div class="form-group">
-                                <label class="label">Skelbimo kaina: </label>
-                                <input placeholder="Skelbimo kaina" type="number" name="price" class="form-control" required/>
-                            </div>
-                            <div class="form-group">
-                                <label class="label">Informacija: </label>
-                                <input placeholder="Informacija apie paslaugas" type="text" name="info" class="form-control" required/>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-success" />
-                                <a href="{{ route('personalAnn') }}" class="btn btn-primary">Atgal</a>
-                            </div>
-
-                        </form>
+                    <livewire:assignment-service/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @yield('scripts')
+    @livewireScripts
 @endsection
