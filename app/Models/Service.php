@@ -17,4 +17,8 @@ class Service extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function rememberservice()
+    {
+        return $this->hasMany(RememberService::class);
+    }
 }

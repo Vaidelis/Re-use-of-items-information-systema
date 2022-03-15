@@ -11,4 +11,9 @@ class RememberItem extends Model
     public $table = "remember_items";
     protected $fillable = ['items_announcement_id', 'users_id'];
     public $primaryKey = 'id';
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class, 'items_announcement_id');
+    }
 }

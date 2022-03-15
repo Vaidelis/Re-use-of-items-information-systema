@@ -277,4 +277,10 @@ class ItemController extends Controller
         $remember->save();
         return redirect()->route('itemshow', $id);
     }
+    public function showRememberAnnoun()
+    {
+        $rememberItem = RememberItem::where(['users_id' => Auth::User()->id])->get();
+        $rememberService = RememberService::where(['users_id' => Auth::User()->id])->get();
+        return view('rememberAnnouncement', compact('rememberItem', 'rememberService'));
+    }
 }

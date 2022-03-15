@@ -17,5 +17,9 @@ class Item extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function rememberitem()
+    {
+        return $this->hasMany(RememberItem::class);
+    }
 
 }

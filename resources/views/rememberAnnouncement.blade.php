@@ -15,13 +15,13 @@
             <th>Veiksmai</th>
             </thead>
             <tbody>
-            @foreach($announcements as $announcement)
+            @foreach($rememberItem as $announcement)
                 <tr >
-                    <td>{{ $announcement->name }}</td>
-                    <td>{{ $announcement->price }}</td>
+                    <td>{{ $announcement->item->name }}</td>
+                    <td>{{ $announcement->item->price }}</td>
 
                     <td>
-                        <a href="{{route('itemshow', $announcement->id)}}">
+                        <a href="{{route('itemshow', $announcement->item->id)}}">
                             <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
                         </a>
                     </td>
@@ -39,13 +39,13 @@
             <th>Veiksmai</th>
             </thead>
             <tbody>
-            @foreach($services as $service)
+            @foreach($rememberService as $services)
                 <tr >
-                    <td>{{ $service->name }}</td>
-                    <td>{{ $service->price }}</td>
+                    <td>{{ $services->service->name }}</td>
+                    <td>{{ $services->service->price }}</td>
 
                     <td>
-                        <a href="{{route('serviceshow', $service->id)}}">
+                        <a href="{{route('serviceshow', $services->service->id)}}">
                             <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
                         </a>
                     </td>

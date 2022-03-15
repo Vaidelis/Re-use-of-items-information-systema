@@ -104,7 +104,7 @@
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('personalAnn')}}">Mano skelbimai</a>
             </div>
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="">Įsiminti skelbimai</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('rememberAnn')}}">Įsiminti skelbimai</a>
             </div>
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="">Nupirkti skelbimai</a>

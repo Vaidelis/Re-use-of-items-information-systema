@@ -11,4 +11,9 @@ class RememberService extends Model
     public $table = "remember_services";
     protected $fillable = ['services_announcement_id', 'users_id'];
     public $primaryKey = 'id';
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class, 'services_announcement_id');
+    }
 }
