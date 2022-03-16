@@ -45,6 +45,9 @@ class ItemController extends Controller
         //too if item is bought or not
         $bought = BoughtItem::where(['items_announcement_id' => $id])->value('id');
 
+        //If user click remember item
+        $remember = RememberItem::where(['items_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
+
         //PinterestAPI and keywords
        $bot = PinterestBot::create();
         //$keywords = Tag::All(); //all tags
@@ -63,9 +66,14 @@ class ItemController extends Controller
         $pins3 = $bot->pins->search($test[2]->tags->name)->take(7)->toArray();
         $pins3 = (new Collection($pins3))->paginate($per_page);
 
-        $remember = RememberItem::where(['items_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
+        //Show possible reuse services
+        $lenght = $test->count();
 
-        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember', 'bought'))->with('name', $name);
+        for($count = 0; $count < $lenght; $count++) {
+            $service = ServiceHasTags::where(['tags_id' => $test[$count]->tags_id])->get();
+        }
+
+        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember', 'bought', 'service'))->with('name', $name);
     }
     public function itemdelete($id){
         $item = Item::find($id);

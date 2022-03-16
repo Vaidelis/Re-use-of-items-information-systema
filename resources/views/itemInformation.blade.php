@@ -73,6 +73,13 @@
                     {!! $pins->links() !!}
                 </div>
             </div>
+            <p class="">Paslaugų perdirbimo pasiūlymai</p>
+            <p class="">Paslaugos pavadinimas</p>
+            @foreach($service as $serv)
+                @if($serv->service->hide == 0)
+                <a class="" href="{{route('serviceshow', $serv->service->id)}}"><p>{{$serv->service->name}}</p></a>
+                @endif
+            @endforeach
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', $item->id)}}"><button <?php if($bought != null){ ?> disabled <?php }?>  class="testProceedButton">Pirkti daiktą</button></a>
 
         <script async defer src="//assets.pinterest.com/js/pinit.js"></script>

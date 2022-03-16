@@ -16,4 +16,7 @@ class Tag extends Model
     public function itemhastags(){
         return $this->hasMany(ItemHasTags::class);
     }
+    public function servicehastags(){
+        return $this->hasMany(ServiceHasTags::class);
+    }
 }
