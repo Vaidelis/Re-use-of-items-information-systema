@@ -13,20 +13,15 @@
                     @endif
 
                     <div class="grid grid-cols-12 gap-x-4">
-                        <div class="col-span-3">
-                            <a href="{{route('createmessage')}}"
-                               class="block w-full p-2 text-center text-black bg-indigo-400 hover:bg-indigo-600">New
-                                Message</a>
-                        </div>
                         <div class="col-span-9">
                             <table class="min-w-full leading-normal">
                                 <thead class="border-b bg-gray-50">
                                 <th
                                     class="px-3 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
-                                    Sender</th>
+                                    Siuntėjas</th>
                                 <th
                                     class="px-3 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
-                                    Subject</th>
+                                    Tema</th>
                                 <th
                                     class="px-3 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
                                 </th>

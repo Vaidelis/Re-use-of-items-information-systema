@@ -32,9 +32,9 @@ class MessageController extends Controller
 
         return view('messageScreen', compact('thread'));
     }
-    public function create()
+    public function create($id)
     {
-        $users = User::where('id', '!=', Auth::id())->get();
+        $users = User::find($id);
 
         return view('messageCreate', compact('users'));
     }
@@ -87,6 +87,6 @@ class MessageController extends Controller
         $participant->last_read = new Carbon;
         $participant->save();
 
-        return redirect()->route('openmessagelist')->with('success', 'Reply sent successfully.');
+        return redirect()->route('openmessagelist')->with('success', 'Atsakėte į žinutę.');
     }
 }

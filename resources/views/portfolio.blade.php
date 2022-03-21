@@ -64,9 +64,6 @@
                                         <div class="project-category text-faded">
                                             Prieš
                                         </div>
-                                        <div class="project-name">
-
-                                        </div>
                                     </div>
                                 </div>
                             </a>

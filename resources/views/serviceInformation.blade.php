@@ -39,6 +39,9 @@
             <p>Skelbimo kaina  - <b>{{ $service->price }}</b></p>
             <div class="hairline"></div>
             <a style="position: center"  href="{{route('portfolioshow', $service->user_id)}}">Tiekėjo informacija</a>
+            @if(Auth::user()->id != $service->user_id)
+                <a href="{{route('createmessage', $service->user_id)}}" class="block w-full p-2 text-center text-black bg-indigo-400 hover:bg-indigo-600">Parašyti žinute</a>
+            @endif
             <p class="infoHeader">Aprašymas</p>
             <p class="info"><b>{{ $service->information }}</b><p>
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('servicebuy', $service->id)}}"><button <?php if($bought != null){ ?> disabled <?php }?> class="testProceedButton">Pirkti paslaugą</button></a>

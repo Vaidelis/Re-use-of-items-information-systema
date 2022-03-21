@@ -42,6 +42,9 @@
         <p>Skelbimo kaina(eurai)  - <b>{{ $item->price }}</b></p>
         <p>Skelbimo adresas  - <b>{{ $item->address }}</b></p>
         <div class="hairline"></div>
+            @if(Auth::user()->id != $item->user_id)
+                <p> <a href="{{route('createmessage', $item->user_id)}}" class="block w-full p-2 text-center text-black bg-indigo-400 hover:bg-indigo-600">Parašyti žinute</a> </p>
+            @endif
         <p class="infoHeader">Aprašymas</p>
         <p class="info"><b>{{ $item->information }}</b><p>
         <p class="infoHeader">Nuotraukos</p>

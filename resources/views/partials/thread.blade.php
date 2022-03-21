@@ -10,7 +10,7 @@
             @csrf
             @method('DELETE')
 
-            <x-button>Delete</x-button>
+            <x-button>Ištrinti</x-button>
         </form>
     </td>
 </tr>

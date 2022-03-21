@@ -66,7 +66,7 @@ Route::post('/portfolio/upload{id}/store', 'App\Http\Controllers\ItemController@
 //Messages
 Route::get('/messageList', 'App\Http\Controllers\MessageController@index')->name('openmessagelist');
 Route::get('/messageList/{thread}', 'App\Http\Controllers\MessageController@show')->name('showmessage');
-Route::get('/messageCreate', 'App\Http\Controllers\MessageController@create')->name('createmessage');
+Route::get('/messageCreate{id}', 'App\Http\Controllers\MessageController@create')->name('createmessage');
 Route::post('/messageList', 'App\Http\Controllers\MessageController@store')->name('storemessage');
 Route::delete('/messageList/{thread}', 'App\Http\Controllers\MessageController@destroy')->name('destroymessage');
 Route::put('/messageList/{thread}', 'App\Http\Controllers\MessageController@update')->name('updatemessage');
