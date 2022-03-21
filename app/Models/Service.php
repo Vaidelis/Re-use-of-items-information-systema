@@ -24,4 +24,7 @@ class Service extends Model
     public function servicehastags(){
         return $this->hasMany(ServiceHasTags::class);
     }
+    public function boughtservices(){
+        return $this->hasMany(BoughtService::class);
+    }
 }

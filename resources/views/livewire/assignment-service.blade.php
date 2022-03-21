@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <strong>Žymos:</strong>
                     @foreach($tags as $tag)
-                        <input class="single-checkbox" name="tags[]" type="checkbox" wire:model="selectedTag" value="{{$tag->id}}"<?php if(count($selectedTag) >= 3){ ?> onclick="return false;" <?php } ?>>  {{$tag->name}}
+                        <input class="single-checkbox" name="tags[]" type="checkbox" wire:model="selectedTag" value="{{$tag->id}}"<?php if(count($selectedTag) >= 3){ ?> onclick="return false;" <?php } ?>>  {{$tag->namelt}}
                     @endforeach
                 </div>
             @endif

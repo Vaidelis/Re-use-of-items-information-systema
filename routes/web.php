@@ -50,12 +50,18 @@ Route::get('/itemAnnouncementList/itemInformation/buy/{id}', 'App\Http\Controlle
 Route::get('/serviceAnnouncementList', 'App\Http\Controllers\ItemController@showservices')->name('serviceannounc');
 Route::get('/serviceAnnouncementList/serviceInformation/save/{id}', 'App\Http\Controllers\ItemController@rememberService')->name('rememberservice');
 Route::delete('/rememberAnnouncemenets/serviceInformation/delete/{id}', 'App\Http\Controllers\ItemController@forgetService')->name('serviceforget');
+Route::get('/serviceAnnouncementList/serviceInformation/buy/{id}', 'App\Http\Controllers\ItemController@buyservice')->name('servicebuy'); //buy
 //remember/bought announcements
 Route::get('/rememberAnnouncemenets', 'App\Http\Controllers\ItemController@showRememberAnnoun')->name('rememberAnn');
 Route::get('/boughtItems', 'App\Http\Controllers\ItemController@showBoughtItems')->name('boughtitemshow');
 
 //User profile(change password)
 Route::post('/home', 'App\Http\Controllers\HomeController@updatePass')->name('UpdatePassword');
+
+//User portfolio
+Route::get('/portfolio', 'App\Http\Controllers\ItemController@showPortfolio')->name('portfolioshow');
+Route::get('/portfolio/upload{id}', 'App\Http\Controllers\ItemController@showPortfolioUpload')->name('portfoliouploadshow');
+Route::post('/portfolio/upload{id}/store', 'App\Http\Controllers\ItemController@portofliostore')->name('storeportfolio');
 
 //Messages
 Route::get('/messageList', 'App\Http\Controllers\MessageController@index')->name('openmessagelist');

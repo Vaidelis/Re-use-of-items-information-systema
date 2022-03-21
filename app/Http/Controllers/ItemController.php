@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\ServiceHasTags;
 use App\Models\Image;
 use App\Models\Tag;
+use App\Models\BoughtService;
 use App\Models\RememberService;
 use App\Models\RememberItem;
 use App\Models\ItemHasTags;
@@ -85,10 +86,11 @@ class ItemController extends Controller
     public function serviceInfo($id){
         $service = Service::find($id);
         $remember = RememberService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
+        $bought = BoughtService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
         //dd($remember);
         $name = $service->user->name;
 
-        return view('serviceInformation', compact('service', 'remember'))->with('name', $name);
+        return view('serviceInformation', compact('service', 'remember'))->with('name', $name)->with('bought', $bought);
     }
     public function servicedelete($id){
         $service = Service::find($id);
@@ -323,6 +325,68 @@ class ItemController extends Controller
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
         $announcements = BoughtItem::where(['users_id' => Auth::User()->id])->get();
         return view('boughtItems', compact('announcements'));
+    }
+
+    public function buyService($id){
+        $buy = new BoughtService();
+        $buy->services_announcement_id = $id;
+        $buy->users_id = Auth::User()->id;
+
+        $buy->save();
+
+        return redirect()->route('serviceshow', $id);
+    }
+    public function showPortfolio(){
+        $owner = Service::where(['user_id' => Auth::User()->id])->pluck('id')->toArray();
+        //dd($owner);
+            $port = BoughtService::whereIn('services_announcement_id', $owner)->get();
+        //dd($port);
+        return view('portfolio', compact('port'));
+    }
+    public function showPortfolioUpload($id){
+        return view('portfolioUpload')->with('id', $id);
+    }
+
+    public function portofliostore(Request $request, $id)
+    {
+        $boughtservice = BoughtService::findOrFail($id);
+        $name = $request->input('postname');
+        $boughtservice->postname = $name;
+
+//FOTKE---------------------------------------------
+        $request->validate([
+            'image' => 'required',
+            'image2' => 'required',
+        ]);
+
+        if ($request->hasfile('image')) {
+            $image = $request->file('image');
+
+
+                $name = $image->getClientOriginalName();
+                $path = $image->storeAs('uploads', $name,'public');
+
+                Storage::disk('public')->put($name, '/storage/'.$path);
+                $boughtservice->name = $name;
+                $boughtservice->path = '/storage/'.$path;
+
+        }
+        if ($request->hasfile('image2')) {
+            $image2 = $request->file('image2');
+
+
+            $name2 = $image2->getClientOriginalName();
+            $path2 = $image2->storeAs('uploads', $name2,'public');
+
+            Storage::disk('public')->put($name2, '/storage/'.$path2);
+            $boughtservice->name2 = $name2;
+            $boughtservice->path2 = '/storage/'.$path2;
+            $boughtservice->save();
+
+        }
+        //-------------------------------------------------
+        return redirect()->route('portfolioshow');
+
     }
 
 }
