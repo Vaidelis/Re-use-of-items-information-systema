@@ -44,7 +44,7 @@
             @endif
             <p class="infoHeader">Aprašymas</p>
             <p class="info"><b>{{ $service->information }}</b><p>
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('servicebuy', $service->id)}}"><button <?php if($bought != null){ ?> disabled <?php }?> class="testProceedButton">Pirkti paslaugą</button></a>
+                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('servicebuy', $service->id)}}"><button <?php if($bought != null || Auth::User()->id == $service->user_id){ ?> disabled <?php }?> class="testProceedButton">Pirkti paslaugą</button></a>
 
     </body>
 @endsection

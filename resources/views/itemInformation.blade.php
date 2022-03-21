@@ -83,7 +83,7 @@
                 <a class="" href="{{route('serviceshow', $serv->service->id)}}"><p>{{$serv->service->name}}</p></a>
                 @endif
             @endforeach
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', $item->id)}}"><button <?php if($bought != null){ ?> disabled <?php }?>  class="testProceedButton">Pirkti daiktą</button></a>
+                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', $item->id)}}"><button <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="testProceedButton">Pirkti daiktą</button></a>
 
         <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     </div>
