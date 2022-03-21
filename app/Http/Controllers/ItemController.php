@@ -86,8 +86,22 @@ class ItemController extends Controller
     public function serviceInfo($id){
         $service = Service::find($id);
         $remember = RememberService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
+
         $bought = BoughtService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
-        //dd($remember);
+
+        $boughtcheck = BoughtService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->pluck('name')->toArray();
+        //dd($boughtcheck);
+        for($i = 0; $i < count($boughtcheck); $i++) {
+            if ($boughtcheck[$i] == null) {
+                $bought = 1;
+                break;
+            }
+            else{
+                $bought = null;
+            }
+        }
+
+        //dd($bought);
         $name = $service->user->name;
 
         return view('serviceInformation', compact('service', 'remember'))->with('name', $name)->with('bought', $bought);
