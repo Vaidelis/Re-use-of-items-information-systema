@@ -350,12 +350,12 @@ class ItemController extends Controller
 
         return redirect()->route('serviceshow', $id);
     }
-    public function showPortfolio(){
-        $owner = Service::where(['user_id' => Auth::User()->id])->pluck('id')->toArray();
+    public function showPortfolio($id){
+        $owner = Service::where(['user_id' => $id])->pluck('id')->toArray();
         //dd($owner);
             $port = BoughtService::whereIn('services_announcement_id', $owner)->get();
         //dd($port);
-        return view('portfolio', compact('port'));
+        return view('portfolio', compact('port'))->with('id', $id);
     }
     public function showPortfolioUpload($id){
         return view('portfolioUpload')->with('id', $id);

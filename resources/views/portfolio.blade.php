@@ -7,6 +7,7 @@
             <h4 class="testListSplashText">Perdarytų daiktų portfolio</h4>
             <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
         </div>
+@if($id == Auth::User()->id)
         <h4 class="testListSplashText">Klientų sąrašas</h4>
         <table class="">
             <thead>
@@ -34,6 +35,7 @@
                     </tr>
             </tbody>
         </table>
+        @endif
         <h4 class="testListSplashText">Padaryti darbai</h4>
         <table class="">
             <thead>

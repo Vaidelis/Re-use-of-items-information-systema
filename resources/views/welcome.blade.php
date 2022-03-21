@@ -110,7 +110,7 @@
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('boughtitemshow')}}">Nupirkti daiktai</a>
             </div>
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('portfolioshow')}}">Perdirbtų daiktų porfolio</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{route('portfolioshow', Auth::User()->id)}}">Perdirbtų daiktų porfolio</a>
             </div>
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
                 <x-a class="btn btn-primary btn-xl js-scroll-trigger" :href="route('openmessagelist')"
