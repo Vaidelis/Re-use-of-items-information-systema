@@ -59,9 +59,9 @@ Route::get('/boughtItems', 'App\Http\Controllers\ItemController@showBoughtItems'
 Route::post('/home', 'App\Http\Controllers\HomeController@updatePass')->name('UpdatePassword');
 
 //User portfolio
-Route::get('/portfolio{id}', 'App\Http\Controllers\ItemController@showPortfolio')->name('portfolioshow');
-Route::get('/portfolio/upload{id}', 'App\Http\Controllers\ItemController@showPortfolioUpload')->name('portfoliouploadshow');
-Route::post('/portfolio/upload{id}/store', 'App\Http\Controllers\ItemController@portofliostore')->name('storeportfolio');
+Route::get('/portfolio/{id}', 'App\Http\Controllers\ItemController@showPortfolio')->name('portfolioshow');
+Route::get('/portfolio/{id}/upload/{id2}', 'App\Http\Controllers\ItemController@showPortfolioUpload')->name('portfoliouploadshow');
+Route::post('/portfolio/{id}/upload/{id2}/store', 'App\Http\Controllers\ItemController@portofliostore')->name('storeportfolio');
 
 //Messages
 Route::get('/messageList', 'App\Http\Controllers\MessageController@index')->name('openmessagelist');

@@ -357,13 +357,13 @@ class ItemController extends Controller
         //dd($port);
         return view('portfolio', compact('port'))->with('id', $id);
     }
-    public function showPortfolioUpload($id){
-        return view('portfolioUpload')->with('id', $id);
+    public function showPortfolioUpload($id, $id2){
+        return view('portfolioUpload')->with('id', $id)->with('id2', $id2);
     }
 
-    public function portofliostore(Request $request, $id)
+    public function portofliostore(Request $request, $id, $id2)
     {
-        $boughtservice = BoughtService::findOrFail($id);
+        $boughtservice = BoughtService::findOrFail($id2);
         $name = $request->input('postname');
         $boughtservice->postname = $name;
 
@@ -399,7 +399,7 @@ class ItemController extends Controller
 
         }
         //-------------------------------------------------
-        return redirect()->route('portfolioshow');
+        return redirect()->route('portfolioshow', $id);
 
     }
 

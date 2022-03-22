@@ -10,7 +10,7 @@
                     <div class="card-body">
 
 
-    <form method="post" action="{{route('storeportfolio', $id)}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('storeportfolio', ['id' => $id, 'id2' => $id2])}}" enctype="multipart/form-data">
         <div class="form-group">
             @csrf
 
@@ -37,7 +37,7 @@
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-success" />
-            <a href="{{ route('portfolioshow') }}" class="btn btn-primary">Atgal</a>
+            <a href="{{ route('portfolioshow', $id) }}" class="btn btn-primary">Atgal</a>
         </div>
     </form>
 
