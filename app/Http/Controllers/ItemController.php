@@ -353,10 +353,11 @@ class ItemController extends Controller
     }
     public function showPortfolio($id){
         $owner = Service::where(['user_id' => $id])->pluck('id')->toArray();
+        $comments = ServicesRate::where(['users_id' => $id])->get();
         //dd($owner);
             $port = BoughtService::whereIn('services_announcement_id', $owner)->get();
         //dd($port);
-        return view('portfolio', compact('port'))->with('id', $id);
+        return view('portfolio', compact('port', 'comments'))->with('id', $id);
     }
     public function showPortfolioUpload($id, $id2){
         return view('portfolioUpload')->with('id', $id)->with('id2', $id2);

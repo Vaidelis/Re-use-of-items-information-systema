@@ -49,6 +49,26 @@
             </tbody>
         </table>
         @endif
+        <h4 class="testListSplashText">Žmonių atsiliepimai</h4>
+        <table class="">
+            <thead>
+            <th>Klientas</th>
+            <th>Įvertinimas</th>
+            <th>Komentaras</th>
+            </thead>
+            <tbody>
+            @foreach($comments as $com)
+                    <tr >
+                        <td>{{$com->buyername  }}</td>
+                        <td>{{$com->rate}} </td>
+                        <td>{{$com->comment}}</td>
+                        @endforeach
+                        </td>
+
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
         <h4 class="testListSplashText">Padaryti darbai</h4>
         <table class="">
             <thead>
@@ -98,8 +118,6 @@
             </table>
 
             </tr>
-
-
 
             @endif
         @endforeach
