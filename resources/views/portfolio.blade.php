@@ -18,7 +18,7 @@
         <div class="container">
             <h4 class="testListSplashText">Perdarytų daiktų portfolio</h4>
             <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
-            <button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;" id="myBtn">Įvertinti tiekėją</button>
+            <button <?php if($notdone != null || Auth::User()->id == $id || $exist != null){ ?> disabled <?php }?>  class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;" id="myBtn">Įvertinti tiekėją</button>
         </div>
 @if($id == Auth::User()->id)
         <h4 class="testListSplashText">Klientų sąrašas</h4>

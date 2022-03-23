@@ -353,11 +353,26 @@ class ItemController extends Controller
     }
     public function showPortfolio($id){
         $owner = Service::where(['user_id' => $id])->pluck('id')->toArray();
+        $port = BoughtService::whereIn('services_announcement_id', $owner)->get();
+
         $comments = ServicesRate::where(['users_id' => $id])->get();
-        //dd($owner);
-            $port = BoughtService::whereIn('services_announcement_id', $owner)->get();
-        //dd($port);
-        return view('portfolio', compact('port', 'comments'))->with('id', $id);
+
+        $boughtcheck = BoughtService::whereIn('services_announcement_id', $owner)->where('users_id', Auth::user()->id)->pluck('name')->toArray();
+        //dd($boughtcheck);
+        $notdone = 'yi';
+        for($i = 0; $i < count($boughtcheck); $i++) {
+            if ($boughtcheck[$i] == null) {
+                $notdone = 1;
+                break;
+            }
+            else{
+                $notdone = null;
+            }
+        }
+        $exist = ServicesRate::where(['buyername' => Auth::User()->name, 'users_id' => $id])->value('buyername');
+        //dd($exist);
+
+        return view('portfolio', compact('port', 'comments'))->with('id', $id)->with('notdone', $notdone)->with('exist', $exist);
     }
     public function showPortfolioUpload($id, $id2){
         return view('portfolioUpload')->with('id', $id)->with('id2', $id2);
