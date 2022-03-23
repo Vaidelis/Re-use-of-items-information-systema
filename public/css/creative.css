@@ -364,7 +364,7 @@ header.masthead p {
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    position: center; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
@@ -398,3 +398,4 @@ header.masthead p {
     text-decoration: none;
     cursor: pointer;
 }
+

@@ -63,6 +63,9 @@ Route::get('/portfolio/{id}', 'App\Http\Controllers\ItemController@showPortfolio
 Route::get('/portfolio/{id}/upload/{id2}', 'App\Http\Controllers\ItemController@showPortfolioUpload')->name('portfoliouploadshow');
 Route::post('/portfolio/{id}/upload/{id2}/store', 'App\Http\Controllers\ItemController@portofliostore')->name('storeportfolio');
 
+Route::post('/portfolio/{id}/y', 'App\Http\Controllers\ItemController@rateService')->name('servicerate');
+
+
 //Messages
 Route::get('/messageList', 'App\Http\Controllers\MessageController@index')->name('openmessagelist');
 Route::get('/messageList/{thread}', 'App\Http\Controllers\MessageController@show')->name('showmessage');

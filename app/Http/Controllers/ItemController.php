@@ -9,6 +9,7 @@ use App\Models\Item;
 use App\Models\Service;
 use App\Models\ServiceHasTags;
 use App\Models\Image;
+use App\Models\ServicesRate;
 use App\Models\Tag;
 use App\Models\BoughtService;
 use App\Models\RememberService;
@@ -401,6 +402,19 @@ class ItemController extends Controller
         //-------------------------------------------------
         return redirect()->route('portfolioshow', $id);
 
+    }
+    public function rateService(Request $request, $id){
+        $comment = $request->input('comment');
+        $stars = $request->get('stars');
+        $rate = new ServicesRate();
+        $rate->comment = $comment;
+        $rate->buyername = Auth::User()->name;
+        $rate->rate = $stars;
+        $rate->times = 1; //tą reikės ištrinti
+        $rate->users_id = $id;
+
+        $rate->save();
+        return redirect()->route('portfolioshow', $id);
     }
 
 }

@@ -115,7 +115,25 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
+            <form method="post" action="{{route('servicerate', $id)}}" enctype="multipart/form-data">
+
+            <label class="label">Komenataras apie tiekėjo suteiktas paslaugas: </label>
+                @csrf
+            <input placeholder="Komentaras" type="text" name="comment" class="form-control" required/>
+                <br>
+                <select name="stars" placeholder="Testo lygis" style="width: 300px; position: center;">
+                    <option value="1">&#9733;</option>
+                    <option value="2">&#9733;&#9733;</option>
+                    <option value="3">&#9733;&#9733;&#9733;</option>
+                    <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+                    <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                </select>
+                <br>
+            <br>
+            <div class="form-group">
+                <input  type="submit" class="btn btn-success" />
+            </div>
+            </form>
         </div>
 
     </div>

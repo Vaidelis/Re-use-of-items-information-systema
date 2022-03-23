@@ -15,6 +15,10 @@ class CreateServicesRateTable extends Migration
     {
         Schema::create('services_rate', function (Blueprint $table) {
             $table->id();
+            $table->string('comment');
+            $table->string('buyername');
+            $table->integer('rate');
+            $table->foreignId('users_id')->constrained();
             $table->timestamps();
         });
     }
