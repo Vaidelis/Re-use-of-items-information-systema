@@ -184,6 +184,12 @@ class ItemController extends Controller
         $item->address = $request->get('address');
         $item->information = $request->get('info');
 
+        if($request->change == null){
+            $item->change = 0;
+        }
+        else{
+            $item->change = 1;
+        }
         $item->user_id = Auth::user()->id;
         $item->save();
         //Save tags to database

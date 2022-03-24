@@ -41,6 +41,9 @@
         <p>Skelbimo savininkas  - <b>{{ $name }}</b></p>
         <p>Skelbimo kaina(eurai)  - <b>{{ $item->price }}</b></p>
         <p>Skelbimo adresas  - <b>{{ $item->address }}</b></p>
+            @if($item->change == 1)
+            <p><b style="color:red">Vartotoją domina keitimasis daiktais</b></p>
+                @endif
         <div class="hairline"></div>
             @if(Auth::user()->id != $item->user_id)
                 <p> <a href="{{route('createmessage', $item->user_id)}}" class="block w-full p-2 text-center text-black bg-indigo-400 hover:bg-indigo-600">Parašyti žinute</a> </p>

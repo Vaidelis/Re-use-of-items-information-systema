@@ -19,6 +19,7 @@ class CreateItemsAnnouncementTable extends Migration
             $table->integer('price');
             $table->string('address');
             $table->string('information');
+            $table->integer('change');
             $table->integer('hide')->default(0);
             $table->foreignId('user_id')->constrained();
             $table->timestamps();

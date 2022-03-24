@@ -35,7 +35,10 @@
             <label class="label">Informacija: </label>
             <input placeholder="Informacija apie daiktą" type="text" name="info" class="form-control" required/>
         </div>
-
+    <div class="form-group">
+        <strong>Ar domina keitimosi pasiūlymai?:</strong>
+            <input class="single-checkbox" name="change" type="checkbox"  value="1">
+    </div>
 
         <div class="form-group">
             <input type="file" name="images[]" multiple class="form-control" accept="image/*" required>
