@@ -20,6 +20,10 @@ use App\Support\Collection;
 use Validator;
 use Auth;
 use Session;
+use Cmgmyr\Messenger\Models\Thread;
+use Cmgmyr\Messenger\Models\Message;
+use Cmgmyr\Messenger\Models\Participant;
+use Carbon\Carbon;
 
 require 'C:\xampp\htdocs\Re-use-of-items-information-systema/vendor/autoload.php';
 
@@ -332,10 +336,32 @@ class ItemController extends Controller
     }
 
     //------Buy items and services
-    public function buyItem($id){
+    public function buyItem($id, $user_id){
         $buy = new BoughtItem();
         $buy->items_announcement_id = $id;
         $buy->users_id = Auth::User()->id;
+
+        //send system message
+        $thread = Thread::create([
+            'subject' => 'Daikto nupirkimas',
+        ]);
+
+        // Message
+        Message::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'body' => 'Sveiki, aš įsigijau jūsų daiktą, atsakykite į šį laišką, susitarsime siuntimo/pasiemimo sąlygas',
+        ]);
+
+        // Sender
+        Participant::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'last_read' => new Carbon,
+        ]);
+
+        // Recipients
+        $thread->addParticipant($user_id);
 
         $buy->save();
 

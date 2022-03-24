@@ -44,7 +44,7 @@ Route::get('/itemAnnouncementList', 'App\Http\Controllers\ItemController@showite
 Route::get('/itemAnnouncementList/itemInformation/save/{id}', 'App\Http\Controllers\ItemController@rememberItem')->name('rememberitem');
 Route::delete('/rememberAnnouncemenets/itemInformation/delete/{id}', 'App\Http\Controllers\ItemController@forgetItem')->name('itemforget');
 
-Route::get('/itemAnnouncementList/itemInformation/buy/{id}', 'App\Http\Controllers\ItemController@buyItem')->name('itembuy'); //buy
+Route::get('/itemAnnouncementList/itemInformation/buy/{id}/{userid}', 'App\Http\Controllers\ItemController@buyItem')->name('itembuy'); //buy
 
 //-------Announcements(Services)
 Route::get('/serviceAnnouncementList', 'App\Http\Controllers\ItemController@showservices')->name('serviceannounc');
