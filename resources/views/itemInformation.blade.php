@@ -113,6 +113,12 @@
                     <br>
                 @endif
             @endforeach
+            <p>Išsaugoti pinai</p>
+            <div>
+            @foreach($itemhaspins as $pins)
+                    <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pins->pinpicture}}/"></a>
+                @endforeach
+            </div>
             <br>
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti daiktą</button></a>
 
