@@ -585,6 +585,7 @@ class ComposerStaticInitc1e89ff8e8d54cd39eefa7a79efcbc9d
         'App\\Models\\RememberService' => __DIR__ . '/../..' . '/app/Models/RememberService.php',
         'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',
         'App\\Models\\ServiceHasTags' => __DIR__ . '/../..' . '/app/Models/ServiceHasTags.php',
+        'App\\Models\\ServicesRate' => __DIR__ . '/../..' . '/app/Models/ServicesRate.php',
         'App\\Models\\Tag' => __DIR__ . '/../..' . '/app/Models/Tag.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

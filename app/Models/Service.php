@@ -27,4 +27,7 @@ class Service extends Model
     public function boughtservices(){
         return $this->hasMany(BoughtService::class);
     }
+    public function itemhasserivce(){
+        return $this->hasMany(ItemHasService::class);
+    }
 }

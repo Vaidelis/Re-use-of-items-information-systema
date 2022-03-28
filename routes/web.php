@@ -19,8 +19,8 @@ Route::get('/', function () {
 //----Personal announcements show, delete, create, edit
 Route::get('/personalAnnouncement', 'App\Http\Controllers\ItemController@index')->name('personalAnn');
 
-Route::get('/personalAnnouncement/itemInformation/{id}', 'App\Http\Controllers\ItemController@itemInfo')->name('itemshow');
-Route::get('/personalAnnouncement/serviceInformation/{id}', 'App\Http\Controllers\ItemController@serviceInfo')->name('serviceshow');
+Route::get('/itemAnnouncement/itemInformation/{id}', 'App\Http\Controllers\ItemController@itemInfo')->name('itemshow');
+Route::get('/serviceAnnouncement/serviceInformation/{id}', 'App\Http\Controllers\ItemController@serviceInfo')->name('serviceshow');
 //delete
 Route::get('/personalAnnouncement/itemInformation/delete/{id}', 'App\Http\Controllers\ItemController@itemdelete')->name('itemdestroy');
 Route::get('/personalAnnouncement/serviceInformation/delete/{id}', 'App\Http\Controllers\ItemController@servicedelete')->name('servicedestroy');
@@ -73,6 +73,10 @@ Route::get('/messageCreate{id}', 'App\Http\Controllers\MessageController@create'
 Route::post('/messageList', 'App\Http\Controllers\MessageController@store')->name('storemessage');
 Route::delete('/messageList/{thread}', 'App\Http\Controllers\MessageController@destroy')->name('destroymessage');
 Route::put('/messageList/{thread}', 'App\Http\Controllers\MessageController@update')->name('updatemessage');
+
+//remember service and pins in item announcement
+Route::get('/itemAnnouncement/itemInformation/{id}/service/{servid}', 'App\Http\Controllers\ItemController@saveService')->name('saveserviceinitem');
+Route::get('/itemAnnouncement/itemInformation/{id}/pin/{pin}', 'App\Http\Controllers\ItemController@savePins')->name('savepininitem');
 
 
 

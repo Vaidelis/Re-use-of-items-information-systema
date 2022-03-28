@@ -60,16 +60,17 @@
         @foreach($pins as $pin)
         <div>
         <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
-
+            <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id']])}}"><button>Įsiminti</button></a>
         @endforeach
         @foreach($pins2 as $pin2)
 
                 <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin2['id']}}/"></a>
-
+                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id']])}}"><button>Įsiminti</button></a>
         @endforeach
         @foreach($pins3 as $pin3)
 
                 <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin3['id']}}/"></a>
+                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id']])}}"><button>Įsiminti</button></a>
             </div>
         @endforeach
         @csrf
@@ -80,13 +81,34 @@
                 </div>
             </div>
             <p class="">Paslaugų perdirbimo pasiūlymai</p>
-            <p class="">Paslaugos pavadinimas</p>
+            <tr class="">Paslaugos pavadinimas</tr>
+            <tr class="">Įsiminti</tr>
+            <br>
             @foreach($service as $serv)
                 @if($serv->service->hide == 0)
-                <a class="" href="{{route('serviceshow', $serv->service->id)}}"><p>{{$serv->service->name}}</p></a>
+               <a class="" href="{{route('serviceshow', $serv->service->id)}}">{{$serv->service->name}}</a>
+                    <a href="{{route('saveserviceinitem', ['id' => $item->id, 'servid' => $serv->service->id])}}"><button
+                        <?php foreach($itemhasservice as $itemhas){
+                            if($serv->services_announcement_id == $itemhas->services_announcement_id){
+                            }
+                            else{
+
+
+                         ?> disabled
+                        <?php }} ?> >Įsiminti</button></a>
+                    <br>
                 @endif
             @endforeach
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="testProceedButton">Pirkti daiktą</button></a>
+            <p>Išsaugotos paslaugos</p>
+            @foreach($itemhasservice as $serv)
+                @if($serv->service->hide == 0)
+                    <a class="" href="{{route('serviceshow', $serv->service->id)}}">{{$serv->service->name}}</a>
+                    <a href=""><button>Pamiršti</button></a>
+                    <br>
+                @endif
+            @endforeach
+            <br>
+                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti daiktą</button></a>
 
         <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     </div>

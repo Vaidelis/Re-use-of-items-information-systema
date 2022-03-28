@@ -15,6 +15,8 @@ use App\Models\BoughtService;
 use App\Models\RememberService;
 use App\Models\RememberItem;
 use App\Models\ItemHasTags;
+use App\Models\ItemHasPins;
+use App\Models\ItemHasService;
 use Illuminate\Support\Facades\Storage;
 use App\Support\Collection;
 use Validator;
@@ -79,7 +81,10 @@ class ItemController extends Controller
             $service = ServiceHasTags::where(['tags_id' => $test[$count]->tags_id])->get();
         }
 
-        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember', 'bought', 'service'))->with('name', $name);
+        //show saved announcements
+        $itemhasservice = ItemHasService::where(['items_announcement_id' => $id, 'user_id' => Auth::User()->id])->get();
+
+        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember', 'bought', 'service', 'itemhasservice'))->with('name', $name);
     }
     public function itemdelete($id){
         $item = Item::find($id);
@@ -484,6 +489,27 @@ class ItemController extends Controller
 
         $rate->save();
         return redirect()->route('portfolioshow', $id);
+    }
+
+    //Save pin and services in announcement
+    public function saveService($id, $servid){
+        $itemhserv = new ItemHasService();
+        $itemhserv->user_id = Auth::User()->id;
+        $itemhserv->items_announcement_id = $id;
+        $itemhserv->services_announcement_id = $servid;
+
+        $itemhserv->save();
+        return redirect()->route('itemshow', $id);
+    }
+
+    public function savePins($id, $pin){
+        $itemhpin = new ItemHasPins();
+        $itemhpin->user_id = Auth::User()->id;
+        $itemhpin->items_announcement_id = $id;
+        $itemhpin->pinpicture = $pin;
+
+        $itemhpin->save();
+        return redirect()->route('itemshow', $id);
     }
 
 }
