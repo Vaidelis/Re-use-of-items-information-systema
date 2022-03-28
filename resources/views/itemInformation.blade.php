@@ -60,17 +60,16 @@
         @foreach($pins as $pin)
         <div>
         <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
-            <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id']])}}"><button>Įsiminti</button></a>
+            <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id'], 'tagid' => $tagid])}}"><button>Įsiminti</button></a>
         @endforeach
         @foreach($pins2 as $pin2)
-
                 <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin2['id']}}/"></a>
-                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id']])}}"><button>Įsiminti</button></a>
+                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id'], 'tagid' => $tagid2])}}"><button>Įsiminti</button></a>
         @endforeach
         @foreach($pins3 as $pin3)
 
                 <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin3['id']}}/"></a>
-                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id']])}}"><button>Įsiminti</button></a>
+                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id'], 'tagid' => $tagid3])}}"><button>Įsiminti</button></a>
             </div>
         @endforeach
         @csrf

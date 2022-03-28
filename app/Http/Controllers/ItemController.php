@@ -65,15 +65,17 @@ class ItemController extends Controller
 
         //First keyword
         $pins = $bot->pins->search($test[0]->tags->name)->take(7)->toArray();
+        $tagid = $test[0]->tags_id;
         $per_page = 1;
         $pins = (new Collection($pins))->paginate($per_page);
         //Second Keyword
         $pins2 = $bot->pins->search($test[1]->tags->name)->take(7)->toArray();
+        $tagid2 = $test[1]->tags_id;
         $pins2 = (new Collection($pins2))->paginate($per_page);
         //Third keyword
         $pins3 = $bot->pins->search($test[2]->tags->name)->take(7)->toArray();
+        $tagid3 = $test[2]->tags_id;
         $pins3 = (new Collection($pins3))->paginate($per_page);
-
         //Show possible reuse services
         $lenght = $test->count();
 
@@ -86,7 +88,7 @@ class ItemController extends Controller
         //show saved pins
         $itemhaspins = ItemHasPins::where(['items_announcement_id' => $id, 'user_id' => Auth::User()->id])->get();
 
-        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember', 'bought', 'service', 'itemhasservice', 'itemhaspins'))->with('name', $name);
+        return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember', 'bought', 'service', 'itemhasservice', 'itemhaspins'))->with('name', $name)->with('tagid', $tagid)->with('tagid2', $tagid2)->with('tagid3', $tagid3);
     }
     public function itemdelete($id){
         $item = Item::find($id);
@@ -504,12 +506,16 @@ class ItemController extends Controller
         return redirect()->route('itemshow', $id);
     }
 
-    public function savePins($id, $pin){
+    public function savePins($id, $pin, $tagid){
         $itemhpin = new ItemHasPins();
         $itemhpin->user_id = Auth::User()->id;
         $itemhpin->items_announcement_id = $id;
         $itemhpin->pinpicture = $pin;
 
+        $tag = Tag::find($tagid);
+        $tag->like = $tag->like + 1;
+
+        $tag->save();
         $itemhpin->save();
         return redirect()->route('itemshow', $id);
     }

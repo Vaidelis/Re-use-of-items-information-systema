@@ -17,7 +17,7 @@ class CreateTagsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('namelt');
-            $table->integer('like');
+            $table->integer('like')->default(0);
             $table->foreignId('categorys_id')->constrained();
             $table->timestamps();
         });
