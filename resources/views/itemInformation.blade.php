@@ -89,7 +89,7 @@
                <a class="" href="{{route('serviceshow', $serv->service->id)}}">{{$serv->service->name}}</a>
                     <a href="{{route('saveserviceinitem', ['id' => $item->id, 'servid' => $serv->service->id])}}"><button
                         <?php foreach($itemhasservice as $itemhas){
-                            if($serv->services_announcement_id == $itemhas->services_announcement_id){
+                            if($serv->services_announcement_id != $itemhas->services_announcement_id){
                             }
                             else{
 
@@ -102,8 +102,14 @@
             <p>Išsaugotos paslaugos</p>
             @foreach($itemhasservice as $serv)
                 @if($serv->service->hide == 0)
+                    <div style="display: flex; flex-direction: row;">
                     <a class="" href="{{route('serviceshow', $serv->service->id)}}">{{$serv->service->name}}</a>
-                    <a href=""><button>Pamiršti</button></a>
+                    <form method="POST" action="{{route('itemnoservice', ['id' => $item->id, 'someid' => $serv->id])}}" id="deleteForm">
+                        @csrf
+                        @method('DELETE')
+                        <a><button type="submit">Pamiršti</button></a>
+                    </form>
+                    </div>
                     <br>
                 @endif
             @endforeach

@@ -78,6 +78,8 @@ Route::put('/messageList/{thread}', 'App\Http\Controllers\MessageController@upda
 Route::get('/itemAnnouncement/itemInformation/{id}/service/{servid}', 'App\Http\Controllers\ItemController@saveService')->name('saveserviceinitem');
 Route::get('/itemAnnouncement/itemInformation/{id}/pin/{pin}', 'App\Http\Controllers\ItemController@savePins')->name('savepininitem');
 
+Route::delete('/itemAnnouncement/itemInformation/{id}/forgetservice/{someid}', 'App\Http\Controllers\ItemController@forgetItemService')->name('itemnoservice');
+
 
 
 //----Auth
