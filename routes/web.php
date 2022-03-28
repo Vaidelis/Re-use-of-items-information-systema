@@ -50,7 +50,7 @@ Route::get('/itemAnnouncementList/itemInformation/buy/{id}/{userid}', 'App\Http\
 Route::get('/serviceAnnouncementList', 'App\Http\Controllers\ItemController@showservices')->name('serviceannounc');
 Route::get('/serviceAnnouncementList/serviceInformation/save/{id}', 'App\Http\Controllers\ItemController@rememberService')->name('rememberservice');
 Route::delete('/rememberAnnouncemenets/serviceInformation/delete/{id}', 'App\Http\Controllers\ItemController@forgetService')->name('serviceforget');
-Route::get('/serviceAnnouncementList/serviceInformation/buy/{id}', 'App\Http\Controllers\ItemController@buyservice')->name('servicebuy'); //buy
+Route::get('/serviceAnnouncementList/serviceInformation/buy/{id}/{userid}', 'App\Http\Controllers\ItemController@buyservice')->name('servicebuy'); //buy
 //remember/bought announcements
 Route::get('/rememberAnnouncemenets', 'App\Http\Controllers\ItemController@showRememberAnnoun')->name('rememberAnn');
 Route::get('/boughtItems', 'App\Http\Controllers\ItemController@showBoughtItems')->name('boughtitemshow');

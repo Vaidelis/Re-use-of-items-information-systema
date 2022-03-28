@@ -374,10 +374,32 @@ class ItemController extends Controller
         return view('boughtItems', compact('announcements'));
     }
 
-    public function buyService($id){
+    public function buyService($id, $user_id){
         $buy = new BoughtService();
         $buy->services_announcement_id = $id;
         $buy->users_id = Auth::User()->id;
+
+        //send system message
+        $thread = Thread::create([
+            'subject' => 'Paslaugos įsigyjimas',
+        ]);
+
+        // Message
+        Message::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'body' => 'Sveiki, aš įsigijau jūsų paslaugą, atsakykite į šį laišką, susitarsime perdarymo sąlygas',
+        ]);
+
+        // Sender
+        Participant::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'last_read' => new Carbon,
+        ]);
+
+        // Recipients
+        $thread->addParticipant($user_id);
 
         $buy->save();
 
@@ -458,7 +480,6 @@ class ItemController extends Controller
         $rate->comment = $comment;
         $rate->buyername = Auth::User()->name;
         $rate->rate = $stars;
-        $rate->times = 1; //tą reikės ištrinti
         $rate->users_id = $id;
 
         $rate->save();
