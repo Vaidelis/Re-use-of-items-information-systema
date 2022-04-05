@@ -429,5 +429,18 @@ header.masthead p {
 .content-table tbody tr:last-of-type {
     border-bottom: 2px solid #F05F40;
 }
+/*Three different rows */
+.rows{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 500px;
+    margin: 0 auto;
+
+}
+.rows div{
+}
+.rows div:nth-child(even){
+
+}
 
 

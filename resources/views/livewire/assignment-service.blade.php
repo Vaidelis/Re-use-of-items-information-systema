@@ -15,9 +15,11 @@
             @if(!is_null($tags))
                 <div class="form-group">
                     <strong>Žymos:</strong>
+                    <div class="rows">
                     @foreach($tags as $tag)
-                        <input class="single-checkbox" name="tags[]" type="checkbox" wire:model="selectedTag" value="{{$tag->id}}"<?php if(count($selectedTag) >= 3){ ?> onclick="return false;" <?php } ?>>  {{$tag->namelt}}
+                    <div><input class="single-checkbox" name="tags[]" type="checkbox" wire:model="selectedTag" value="{{$tag->id}}"<?php if(count($selectedTag) >= 3){ ?> onclick="return false;" <?php } ?>>  {{$tag->namelt}}</div>
                     @endforeach
+                    </div>
                 </div>
             @endif
             <label class="label">Skelbimo pavadinimas: </label>
