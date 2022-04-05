@@ -8,7 +8,7 @@
             <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
         </div>
 
-        <table class="">
+        <table class="content-table">
             <thead>
             <th>Paslaugų skelbimo pavadinimas</th>
             <th>Kaina</th>
