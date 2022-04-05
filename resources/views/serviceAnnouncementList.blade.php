@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    <center>
     <body>
     <div class="container" style="margin-bottom: 20px">
         <div class="container">
-            <h4 class="testListSplashText">Paslaugų skelbimų sąrašas</h4>
+            <h4 style="border: red"> <strong>Paslaugų skelbimų sąrašas </strong></h4>
+            <hr>
             <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+            <hr>
         </div>
 
         <table class="content-table">
@@ -35,6 +38,8 @@
             </tbody>
         </table>
     </div>
+    </body>
+    </center>
 @endsection
 
 
