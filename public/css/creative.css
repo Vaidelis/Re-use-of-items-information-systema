@@ -452,4 +452,35 @@ header.masthead p {
     cursor: pointer;
 }
 
+/* Pinterest API photos design */
 
+.container2 {
+    position: relative;
+    width: 50%;
+    float: left;
+}
+
+/* Make the image responsive */
+
+/* Style the button and place it in the middle of the container/image */
+.container2 .btn2 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.container2 .btn:hover {
+    background-color: black;
+}
+.block_container {
+    display: flex;
+}

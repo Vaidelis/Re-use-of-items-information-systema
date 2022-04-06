@@ -7,27 +7,25 @@
     <div class="">
         <h4 class="">Pasirinkto daikto skelbimo informacija</h4>
 
-
-        <div style="display: flex; flex-direction: row;">
             @if(Auth::user()->id == $item->user_id)
-                   <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('itemdestroy', $item->id)}}"><button style="cursor: pointer;">Išimti skelbimą</button></a>
+                   <a href="{{route('itemdestroy', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Išimti skelbimą</button></a>
                     @if(Auth::user()->id == $item->user_id)
-                        <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itemedit', $item->id)}}"><button style="cursor: pointer;">Redaguoti</button></a>
+                        <a href="{{route('itemedit', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Redaguoti</button></a>
                     @endif
                     @endif
 
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{ url('personalAnnouncement') }}"><button style="cursor: pointer;">Atgal</button></a>
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('rememberitem', $item->id)}}"><button <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
+                <a href="{{ url('personalAnnouncement') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+                <a href="{{route('rememberitem', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
 
                 <form method="POST" action="{{route('itemforget', $item->id)}}" id="deleteForm">
                     @csrf
                     @method('DELETE')
                     <button <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
                 </form>
-        </div>
     </div>
+    <hr>
     <?php $counter = 0; ?>
-    <section class="container sitem">
+
         <div class="row">
             <div class="col-lg-5 col-md-12 col-12">
                 @foreach($image as $image)
@@ -68,32 +66,39 @@
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti daiktą</button></a>
             </div>
         </div>
-    </section>
 
-    <div class="">
-
+        <br>
+    <div class="container2">
+        <div class="block_container">
         @foreach($pins as $pin)
-        <div>
+        <div class="container col-md-6">
         <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
-            <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id'], 'tagid' => $tagid])}}"><button>Įsiminti</button></a>
+            <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id'], 'tagid' => $tagid])}}"><button class="btn2">Įsiminti</button></a>
+        </div>
         @endforeach
         @foreach($pins2 as $pin2)
+                <div class="container col-md-6">
                 <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin2['id']}}/"></a>
-                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id'], 'tagid' => $tagid2])}}"><button>Įsiminti</button></a>
+                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id'], 'tagid' => $tagid2])}}"><button class="btn2">Įsiminti</button></a>
+                </div>
         @endforeach
         @foreach($pins3 as $pin3)
-
+                <div  class="container col-md-6">
                 <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin3['id']}}/"></a>
-                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id'], 'tagid' => $tagid3])}}"><button>Įsiminti</button></a>
-            </div>
+                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id'], 'tagid' => $tagid3])}}"><button class="btn2">Įsiminti</button></a>
+                </div>
         @endforeach
+        </div>
         @csrf
         {{-- Pagination --}}
-            <div class="d-flex justify-content-center" name="action" value='html'>
+            <div class="" name="action" value='html' style="float: bottom">
                 <div class="bottom">
                     {!! $pins->links() !!}
                 </div>
             </div>
+    </div>
+    <div style="clear:both;" class="container">
+
             <p class="">Paslaugų perdirbimo pasiūlymai</p>
             <tr class="">Paslaugos pavadinimas</tr>
             <tr class="">Įsiminti</tr>
@@ -133,11 +138,10 @@
                     <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pins->pinpicture}}/"></a>
                 @endforeach
             </div>
-            <br>
+    </div>
 
 
         <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-    </div>
     <script>
         var MainImg = document.getElementById('MainImg');
         var smallimg = document.getElementsByClassName('img-fluid');
