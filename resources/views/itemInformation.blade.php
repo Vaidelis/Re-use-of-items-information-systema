@@ -26,37 +26,52 @@
                 </form>
         </div>
     </div>
+    <?php $counter = 0; ?>
+    <section class="container sitem">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-12">
+                @foreach($image as $image)
+                    @if($image->post_id == $item->id && $image->see == 0)
+                        @if($counter == 0)
+                        <img class="img-fluid pb-1" src="{{asset($image->path)}}" alt="{{ $image->path }}" id="MainImg" width="600px" height="600px" />
+                            <?php $counter = $counter + 1;?>
+                            <div class="small-img-group">
+                                <div class="small-img-col">
+                                    <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" width="300px" height="300px" />
+                                </div>
+                        @else
+                            <div class="small-img-col">
+                                <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" width="300px" height="300px" />
+                            </div>
+                        @endif
+                    @endif
+                @endforeach
+                            </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-12">
+              <h3 style="font-weight: bold">{{ $item->name }}</h3>
+                <h2 style="font-weight: bold">{{ $item->price }} eurų</h2>
+                @if($bought != null)
+                    <p style="color:red" class="name"><b>Daiktas yra nupirktas</b></p>
+                @endif
+                <p>Skelbimo savininkas  - <b>{{ $name }}</b></p>
+                <p>Skelbimo adresas  - <b>{{ $item->address }}</b></p>
+                @if($item->change == 1)
+                    <p><b style="color:red">Vartotoją domina keitimasis daiktais</b></p>
+                @endif
+                <div class="hairline"></div>
+                @if(Auth::user()->id != $item->user_id)
+                    <p> <a href="{{route('createmessage', $item->user_id)}}" class="block w-full p-2 text-center text-black bg-indigo-400 hover:bg-indigo-600">Parašyti žinute</a> </p>
+                @endif
+                <p style="font-weight: bold">Aprašymas</p>
+                <p>{{ $item->information }}<p>
+                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti daiktą</button></a>
+            </div>
+        </div>
+    </section>
 
     <div class="">
-        @if($bought != null)
-        <p style="color:red" class="name"><b>Daiktas yra nupirktas</b></p>
-        @endif
-        <p class="name"><b>{{ $item->name }}</b></p>
-        <div class="hairline"></div>
 
-        <div class="left-info" style="text-align: left;">
-
-
-        </div>
-        <p>Skelbimo savininkas  - <b>{{ $name }}</b></p>
-        <p>Skelbimo kaina(eurai)  - <b>{{ $item->price }}</b></p>
-        <p>Skelbimo adresas  - <b>{{ $item->address }}</b></p>
-            @if($item->change == 1)
-            <p><b style="color:red">Vartotoją domina keitimasis daiktais</b></p>
-                @endif
-        <div class="hairline"></div>
-            @if(Auth::user()->id != $item->user_id)
-                <p> <a href="{{route('createmessage', $item->user_id)}}" class="block w-full p-2 text-center text-black bg-indigo-400 hover:bg-indigo-600">Parašyti žinute</a> </p>
-            @endif
-        <p class="infoHeader">Aprašymas</p>
-        <p class="info"><b>{{ $item->information }}</b><p>
-        <p class="infoHeader">Nuotraukos</p>
-        @foreach($image as $image)
-            @if($image->post_id == $item->id && $image->see == 0)
-                <img src="{{asset($image->path)}}" alt="{{ $image->path }}" height="100px" width="100px" />
-                <hr />
-            @endif
-        @endforeach
         @foreach($pins as $pin)
         <div>
         <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
@@ -119,9 +134,35 @@
                 @endforeach
             </div>
             <br>
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti daiktą</button></a>
+
 
         <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     </div>
+    <script>
+        var MainImg = document.getElementById('MainImg');
+        var smallimg = document.getElementsByClassName('img-fluid');
+        var all = 5;
+
+        for ( var i = 0; i < 5; i++ ) (function(i){
+            smallimg[i].onclick = function (){
+                MainImg.src = smallimg[i].src;
+            }
+        })(i);
+        /*smallimg[0].onclick = function (){
+            MainImg.src = smallimg[0].src;
+        }
+        smallimg[1].onclick = function (){
+            MainImg.src = smallimg[1].src;
+        }
+        smallimg[2].onclick = function (){
+            MainImg.src = smallimg[2].src;
+        }
+        smallimg[3].onclick = function (){
+            MainImg.src = smallimg[3].src;
+        }
+        smallimg[4].onclick = function (){
+            MainImg.src = smallimg[4].src;
+        }*/
+    </script>
         </body>
 @endsection
