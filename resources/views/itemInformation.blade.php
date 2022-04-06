@@ -4,9 +4,9 @@
 <body style="margin-top: 0px;">
 
 <div class="container">
-    <div class="">
+    <div style="text-align: center" class="">
         <h4 class="">Pasirinkto daikto skelbimo informacija</h4>
-
+        <hr>
             @if(Auth::user()->id == $item->user_id)
                    <a href="{{route('itemdestroy', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Išimti skelbimą</button></a>
                     @if(Auth::user()->id == $item->user_id)
@@ -68,11 +68,12 @@
         </div>
 
         <br>
+    <hr>
     <div class="container2">
         <div class="block_container">
         @foreach($pins as $pin)
         <div class="container col-md-6">
-        <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
+        <a data-pin-do="embedPin" data-pin-save="false" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
             <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id'], 'tagid' => $tagid])}}"><button class="btn2">Įsiminti</button></a>
         </div>
         @endforeach
@@ -91,14 +92,15 @@
         </div>
         @csrf
         {{-- Pagination --}}
-            <div class="" name="action" value='html' style="float: bottom">
+            <div class="" name="action" value='html' style="float:right">
                 <div class="bottom">
                     {!! $pins->links() !!}
                 </div>
             </div>
     </div>
-    <div style="clear:both;" class="container">
 
+    <div style="clear:both;" class="container">
+        <hr>
             <p class="">Paslaugų perdirbimo pasiūlymai</p>
             <tr class="">Paslaugos pavadinimas</tr>
             <tr class="">Įsiminti</tr>

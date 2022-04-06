@@ -466,7 +466,7 @@ header.masthead p {
 .container2 .btn2 {
     position: absolute;
     top: 10%;
-    left: 50%;
+    left: 30%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #555;
@@ -478,8 +478,8 @@ header.masthead p {
     border-radius: 5px;
 }
 
-.container2 .btn:hover {
-    background-color: black;
+.container2 .btn2:hover {
+    background-color: gray;
 }
 .block_container {
     display: flex;
