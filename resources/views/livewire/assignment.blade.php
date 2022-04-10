@@ -1,4 +1,6 @@
-
+<style>
+    #preview img { max-height: 100px; }
+</style>
 <form method="post" action="{{route('storeitem')}}" enctype="multipart/form-data">
     <div class="form-group">
         @csrf
@@ -44,7 +46,7 @@
     </div>
 
         <div class="form-group">
-            <input id="file-input" type="file" name="images[]" multiple="multiple" class="form-control" accept="image/*" required>
+            <input id="file-input" type="file" name="images[]" multiple class="file" data-overwrite-initial="false" accept="image/*" required>
             @if ($errors->has('files'))
                 @foreach ($errors->get('files') as $error)
                     <span class="invalid-feedback" role="alert">
@@ -52,6 +54,7 @@
                                      </span>
                 @endforeach
             @endif
+
             <div id="preview"></div>
         </div>
         <div class="form-group">
@@ -61,39 +64,29 @@
 </form>
 
 <script>
-    function previewImages() {
+    const EL_browse  = document.getElementById('file-input');
+    const EL_preview = document.getElementById('preview');
 
-        var preview = document.querySelector('#preview');
+    const readImage  = file => {
+        if ( !(/^image\/(png|jpe?g|gif)$/).test(file.type) )
+            return EL_preview.insertAdjacentHTML('beforeend', `Unsupported format ${file.type}: ${file.name}<br>`);
 
-        if (this.files) {
-            [].forEach.call(this.files, readAndPreview);
-        }
-
-        function readAndPreview(file) {
-
-            // Make sure `file.name` matches our extensions criteria
-            if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
-                return alert(file.name + " is not an image");
-            } // else...
-
-            var reader = new FileReader();
-
-            reader.addEventListener("load", function() {
-                var image = new Image();
-                image.height = 100;
-                image.title  = file.name;
-                image.src    = this.result;
-                preview.appendChild(image);
-            });
-
-            reader.readAsDataURL(file);
-
-        }
-
+        const img = new Image();
+        img.addEventListener('load', () => {
+            EL_preview.appendChild(img);
+            window.URL.revokeObjectURL(img.src); // Free some memory
+        });
+        img.src = window.URL.createObjectURL(file);
     }
 
-    document.querySelector('#file-input').addEventListener("change", previewImages);
+    EL_browse.addEventListener('change', ev => {
+        EL_preview.innerHTML = ''; // Remove old images and data
+        const files = ev.target.files;
+        if (!files || !files[0]) return alert('File upload not supported');
+        [...files].forEach( readImage );
+    });
 </script>
+
 
 
 
