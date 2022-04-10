@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>Daiktų antrinio panaudojimo skatinimo informacinė sistema</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
 <div>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="headerNav">
     <div class="container">
-        <a href="{{url('')}}" class="navbar-brand js-scroll-trigger" href="#page-top">SMTH</a>
+        <a href="{{url('')}}" class="navbar-brand js-scroll-trigger" href="#page-top">Daiktų antrinio panaudojimo IS</a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,27 +45,24 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                    <a class="nav-link js-scroll-trigger" href="{{url('')}}#about">Apie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                    <a class="nav-link js-scroll-trigger" href="{{url('')}}#portfolio">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    <a class="nav-link js-scroll-trigger" href="{{url('')}}#contact">Kontaktai</a>
                 </li>
                 @if (Route::has('login'))
                     @auth
                         <li class="nav-item">
-                        <a href="{{ url('/home') }}" class="nav-link js-scroll-trigger">Home</a>
+                        <a href="{{ url('/home') }}" class="nav-link js-scroll-trigger">Profilis</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Atsijungti') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -74,12 +71,12 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a href="{{ route('login') }}" class="nav-link js-scroll-trigger">Login</a>
+                            <a href="{{ route('login') }}" class="nav-link js-scroll-trigger">Prisijungti</a>
                         </li>
 
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a href="{{ route('register') }}" class="nav-link js-scroll-trigger">Register</a>
+                                <a href="{{ route('register') }}" class="nav-link js-scroll-trigger">Registruotis</a>
                             </li>
                         @endif
                     @endauth

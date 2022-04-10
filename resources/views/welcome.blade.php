@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>Daiktų antrinio panaudojimo skatinimo informacinė sistema</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,23 +33,20 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">SMTH</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Daiktų antrinio panaudojimo IS</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                    <a class="nav-link js-scroll-trigger" href="#about">Apie</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    <a class="nav-link js-scroll-trigger" href="#contact">Kontaktai</a>
                 </li>
                 @if (Route::has('login'))
                     @auth
@@ -60,7 +57,7 @@
                             <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Atsijungti') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -129,53 +126,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-heading text-white">We've got what you need!</h2>
+                <h2 class="section-heading text-white">Daiktų perdirbimo bendruomenė</h2>
                 <hr class="light my-4">
-                <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="services">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">At Your Service</h2>
-                <hr class="my-4">
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box mt-5 mx-auto">
-                    <i class="fas fa-4x fa-gem text-primary mb-3 sr-icon-1"></i>
-                    <h3 class="mb-3">Sturdy Templates</h3>
-                    <p class="text-muted mb-0">Our templates are updated regularly so they don't break.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box mt-5 mx-auto">
-                    <i class="fas fa-4x fa-paper-plane text-primary mb-3 sr-icon-2"></i>
-                    <h3 class="mb-3">Ready to Ship</h3>
-                    <p class="text-muted mb-0">You can use this theme as is, or you can make changes!</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box mt-5 mx-auto">
-                    <i class="fas fa-4x fa-code text-primary mb-3 sr-icon-3"></i>
-                    <h3 class="mb-3">Up to Date</h3>
-                    <p class="text-muted mb-0">We update dependencies to keep things fresh.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box mt-5 mx-auto">
-                    <i class="fas fa-4x fa-heart text-primary mb-3 sr-icon-4"></i>
-                    <h3 class="mb-3">Made with Love</h3>
-                    <p class="text-muted mb-0">You have to make your websites with love these days!</p>
-                </div>
+                <p class="text-faded mb-4"> Susirask sau patinkantį daiktą ir patinkančias paslaugas ir prikelk daiktą antram gyvenimui</p>
+                <a class="btn btn-light btn-xl js-scroll-trigger" href="#portfolio">Get Started!</a>
             </div>
         </div>
     </div>
@@ -278,20 +232,14 @@
     </div>
 </section>
 
-<section class="bg-dark text-white">
-    <div class="container text-center">
-        <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a>
-    </div>
-</section>
 
 <section id="contact">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-heading">Let's Get In Touch!</h2>
+                <h2 class="section-heading">Informacija susisiekimui</h2>
                 <hr class="my-4">
-                <p class="mb-5">Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                <p class="mb-5">Dėl iškilusių klausimų kreipkitės į šiuos kontaktus</p>
             </div>
         </div>
         <div class="row">
@@ -302,7 +250,7 @@
             <div class="col-lg-4 mr-auto text-center">
                 <i class="fas fa-envelope fa-3x mb-3 sr-contact-2"></i>
                 <p>
-                    <a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a>
+                    <a href="mailto:your-email@your-domain.com">vaidas.lileikis@ktu.edu</a>
                 </p>
             </div>
         </div>

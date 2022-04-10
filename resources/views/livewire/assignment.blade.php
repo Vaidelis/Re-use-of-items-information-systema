@@ -44,7 +44,7 @@
     </div>
 
         <div class="form-group">
-            <input type="file" name="images[]" multiple class="form-control" accept="image/*" required>
+            <input id="file-input" type="file" name="images[]" multiple="multiple" class="form-control" accept="image/*" required>
             @if ($errors->has('files'))
                 @foreach ($errors->get('files') as $error)
                     <span class="invalid-feedback" role="alert">
@@ -52,12 +52,48 @@
                                      </span>
                 @endforeach
             @endif
+            <div id="preview"></div>
         </div>
         <div class="form-group">
             <input <?php if(count($selectedTag) <= 2){?> disabled <?php } ?> type="submit" class="btn btn-success" />
             <a href="{{ route('personalAnn') }}" class="btn btn-primary">Atgal</a>
         </div>
 </form>
+
+<script>
+    function previewImages() {
+
+        var preview = document.querySelector('#preview');
+
+        if (this.files) {
+            [].forEach.call(this.files, readAndPreview);
+        }
+
+        function readAndPreview(file) {
+
+            // Make sure `file.name` matches our extensions criteria
+            if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                return alert(file.name + " is not an image");
+            } // else...
+
+            var reader = new FileReader();
+
+            reader.addEventListener("load", function() {
+                var image = new Image();
+                image.height = 100;
+                image.title  = file.name;
+                image.src    = this.result;
+                preview.appendChild(image);
+            });
+
+            reader.readAsDataURL(file);
+
+        }
+
+    }
+
+    document.querySelector('#file-input').addEventListener("change", previewImages);
+</script>
 
 
 
