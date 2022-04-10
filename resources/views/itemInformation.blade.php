@@ -73,27 +73,31 @@
         <br>
     <hr>
     <div class="container2">
-        <div class="block_container">
-            
-        @foreach($pins as $pin)
-        <div class="container col-md-6">
-        <a data-pin-do="embedPin" data-pin-save="false" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
-            <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id'], 'tagid' => $tagid])}}"><button class="btn2">Įsiminti</button></a>
-        </div>
-        @endforeach
-        @foreach($pins2 as $pin2)
-                <div class="container col-md-6">
-                <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin2['id']}}/"></a>
-                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id'], 'tagid' => $tagid2])}}"><button class="btn2">Įsiminti</button></a>
-                </div>
-        @endforeach
-        @foreach($pins3 as $pin3)
-                <div  class="container col-md-6">
-                <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pin3['id']}}/"></a>
-                <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id'], 'tagid' => $tagid3])}}"><button class="btn2">Įsiminti</button></a>
-                </div>
-        @endforeach
-        </div>
+            <table class="content-table">
+                <thead>
+                <th style="text-align: center" colspan="3">Panašių daiktų pasiūlymai perdirbimui</th>
+                </thead>
+                <tbody>
+                <td class="container col-md-6">
+                    @foreach($pins as $pin)
+                    <a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
+                    <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id'], 'tagid' => $tagid])}}"><button class="btn2">Įsiminti</button></a>
+                    @endforeach
+                </td>
+                <td class="container col-md-6">
+                    @foreach($pins2 as $pin2)
+                    <a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/{{$pin2['id']}}/"></a>
+                    <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id'], 'tagid' => $tagid2])}}"><button class="btn2">Įsiminti</button></a>
+                    @endforeach
+                </td>
+                <td class="container col-md-6">
+                    @foreach($pins3 as $pin3)
+                    <a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/{{$pin3['id']}}/"></a>
+                    <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id'], 'tagid' => $tagid3])}}"><button class="btn2">Įsiminti</button></a>
+                    @endforeach
+                </td>
+                </tbody>
+            </table>
         @csrf
         {{-- Pagination --}}
             <div class="" name="action" value='html' style="float:right">
