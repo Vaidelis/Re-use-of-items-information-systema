@@ -5,9 +5,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
@@ -15,14 +12,19 @@
 
     <body>
     <div class="container" style="margin-bottom: 20px">
-        <div class="container">
+        <div class="container" style="text-align: center">
             <h4 class="testListSplashText">Perdarytų daiktų portfolio</h4>
+            <hr>
             <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
             <button <?php if($notdone != null || Auth::User()->id == $id || $exist != null){ ?> disabled <?php }?>  class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;" id="myBtn">Įvertinti tiekėją</button>
+            <hr>
         </div>
 @if($id == Auth::User()->id)
-        <h4 class="testListSplashText">Klientų sąrašas</h4>
-        <table class="">
+    <div>
+        <table class="content-table">
+            <thead>
+            <th colspan="3" style="text-align: center">Klientų sąrašas</th>
+            </thead>
             <thead>
             <th>Klientas</th>
             <th>Skelbimo pavadinimas</th>
@@ -49,8 +51,12 @@
             </tbody>
         </table>
         @endif
-        <h4 class="testListSplashText">Žmonių atsiliepimai</h4>
-        <table class="">
+    </div>
+        <div>
+        <table class="content-table">
+            <thead>
+            <th colspan="3" style="text-align: center">Žmonių atsiliepimai</th>
+            </thead>
             <thead>
             <th>Klientas</th>
             <th>Įvertinimas</th>
@@ -69,41 +75,38 @@
                     </tr>
             </tbody>
         </table>
-        <h4 class="testListSplashText">Padaryti darbai</h4>
-        <table class="">
+        </div>
+        <div>
+        <table class="content-table">
+            <thead>
+            <th colspan="4" style="text-align: center">Perdaryti darbai</th>
+            </thead>
             <thead>
             <th>Klientas</th>
             <th>Pavadinimas</th>
+            <th colspan="2" style="text-align: center">Nuotraukos</th>
             </thead>
             <tbody>
         @foreach($port as $por)
             @if($por->name != null)
-
             <tr>
                 <th>{{$por->user->name}}</th>
                 <th>{{$por->postname}}</th>
-            </tr>
-
-
-            <tr>
-            <table class="p-0" id="portfolio">
-                <div class="container-fluid p-0">
-                    <div class="row no-gutters popup-gallery">
-                        <div class="col-lg-4 col-sm-6">
-                            <a class="portfolio-box" href="">
-                                <img class="img-fluid" src="{{asset($por->path)}}" alt="{{ $por->path }}">
-                                <div class="portfolio-box-caption">
-                                    <div class="portfolio-box-caption-content">
-                                        <div class="project-category text-faded">
-                                            Prieš
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+            <th>
+            <a class="portfolio-box" href="">
+                <img class="img-fluid" style="width: 350px; height: 350px; object-fit: cover;" src="{{asset($por->path)}}" alt="{{ $por->path }}">
+                <div class="portfolio-box-caption">
+                    <div class="portfolio-box-caption-content">
+                        <div class="project-category text-faded">
+                            Prieš
                         </div>
-                <div class="col-lg-4 col-sm-6">
+                    </div>
+                </div>
+            </a>
+            </th>
+                <th>
                     <a class="portfolio-box" alt="{{ $por->path2 }}">
-                        <img class="img-fluid" src="{{asset($por->path2)}}" alt="">
+                        <img class="img-fluid" style="width: 350px; height: 350px; object-fit: cover;" src="{{asset($por->path2)}}" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -112,17 +115,21 @@
                             </div>
                         </div>
                     </a>
+                </th>
+            </tr>
+                <div class="col-lg-4 col-sm-6">
                 </div>
              </div>
                 </div>
-            </table>
 
-            </tr>
+
+
 
             @endif
         @endforeach
             </tbody>
         </table>
+        </div>
 
     </div>
 
