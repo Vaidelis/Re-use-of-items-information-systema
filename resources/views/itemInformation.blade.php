@@ -181,7 +181,7 @@
                 </tbody>
             </table>
             {{-- Pagination --}}
-            <div class="" name="action" value='html' style="float:left">
+            <div class="" name="paramName" value='html' style="float:left">
                 <div class="bottom">
                     {!! $itemhaspins->links() !!}
                 </div>

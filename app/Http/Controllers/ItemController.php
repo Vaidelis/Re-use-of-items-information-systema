@@ -86,7 +86,7 @@ class ItemController extends Controller
         //show saved announcements
         $itemhasservice = ItemHasService::where(['items_announcement_id' => $id, 'user_id' => Auth::User()->id])->get();
         //show saved pins
-        $itemhaspins = ItemHasPins::where(['items_announcement_id' => $id, 'user_id' => Auth::User()->id])->paginate(3);
+        $itemhaspins = ItemHasPins::where(['items_announcement_id' => $id, 'user_id' => Auth::User()->id])->paginate(3, ['*'], 'paramName');
 
         return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember', 'bought', 'service', 'itemhasservice', 'itemhaspins'))->with('name', $name)->with('tagid', $tagid)->with('tagid2', $tagid2)->with('tagid3', $tagid3);
     }
