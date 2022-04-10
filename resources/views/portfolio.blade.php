@@ -13,7 +13,7 @@
     <body>
     <div class="container" style="margin-bottom: 20px">
         <div class="container" style="text-align: center">
-            <h4 class="testListSplashText">Perdarytų daiktų portfolio</h4>
+            <h4 class="testListSplashText">{{$ownername}} perdarytų daiktų portfolio</h4>
             <hr>
             <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
             <button <?php if($notdone != null || Auth::User()->id == $id || $exist != null){ ?> disabled <?php }?>  class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;" id="myBtn">Įvertinti tiekėją</button>

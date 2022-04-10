@@ -11,6 +11,7 @@ use App\Models\ServiceHasTags;
 use App\Models\Image;
 use App\Models\ServicesRate;
 use App\Models\Tag;
+use App\Models\User;
 use App\Models\BoughtService;
 use App\Models\RememberService;
 use App\Models\RememberItem;
@@ -416,6 +417,8 @@ class ItemController extends Controller
     }
     public function showPortfolio($id){
         $owner = Service::where(['user_id' => $id])->pluck('id')->toArray();
+        $ownername = User::where(['id' => $id])->value('name');
+
         $port = BoughtService::whereIn('services_announcement_id', $owner)->get();
 
         $comments = ServicesRate::where(['users_id' => $id])->get();
@@ -435,7 +438,7 @@ class ItemController extends Controller
         $exist = ServicesRate::where(['buyername' => Auth::User()->name, 'users_id' => $id])->value('buyername');
         //dd($exist);
 
-        return view('portfolio', compact('port', 'comments'))->with('id', $id)->with('notdone', $notdone)->with('exist', $exist);
+        return view('portfolio', compact('port', 'comments'))->with('id', $id)->with('notdone', $notdone)->with('exist', $exist)->with('ownername', $ownername);
     }
     public function showPortfolioUpload($id, $id2){
         return view('portfolioUpload')->with('id', $id)->with('id2', $id2);
