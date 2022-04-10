@@ -19,8 +19,8 @@
             <button <?php if($notdone != null || Auth::User()->id == $id || $exist != null){ ?> disabled <?php }?>  class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;" id="myBtn">Įvertinti tiekėją</button>
             <hr>
         </div>
-@if($id == Auth::User()->id)
     <div>
+        @if($id == Auth::User()->id)
         <table class="content-table">
             <thead>
             <th colspan="3" style="text-align: center">Klientų sąrašas</th>
