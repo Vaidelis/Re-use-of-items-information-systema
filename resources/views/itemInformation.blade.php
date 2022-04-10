@@ -31,15 +31,15 @@
                 @foreach($image as $image)
                     @if($image->post_id == $item->id && $image->see == 0)
                         @if($counter == 0)
-                        <img class="img-fluid pb-1" src="{{asset($image->path)}}" alt="{{ $image->path }}" id="MainImg" width="600px" height="600px" />
+                        <img class="img-fluid pb-1" src="{{asset($image->path)}}" alt="{{ $image->path }}" id="MainImg" style="width: 440px; height: 430px; object-fit: cover;" />
                             <?php $counter = $counter + 1;?>
                             <div class="small-img-group">
                                 <div class="small-img-col">
-                                    <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" width="300px" height="300px" />
+                                    <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" />
                                 </div>
                         @else
                             <div class="small-img-col">
-                                <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" width="300px" height="300px" />
+                                <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" />
                             </div>
                         @endif
                     @endif
@@ -78,19 +78,19 @@
                 <th style="text-align: center" colspan="3">Panašių daiktų pasiūlymai perdirbimui</th>
                 </thead>
                 <tbody>
-                <td class="container col-md-6">
+                <td class="container col-md-6" style="position:relative">
                     @foreach($pins as $pin)
                     <a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
                     <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id'], 'tagid' => $tagid])}}"><button class="btn2">Įsiminti</button></a>
                     @endforeach
                 </td>
-                <td class="container col-md-6">
+                <td class="container col-md-6" style="position:relative">
                     @foreach($pins2 as $pin2)
                     <a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/{{$pin2['id']}}/"></a>
                     <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id'], 'tagid' => $tagid2])}}"><button class="btn2">Įsiminti</button></a>
                     @endforeach
                 </td>
-                <td class="container col-md-6">
+                <td class="container col-md-6"style="position:relative">
                     @foreach($pins3 as $pin3)
                     <a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/{{$pin3['id']}}/"></a>
                     <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id'], 'tagid' => $tagid3])}}"><button class="btn2">Įsiminti</button></a>
