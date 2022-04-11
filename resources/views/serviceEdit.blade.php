@@ -1,8 +1,21 @@
 @extends('layouts.app')
 @section('content')
     <body style="margin-top: 0px;">
+    <style>
+        textarea {
+            width: 50%;
+            height: 150px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 16px;
+            resize: none;
+        }
+    </style>
 
-    <div class="pageContainer edit-test">
+    <div class="container">
         <div style="text-align: center">
             <h1>
                 Paslaugų skelbimo redagavimas
@@ -35,10 +48,10 @@
             <div class="form-group">
                 {{Form::label('info', 'Skelbimo informacija informacija')}}
                 <br>
-                {{Form::text('info', $service->information, ['class' => 'form-control', 'placeholder' => 'Skelbimo informacija'])}}
+                {{Form::textarea('info', $service->information, ['class' => 'form-control', 'placeholder' => 'Skelbimo informacija'])}}
             </div>
 
-            <div class="form-group" style="width: 30%; margin: auto;">
+            <div class="form-group">
                 {{ Form::submit('Saugoti', ['class'=>'btn btn-primary'])}}
             </div>
         </div>

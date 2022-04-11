@@ -1,5 +1,5 @@
 
-    <form method="post" action="{{route('storeservice')}}" enctype="multipart/form-data">
+<form method="post" action="{{route('storeservice')}}" enctype="multipart/form-data">
         <div class="form-group">
             @csrf
             <div>
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <label class="label">Informacija: </label>
-            <input placeholder="Informacija apie paslaugas" type="text" name="info" class="form-control" required/>
+            <input style="height:120px;" placeholder="Informacija apie paslaugas" type="text" name="info" class="form-control" required/>
         </div>
 
         <div class="form-group">

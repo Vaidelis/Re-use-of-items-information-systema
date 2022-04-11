@@ -38,7 +38,7 @@
         </div>
         <div class="form-group">
             <label class="label">Informacija: </label>
-            <input placeholder="Informacija apie daiktą" type="text" name="info" class="form-control" required/>
+            <input style="height:120px;" placeholder="Informacija apie daiktą" type="text" name="info" class="form-control" required/>
         </div>
     <div class="form-group">
         <strong>Ar domina keitimosi pasiūlymai?:</strong>
