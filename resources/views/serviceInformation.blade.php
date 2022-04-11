@@ -4,28 +4,27 @@
     <body style="margin-top: 0px;">
 
     <div class="container">
-        <div class="">
-            <h4 class="">Pasirinkto daikto skelbimo informacija</h4>
-
-
-            <div style="display: flex; flex-direction: row;">
+        <div style="text-align: center">
+            <h4 class="">Pasirinktos paslaugos skelbimo informacija</h4>
+            <hr>
                 @if(Auth::user()->id == $service->user_id)
-                    <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('servicedestroy', $service->id)}}"><button style="cursor: pointer;">Išimti skelbimą</button></a>
+                    <a  href="{{route('servicedestroy', $service->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Išimti skelbimą</button></a>
                         @if(Auth::user()->id == $service->user_id)
-                            <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('serviceedit', $service->id)}}"><button style="cursor: pointer;">Redaguoti</button></a>
+                            <a href="{{route('serviceedit', $service->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Redaguoti</button></a>
                         @endif
                         @endif
 
-                    <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{ url('personalAnnouncement') }}"><button style="cursor: pointer;">Atgal</button></a>
-                    <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('rememberservice', $service->id)}}"><button <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
+                    <a  href="{{ url('personalAnnouncement') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+                    <a  href="{{route('rememberservice', $service->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
 
                     <form method="POST" action="{{route('serviceforget', $service->id)}}" id="deleteForm">
                         @csrf
                         @method('DELETE')
-                        <button <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
+                        <button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
                     </form>
-            </div>
+            <hr>
         </div>
+
 
         <div class="">
             <p class="name"><b>{{ $service->name }}</b></p>
@@ -36,7 +35,7 @@
 
             </div>
             <p>Skelbimo savininkas  - <b>{{ $name }}</b></p>
-            <p>Skelbimo kaina  - <b>{{ $service->price }}</b></p>
+            <p>Skelbimo kaina  - <b>{{ $service->price }}</b> €</p>
             <div class="hairline"></div>
             <a style="position: center"  href="{{route('portfolioshow', $service->user_id)}}">Tiekėjo informacija</a>
             @if(Auth::user()->id != $service->user_id)
@@ -44,7 +43,7 @@
             @endif
             <p class="infoHeader">Aprašymas</p>
             <p class="info"><b>{{ $service->information }}</b><p>
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('servicebuy', [ 'id' => $service->id, 'userid' => $service->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $service->user_id){ ?> disabled <?php }?> class="testProceedButton">Pirkti paslaugą</button></a>
+                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('servicebuy', [ 'id' => $service->id, 'userid' => $service->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $service->user_id){ ?> disabled <?php }?> class="btn btn-primary btn-xl js-scroll-trigger" >Pirkti paslaugą</button></a>
 
     </body>
 @endsection

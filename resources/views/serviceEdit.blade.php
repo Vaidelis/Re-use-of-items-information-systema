@@ -3,47 +3,43 @@
     <body style="margin-top: 0px;">
 
     <div class="pageContainer edit-test">
-        <div class="selectedTestSplashContainer">
+        <div style="text-align: center">
             <h1>
                 Paslaugų skelbimo redagavimas
             </h1>
-            <div style="display: flex; flex-direction: row;">
-
-
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="{{route('serviceshow', $service->id)}}" class="btn btn-primary"><button style="cursor: pointer;">Atgal</button></a><br>
-                {!! Form::close() !!}<br>
-
-
-            </div>
+            <hr>
+                <a href="{{route('serviceshow', $service->id)}}" ><button class="btn btn-primary" >Atgal</button></a>
+                {!! Form::close() !!}
+            <hr>
         </div>
 
 
-        <div class="testInfoContainer testInfoContainer-edit">
+        <div class="form-group">
             {!! Form::open(['action' => ['App\Http\Controllers\ItemController@updateservice',$service->id], 'method'=>'POST']) !!}
             @csrf
             {{Form::hidden('_method', 'PATCH')}}
 
 
 
-            <div class="edit">
+            <div class="form-group">
                 {{Form::label('name', 'Skelbimo pavadinimas')}}
                 <br>
                 {{Form::text('name', $service->name, ['class' => 'form-control', 'placeholder' => 'Skelbimo pavadinimas'])}}
             </div>
 
-            <div class="edit">
+            <div class="form-group">
                 {{Form::label('price', 'Skelbimo pavadinimas')}}
                 <br>
                 {{Form::text('price', $service->price, ['class' => 'form-control', 'placeholder' => 'Skelbimo kaina'])}}
             </div>
-            <div class="edit">
+            <div class="form-group">
                 {{Form::label('info', 'Skelbimo informacija informacija')}}
                 <br>
                 {{Form::text('info', $service->information, ['class' => 'form-control', 'placeholder' => 'Skelbimo informacija'])}}
             </div>
 
             <div class="form-group" style="width: 30%; margin: auto;">
-                {{ Form::submit('Saugoti', ['class'=>'a-button'])}}
+                {{ Form::submit('Saugoti', ['class'=>'btn btn-primary'])}}
             </div>
         </div>
     </div>
