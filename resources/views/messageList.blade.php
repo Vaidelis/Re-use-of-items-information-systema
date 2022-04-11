@@ -21,7 +21,7 @@
 
                     <div class="grid grid-cols-12 gap-x-4">
                         <div class="col-span-9">
-                            <table class="content-table">
+                            <table style="margin-left: auto;margin-right: auto" class="content-table">
                                 <thead class="border-b bg-gray-50">
                                 <th
                                     class="px-5 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
