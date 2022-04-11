@@ -1,1 +1,6 @@
-<span class="block w-full p-2 mb-4 text-blue-800 bg-blue-300">Jūs neturite žinučių.</span>
+<center>
+<div style="width: 70%;height: 50px;text-align: center;" class="alert alert-warning">
+    <span style="text-align: center">Jūs neturite žinučių.</span>
+</div>
+</center>
+

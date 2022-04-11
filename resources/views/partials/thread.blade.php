@@ -1,3 +1,4 @@
+
 <tr class="{{ $thread->isUnread(Auth::id()) ? 'font-bold' : '' }}">
     @if($thread->isUnread(Auth::id()) == true)
 
