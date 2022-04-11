@@ -1,12 +1,16 @@
 @extends('layouts.app')
 @section('content')
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ $thread->subject }}
-        </h2>
-    </x-slot>
-
     <div class="container">
+    <div style="text-align: center" class="">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+           Tema: {{ $thread->subject }}
+        </h2>
+        <hr>
+        <a href="{{ url('messageList') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+    </div>
+    <hr>
+
+
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -14,7 +18,7 @@
                         <div class="space-y-4">
                             @foreach ($thread->messages as $message)
                                 <div class="px-4 py-2 leading-relaxed border rounded-lg sm:px-6 sm:py-4">
-                                    <strong>{{ $message->user->name }}</strong>
+                                    <a href="{{route('portfolioshow', $message->user->id)}}"><strong>{{ $message->user->name }}</strong></a>
                                     <span class="text-xs text-gray-400">{{ $message->created_at->diffForHumans() }}
                                     </span>
                                     <p class="text-sm">

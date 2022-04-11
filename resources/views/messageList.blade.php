@@ -3,6 +3,13 @@
 @section('content')
 
     <div class="container">
+        <div style="text-align: center" class="">
+            <h4 class="">Jūsų žinučių sąrašas</h4>
+            <hr>
+
+            <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+        </div>
+        <hr>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">

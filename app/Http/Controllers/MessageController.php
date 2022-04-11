@@ -61,13 +61,13 @@ class MessageController extends Controller
         // Recipients
         $thread->addParticipant($request->recipient);
 
-        return redirect()->route('openmessagelist')->with('success', 'Message sent successfully.');
+        return redirect()->route('openmessagelist')->with('success', 'Žinutė išsiūsta sėkmingai');
     }
     public function destroy(Thread $thread)
     {
         $thread->removeParticipant(Auth::id());
 
-        return redirect()->route('openmessagelist')->with('success', 'Thread deleted successfully.');
+        return redirect()->route('openmessagelist')->with('success', 'Pokalbis sėkmingai ištrintas');
     }
     public function update(Request $request, Thread $thread)
     {
