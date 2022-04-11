@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="py-12">
+    <div class="container">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -14,16 +14,17 @@
 
                     <div class="grid grid-cols-12 gap-x-4">
                         <div class="col-span-9">
-                            <table class="min-w-full leading-normal">
+                            <table class="content-table">
                                 <thead class="border-b bg-gray-50">
                                 <th
-                                    class="px-3 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
+                                    class="px-5 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
                                     Siuntėjas</th>
                                 <th
-                                    class="px-3 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
+                                    class="px-5 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
                                     Tema</th>
                                 <th
-                                    class="px-3 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
+                                    class="px-5 py-3 text-xs font-normal text-left text-gray-500 uppercase align-middle">
+                                    Veiksmai
                                 </th>
                                 </thead>
                                 <tbody>

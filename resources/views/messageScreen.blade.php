@@ -6,7 +6,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="container">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -30,14 +30,15 @@
 
                         <!-- Message Form Input -->
                             <div class="mt-4">
-                                <x-label for="message" :value="__('Atrašyti žinute')" />
-                                <textarea name="message" rows="10"
+                                <x-label for="message" :value="__('Atsakymas')" />
+                                <br>
+                                <textarea required name="message" style="width: 600px;height: 100px"
                                           class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ old('message') }}</textarea>
                             </div>
 
                             <!-- Submit Form Input -->
                             <div class="mt-4">
-                                <x-button>Išsiųsti</x-button>
+                                <x-button class="btn btn-primary">Išsiųsti</x-button>
                             </div>
                         </form>
 
