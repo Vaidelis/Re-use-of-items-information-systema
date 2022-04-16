@@ -335,8 +335,10 @@ header.masthead p {
 }
 
 .btn {
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
+    height: 45px;
+    width: 200px;
   border: none;
   border-radius: 300px;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -346,7 +348,10 @@ header.masthead p {
   padding: 0.5rem 1rem;
 }
 .btn-xl2 {
-    padding: 1rem 2rem;
+    padding: 0.6rem 1rem;
+}
+.btn-xl3 {
+
 }
 
 .btn-primary {
@@ -362,6 +367,38 @@ header.masthead p {
 .btn-primary:active, .btn-primary:focus {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+}
+
+.btn3 {
+    font-weight: 500;
+    text-transform: uppercase;
+    height: 45px;
+    width: 130px;
+    border: none;
+    border-radius: 300px;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.btn3-xl {
+    padding: 0.5rem 1rem;
+}
+.btn3-xl2 {
+    padding: 1rem 2rem;
+}
+
+.btn3-primary {
+    background-color: #F05F40;
+    border-color: #F05F40;
+}
+
+.btn3-primary:hover, .btn-primary:focus, .btn-primary:active {
+    color: #fff;
+    background-color: #ee4b28 !important;
+}
+
+.btn3-primary:active, .btn-primary:focus {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+    box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
 
 /* The Modal (background) */
@@ -423,9 +460,7 @@ header.masthead p {
 .content-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
-.content-table tbody tr:nth-of-type(even){
-    background-color: #F3F3F3;
-}
+
 .content-table tbody tr:last-of-type {
     border-bottom: 2px solid #F05F40;
 }

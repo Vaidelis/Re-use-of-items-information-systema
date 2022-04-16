@@ -12,6 +12,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
     <!-- Custom fonts for this template -->
     <link href="/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,21 +44,43 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="collapse navbar-collapse dropdown" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                @auth
+    <li class="nav-item">
+    <div class="dropdown">
+        <a style="color: black;font-weight: 700; cursor: pointer" class="nav-link dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Mano skelbimai
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{route('personalAnn')}}">Mano skelbimai</a></li>
+            <li><a class="dropdown-item" href="{{route('rememberAnn')}}">Įsiminti skelbimai</a></li>
+            <li><a class="dropdown-item" href="{{route('boughtitemshow')}}">Nupirkti daiktai</a></li>
+        </ul>
+    </div>
+    </li>
+
+                    <li class="nav-item">
+                        <x-a class="nav-link" :href="route('openmessagelist')"
+                             :active="request()->routeIs('messages') || request()->routeIs('messages.*')">Žinutės @include('unread-count')</x-a>
+                    </li>
+                @endauth
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{url('')}}#about">Apie</a>
+                    <a class="nav-link js-scroll-trigger" href="#about">Apie</a>
+
                 </li>
+                    @auth
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{url('')}}#portfolio">Portfolio</a>
+                    <a class="nav-link " href="{{route('portfolioshow', Auth::User()->id)}}">Portfolio</a>
                 </li>
+                    @endauth
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{url('')}}#contact">Kontaktai</a>
+                    <a class="nav-link js-scroll-trigger" href="#contact">Kontaktai</a>
                 </li>
                 @if (Route::has('login'))
                     @auth
                         <li class="nav-item">
-                        <a href="{{ url('/home') }}" class="nav-link js-scroll-trigger">Profilis</a>
+                            <a href="{{ url('/home') }}" class="nav-link js-scroll-trigger">{{Auth::User()->name}}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}"
@@ -89,6 +113,7 @@
 </div>
 <div class="inner">
     <main class="py-4">
+
         @yield('content')
     </main>
 </div>

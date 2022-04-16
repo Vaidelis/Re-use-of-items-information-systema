@@ -10,7 +10,7 @@ class Item extends Model
     use HasFactory;
     public $table = "items_announcements";
 
-    protected $fillable = ['name', 'price', 'address', 'image','user_id'];
+    protected $fillable = ['name', 'price', 'address','user_id'];
     public $primaryKey = 'id';
 
     public function user()
@@ -24,6 +24,10 @@ class Item extends Model
     public function boughtitem()
     {
         return $this->hasMany(BoughtItem::class);
+    }
+    public function image()
+    {
+        return $this->hasMany(Image::class);
     }
 
 }

@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Image;
+use App\Models\Item;
+use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $announcements = Item::orderBy('created_at', 'desc')->take(3)->get();
+    $services = Service::orderBy('created_at', 'desc')->take(3)->get();
+
+    $images = Image::all();
+
+    return view('welcome', compact('announcements', 'services', 'images'));
 });
 //----Personal announcements show, delete, create, edit
 Route::get('/personalAnnouncement', 'App\Http\Controllers\ItemController@index')->name('personalAnn');

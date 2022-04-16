@@ -11,4 +11,9 @@ class Image extends Model
     protected $fillable = [
         'post_id', 'name', 'path', 'user_id'
     ];
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class, 'post_id');
+    }
 }

@@ -33,25 +33,46 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Daiktų antrinio panaudojimo IS</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Daiktų antrinio IS</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <div class="collapse navbar-collapse dropdown" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mano skelbimai
+                        </a>
+                        <div style="" class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{route('personalAnn')}}">Mano skelbimai</a>
+                            <a class="dropdown-item" href="{{route('rememberAnn')}}">Įsiminti skelbimai</a>
+                            <a class="dropdown-item" href="{{route('boughtitemshow')}}">Nupirkti daiktai</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <x-a class="nav-link" :href="route('openmessagelist')"
+                             :active="request()->routeIs('messages') || request()->routeIs('messages.*')">Žinutės @include('unread-count')</x-a>
+                    </li>
+                @endauth
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#about">Apie</a>
+
                 </li>
+            @auth
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+                    <a class="nav-link " href="{{route('portfolioshow', Auth::User()->id)}}">Portfolio</a>
                 </li>
+                    @endauth
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">Kontaktai</a>
                 </li>
                 @if (Route::has('login'))
                     @auth
                         <li class="nav-item">
-                            <a href="{{ url('/home') }}" class="nav-link js-scroll-trigger">Profilis</a>
+                            <a href="{{ url('/home') }}" class="nav-link js-scroll-trigger">{{Auth::User()->name}}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}"
@@ -80,43 +101,84 @@
         </div>
     </div>
 </nav>
-
-
 <header class="masthead text-center text-white d-flex">
     <div class="container my-auto">
-        <div class="row">
+        <div class="">
             <div class="col-lg-10 mx-auto">
                 <h2 class="text-uppercase">
+                    <br><br><br>
                     <strong>Daiktų antrinio panaudojimo skatininimo informacinė sistema</strong>
                 </h2>
                 <hr>
+
             </div>
-            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+            <div class="row">
+            <div class="col-lg-7 col-md-10 col-10" style="margin-left: 0px">
                 <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
+                <table class="content-table">
+                    <thead>
+                    <th></th>
+                    <th>Skelbimo pavadinimas</th>
+                    <th>Kaina</th>
+                    <th>Veiksmai</th>
+                    </thead>
+                    <?php $smth = 0;?>
+                    <tbody>
+                    @foreach($announcements as $announcement)
+                        <?php $smth = 0;?>
+                        @foreach($images as $image)
+                        @if($announcement->hide == 0 && $announcement->id == $image->item->id && $smth == 0)
+                            <?php $smth++; ?>
+                            <tr>
+                                <td> <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
+                                <td>{{ $announcement->name }}</td>
+                                <td>{{ $announcement->price }}</td>
+
+                                <td>
+                                    <a href="{{route('itemshow', $announcement->id)}}">
+                                        <button class="btn3 btn-primary">Pasirinkti</button>
+                                    </a>
+                                </td>
+                                @endif
+                                @endforeach
+                                @endforeach
+                                </td>
+
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
             </div>
-            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+            <div class="col-lg-5 col-md-12 col-12" style="float: right" >
                 <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('serviceannounc')}}">Paslaugų skelbimai</a>
-            </div>
-            @auth
-            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('personalAnn')}}">Mano skelbimai</a>
-            </div>
-            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('rememberAnn')}}">Įsiminti skelbimai</a>
-            </div>
-            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('boughtitemshow')}}">Nupirkti daiktai</a>
-            </div>
+                <table class="content-table">
+                    <thead>
+                    <th>Paslaugų skelbimo pavadinimas</th>
+                    <th>Kaina</th>
+                    <th>Veiksmai</th>
+                    </thead>
+                    <tbody>
+                    @foreach($services as $service)
+                        @if($service->hide == 0)
+                            <tr >
+                                <td>{{ $service->name }}</td>
+                                <td>{{ $service->price }}</td>
 
-            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('portfolioshow', Auth::User()->id)}}">Perdirbtų daiktų porfolio</a>
-            </div>
+                                <td>
+                                    <a href="{{route('serviceshow', $service->id)}}">
+                                        <button class="btn3 btn-primary">Pasirinkti</button>
+                                    </a>
+                                </td>
+                                @endif
+                                @endforeach
+                                </td>
 
-            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <x-a class="btn btn-primary btn-xl2 js-scroll-trigger" :href="route('openmessagelist')"
-                   :active="request()->routeIs('messages') || request()->routeIs('messages.*')">Žinutės @include('unread-count')</x-a>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
             </div>
-            @endauth
+            </div>
         </div>
     </div>
 </header>
