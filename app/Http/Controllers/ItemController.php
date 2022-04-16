@@ -36,7 +36,7 @@ class ItemController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware('auth');
+        return $this->middleware('auth', ['except' => ['itemInfo', 'serviceInfo', 'showitems', 'showservices']]);
     }
     public function index()
     {
@@ -55,7 +55,13 @@ class ItemController extends Controller
         $bought = BoughtItem::where(['items_announcement_id' => $id])->value('id');
 
         //If user click remember item
+        if(Auth::check()){
         $remember = RememberItem::where(['items_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
+            }
+        else
+        {
+            $remember = null;
+        }
 
         //PinterestAPI and keywords
        $bot = PinterestBot::create();
@@ -83,11 +89,16 @@ class ItemController extends Controller
         for($count = 0; $count < $lenght; $count++) {
             $service = ServiceHasTags::where(['tags_id' => $test[$count]->tags_id])->get();
         }
-
-        //show saved announcements
-        $itemhasservice = ItemHasService::where(['items_announcement_id' => $id, 'user_id' => Auth::User()->id])->get();
-        //show saved pins
-        $itemhaspins = ItemHasPins::where(['items_announcement_id' => $id, 'user_id' => Auth::User()->id])->paginate(3, ['*'], 'paramName');
+        if(Auth::check()) {
+            //show saved announcements
+            $itemhasservice = ItemHasService::where(['items_announcement_id' => $id, 'user_id' => Auth::User()->id])->get();
+            //show saved pins
+            $itemhaspins = ItemHasPins::where(['items_announcement_id' => $id, 'user_id' => Auth::User()->id])->paginate(3, ['*'], 'paramName');
+        }
+        else{
+            $itemhasservice = null;
+            $itemhaspins = null;
+        }
 
         return view('itemInformation', compact('item', 'image', 'pins', 'pins2', 'pins3', 'remember', 'bought', 'service', 'itemhasservice', 'itemhaspins'))->with('name', $name)->with('tagid', $tagid)->with('tagid2', $tagid2)->with('tagid3', $tagid3);
     }
@@ -100,21 +111,28 @@ class ItemController extends Controller
     }
     public function serviceInfo($id){
         $service = Service::find($id);
+        if(Auth::check()){
         $remember = RememberService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
+            $bought = BoughtService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
 
-        $bought = BoughtService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
-
-        $boughtcheck = BoughtService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->pluck('name')->toArray();
-        //dd($boughtcheck);
-        for($i = 0; $i < count($boughtcheck); $i++) {
-            if ($boughtcheck[$i] == null) {
-                $bought = 1;
-                break;
-            }
-            else{
-                $bought = null;
+            $boughtcheck = BoughtService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->pluck('name')->toArray();
+            //dd($boughtcheck);
+            for($i = 0; $i < count($boughtcheck); $i++) {
+                if ($boughtcheck[$i] == null) {
+                    $bought = 1;
+                    break;
+                }
+                else{
+                    $bought = null;
+                }
             }
         }
+        else{
+            $remember = null;
+            $bought = null;
+        }
+
+
 
         //dd($bought);
         $name = $service->user->name;

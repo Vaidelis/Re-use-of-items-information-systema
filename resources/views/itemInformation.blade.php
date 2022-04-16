@@ -7,16 +7,19 @@
     <div style="text-align: center" class="">
         <h4 class="">Pasirinkto daikto skelbimo informacija</h4>
         <hr>
+        @if(Auth::check())
             @if(Auth::user()->id == $item->user_id)
                    <a href="{{route('itemdestroy', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Išimti skelbimą</button></a>
                     @if(Auth::user()->id == $item->user_id)
                         <a href="{{route('itemedit', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Redaguoti</button></a>
                     @endif
                     @endif
+        @endif
 
                 <a href="{{ url('personalAnnouncement') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+        @Auth
                 <a href="{{route('rememberitem', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
-
+        @endauth
                 <form method="POST" action="{{route('itemforget', $item->id)}}" id="deleteForm">
                     @csrf
                     @method('DELETE')
@@ -58,15 +61,20 @@
                     <p><b style="color:red">Vartotoją domina keitimasis daiktais</b></p>
                 @endif
                 <div class="hairline"></div>
+                @if(Auth::check())
                 @if(Auth::user()->id != $item->user_id)
                     <p> <a href="{{route('createmessage', $item->user_id)}}" class="block w-full p-2 text-center text-black bg-indigo-400 hover:bg-indigo-600">Parašyti žinute</a> </p>
                 @endif
+                @endif
                 <p style="font-weight: bold">Aprašymas</p>
                 <p>{{ $item->information }}<p>
+                    @auth
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti daiktą</button></a>
-                   <br>
+
+                        <br>
                     <br>
                     <a href="#services" class="js-scroll-trigger"><button class="btn btn-primary btn-xl js-scroll-trigger">Perdirbimo paslaugų pasiūlymai</button></a>
+                @endauth
             </div>
         </div>
 
@@ -110,7 +118,7 @@
     <div style="clear:both;">
         <hr>
     </div>
-
+@auth
     <div style="clear:both;" class="row" id="services">
 
         <div class="col-lg-5 col-md-12 col-12">
@@ -188,7 +196,7 @@
             </div>
         </div>
     </div>
-
+    @endauth
 
         <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     <script>

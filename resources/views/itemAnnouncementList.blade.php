@@ -18,7 +18,9 @@
             </thead>
             <tbody>
             @foreach($announcements as $announcement)
+                @if(Auth::check())
                 @if(Auth::user()->id != $announcement->user_id && $announcement->hide == 0)
+
                 <tr >
                     <td>{{ $announcement->name }}</td>
                     <td>{{ $announcement->price }}</td>
@@ -29,6 +31,17 @@
                         </a>
                     </td>
                     @endif
+                    @else
+                    <tr >
+                        <td>{{ $announcement->name }}</td>
+                        <td>{{ $announcement->price }}</td>
+
+                        <td>
+                            <a href="{{route('itemshow', $announcement->id)}}">
+                                <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
+                            </a>
+                        </td>
+                        @endif
                     @endforeach
                     </td>
 

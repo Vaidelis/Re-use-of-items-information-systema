@@ -19,6 +19,7 @@
             </thead>
             <tbody>
             @foreach($services as $service)
+                @if(Auth::check())
                 @if(Auth::user()->id != $service->user_id && $service->hide == 0)
                 <tr >
                     <td>{{ $service->name }}</td>
@@ -29,6 +30,17 @@
                             <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
                         </a>
                     </td>
+                    @endif
+                    @else
+                    <tr >
+                        <td>{{ $service->name }}</td>
+                        <td>{{ $service->price }}</td>
+
+                        <td>
+                            <a href="{{route('serviceshow', $service->id)}}">
+                                <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
+                            </a>
+                        </td>
                     @endif
                     @endforeach
                     </td>
