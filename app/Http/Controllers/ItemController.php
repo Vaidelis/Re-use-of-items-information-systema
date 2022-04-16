@@ -112,6 +112,9 @@ class ItemController extends Controller
     }
     public function serviceInfo($id){
         $service = Service::find($id);
+        //dd($service);
+        $portphotos = BoughtService::where(['services_announcement_id' => $id])->orderBy('created_at', 'desc')->take(4)->get();
+
         if(Auth::check()){
         $remember = RememberService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
             $bought = BoughtService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
@@ -138,7 +141,7 @@ class ItemController extends Controller
         //dd($bought);
         $name = $service->user->name;
 
-        return view('serviceInformation', compact('service', 'remember'))->with('name', $name)->with('bought', $bought);
+        return view('serviceInformation', compact('service', 'remember', 'portphotos'))->with('name', $name)->with('bought', $bought);
     }
     public function servicedelete($id){
         $service = Service::find($id);

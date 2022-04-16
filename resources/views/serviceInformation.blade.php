@@ -28,8 +28,29 @@
             <hr>
         </div>
 
+        <?php $counter = 0; ?>
+        <div class="row">
+        <div class="col-lg-5 col-md-12 col-12">
+            @foreach($portphotos as $image)
 
-        <div class="">
+                    @if($counter == 0)
+                        <img class="img-fluid pb-1" src="{{asset($image->path)}}" alt="{{ $image->path }}" id="MainImg" style="width: 440px; height: 430px; object-fit: cover;" />
+                        <?php $counter = $counter + 1;?>
+                        <div class="small-img-group">
+                            <div class="small-img-col">
+                                <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" />
+                            </div>
+                            @else
+                                <div class="small-img-col">
+                                    <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" />
+                                </div>
+                            @endif
+
+                            @endforeach
+                        </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-12">
             <p class="name"><b>{{ $service->name }}</b></p>
             <div class="hairline"></div>
 
@@ -51,5 +72,24 @@
                 @auth
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('servicebuy', [ 'id' => $service->id, 'userid' => $service->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $service->user_id){ ?> disabled <?php }?> class="btn btn-primary btn-xl js-scroll-trigger" >Pirkti paslaugą</button></a>
                 @endauth
+        </div>
+
+            <script>
+                var MainImg = document.getElementById('MainImg');
+                var smallimg = document.getElementsByClassName('img-fluid');
+                var all = 5;
+
+                for ( var i = 0; i < 12; i++ ) (function(i){
+                    smallimg[i].onclick = function (){
+                        MainImg.src = smallimg[i].src;
+                    }
+                })(i);
+            </script>
+
+            <!-- Plugin JavaScript -->
+            <script src="/jquery-easing/jquery.easing.min.js"></script>
+
+            <!-- Custom scripts for this template -->
+            <script src="/js/creative.min.js"></script>
     </body>
 @endsection

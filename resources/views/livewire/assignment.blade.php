@@ -1,6 +1,3 @@
-<style>
-    #preview img { max-height: 100px; }
-</style>
 <form method="post" action="{{route('storeitem')}}" enctype="multipart/form-data">
     <div class="form-group">
         @csrf
@@ -62,7 +59,9 @@
             <a href="{{ route('personalAnn') }}" class="btn btn-primary">Atgal</a>
         </div>
 </form>
-
+<style>
+    #preview img { max-height: 100px; }
+</style>
 <script>
     const EL_browse  = document.getElementById('file-input');
     const EL_preview = document.getElementById('preview');
