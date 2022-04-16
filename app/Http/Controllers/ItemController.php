@@ -41,9 +41,10 @@ class ItemController extends Controller
     public function index()
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
+        $images = Image::all();
         $announcements = Item::all();
         $services = Service::all();
-        return view('personalAnnouncement', compact('announcements', 'services'));
+        return view('personalAnnouncement', compact('announcements', 'services', 'images'));
     }
     //Item and services info and delete
     public function itemInfo($id){
@@ -317,7 +318,8 @@ class ItemController extends Controller
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
         $announcements = Item::all();
-        return view('itemAnnouncementList', compact('announcements'));
+        $images = Image::all();
+        return view('itemAnnouncementList', compact('announcements', 'images'));
     }
     public function showServices()
     {
