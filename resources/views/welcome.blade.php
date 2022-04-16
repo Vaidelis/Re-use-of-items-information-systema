@@ -103,7 +103,7 @@
             </ul>
         </div>
     </div>
-    <div style="clear:both;" class="searchBox">
+    <div style="clear:both; text-align: left" class="searchBox">
         <input class="searchInput"type="text" name="" placeholder="Search">
         <button class="searchButton" href="#">
             <i class="material-icons">
@@ -127,7 +127,7 @@
 
             </div>
             <div class="row">
-            <div class="col-lg-7 col-md-10 col-10" style="margin-left: 0px">
+            <div class="col-lg-7 col-md-10 col-10" style="margin-left: -100px">
                 <a class="btn btn-primary btn-xl2 js-scroll-trigger" style="margin-left: -150px" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
                 <table class="content-table">
                     <thead>
@@ -145,7 +145,7 @@
                             <?php $smth++; ?>
                             <tr>
                                 <td> <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
-                                <td>{{ $announcement->name }}</td>
+                                <td style="text-align: left">{{ $announcement->name }}</td>
                                 <td>{{ $announcement->price }}</td>
 
                                 <td>
@@ -163,10 +163,11 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-5 col-md-12 col-12" style="float: right" >
+            <div class="col-lg-7 col-md-10 col-10" style="float: right;margin-right: -150px" >
                 <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('serviceannounc')}}">Paslaugų skelbimai</a>
                 <table class="content-table">
                     <thead>
+                    <th></th>
                     <th>Skelbimo pavadinimas</th>
                     <th>Kaina</th>
                     <th>Veiksmai</th>
@@ -175,7 +176,8 @@
                     @foreach($services as $service)
                         @if($service->hide == 0)
                             <tr >
-                                <td>{{ $service->name }}</td>
+                                <td> <img class="img-fluid" src="" alt="" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
+                                <td style="text-align: left">{{ $service->name }}</td>
                                 <td>{{ $service->price }}</td>
 
                                 <td>

@@ -8,18 +8,28 @@
             <h4 class="">Daiktų skelbimų sąrašas</h4>
             <hr>
             <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
-            <div style="top: auto;text-align: left" class="searchBox">
-                <input class="searchInput" type="text" name="" placeholder="Search">
-                <button class="searchButton" href="#">
-                    <i class="material-icons">
-                        search
-                    </i>
-                </button>
-            </div>
+
         </div>
 
         <hr>
-        <table style="margin-top: 80px" class="content-table">
+    </center>
+    <div class="row">
+        <div class="col-lg-4 col-md-10 col-10">
+
+            <table style="margin-top: -10px;margin-left: 60px" class="content-table">
+
+                <thead>
+                <th>Paieška pagal kategorijas</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>xddd</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-7 col-md-12 col-12">
+        <table class="content-table">
             <thead>
             <th></th>
             <th>Daikto skelbimo pavadinimas</th>
@@ -67,7 +77,8 @@
             </tbody>
         </table>
         </div>
-    </center>
+        </div>
+
 @endsection
 
 
