@@ -128,7 +128,7 @@
             </div>
             <div class="row">
             <div class="col-lg-7 col-md-10 col-10" style="margin-left: 0px">
-                <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
+                <a class="btn btn-primary btn-xl2 js-scroll-trigger" style="margin-left: -150px" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
                 <table class="content-table">
                     <thead>
                     <th></th>
@@ -167,7 +167,7 @@
                 <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('serviceannounc')}}">Paslaugų skelbimai</a>
                 <table class="content-table">
                     <thead>
-                    <th>Paslaugų skelbimo pavadinimas</th>
+                    <th>Skelbimo pavadinimas</th>
                     <th>Kaina</th>
                     <th>Veiksmai</th>
                     </thead>

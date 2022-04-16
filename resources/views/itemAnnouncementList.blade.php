@@ -8,7 +8,7 @@
             <h4 class="">Daiktų skelbimų sąrašas</h4>
             <hr>
             <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
-            <div style="top: auto;" class="searchBox">
+            <div style="top: auto;text-align: left" class="searchBox">
                 <input class="searchInput" type="text" name="" placeholder="Search">
                 <button class="searchButton" href="#">
                     <i class="material-icons">
