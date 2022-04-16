@@ -1,16 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-
 <body>
 <div class="container" style="margin-bottom: 20px">
+
     <center>
     <div class="container">
         <h4 class="testListSplashText">Skelbimų sąrašas</h4>
+
         <hr>
         <button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;" id="myBtn">Sukurti skelbimą</button>
         <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
     </div>
+
     </center>
     <hr>
     <div class="row">

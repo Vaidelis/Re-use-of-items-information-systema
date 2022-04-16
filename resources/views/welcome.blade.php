@@ -24,6 +24,8 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('css/creative.css')}}" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 
 </head>
@@ -94,14 +96,26 @@
                             <li class="nav-item">
                                 <a href="{{ route('register') }}" class="nav-link js-scroll-trigger">Registruotis</a>
                             </li>
+
                             @endif
                         @endauth
                 @endif
             </ul>
         </div>
     </div>
+    <div style="clear:both;" class="searchBox">
+        <input class="searchInput"type="text" name="" placeholder="Search">
+        <button class="searchButton" href="#">
+            <i class="material-icons">
+                search
+            </i>
+        </button>
+    </div>
 </nav>
+
+
 <header class="masthead text-center text-white d-flex">
+
     <div class="container my-auto">
         <div class="">
             <div class="col-lg-10 mx-auto">
