@@ -55,7 +55,7 @@
                         </a>
                     </td>
                     @endif
-                    @else
+                    @elseif($announcement->hide == 0 && $announcement->id == $image->item->id && $smth == 0)
                     <?php $smth++; ?>
                     <tr>
                         <td> <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
