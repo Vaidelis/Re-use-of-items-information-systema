@@ -10,7 +10,29 @@
             <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
             <hr>
         </div>
+    </center>
+    <div class="row">
+        <div class="col-lg-4 col-md-10 col-10">
 
+            <table style="margin-top: -10px;margin-left: 60px" class="content-table">
+
+                <thead>
+                <th>Paieška pagal kategorijas</th>
+                </thead>
+                <form action="{{route('sreachbycatservice')}}">
+                    <tbody>
+                    @foreach($categorys as $cat)
+                        <tr>
+                            <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->id}}"> {{$cat->name}}</td>
+                        </tr>
+                    @endforeach
+                    <tr><td><button class="btn3 btn-primary">Ieškoti</button></td></tr>
+                    </tbody>
+
+                </form>
+            </table>
+        </div>
+        <div class="col-lg-7 col-md-12 col-12">
         <table class="content-table">
             <thead>
             <th>Paslaugų skelbimo pavadinimas</th>
@@ -49,9 +71,11 @@
                 </tr>
             </tbody>
         </table>
+        </div>
+    </div>
     </div>
     </body>
-    </center>
+
 @endsection
 
 

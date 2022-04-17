@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\BoughtItem;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Service;
@@ -324,13 +325,15 @@ class ItemController extends Controller
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
         $announcements = Item::all();
         $images = Image::all();
-        return view('itemAnnouncementList', compact('announcements', 'images'));
+        $categorys = Category::all();
+        return view('itemAnnouncementList', compact('announcements', 'images', 'categorys'));
     }
     public function showServices()
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
         $services = Service::all();
-        return view('serviceAnnouncementList', compact( 'services'));
+        $categorys = Category::all();
+        return view('serviceAnnouncementList', compact( 'services', 'categorys'));
     }
 
     //remember/forget services
@@ -552,6 +555,20 @@ class ItemController extends Controller
         $noservice->delete();
 
         return redirect()->route('itemshow', $id);
+    }
+    //Search by categorys items
+    public function searchbycats(Request $request){
+       //dd($request->input('searchcat'));
+        $announcements = Item::where(['categorys_id' => $request->input('searchcat')])->get();
+        $images = Image::all();
+        $categorys = Category::all();
+        return view('itemAnnouncementList', compact('announcements', 'images', 'categorys'));
+    }
+    public function searchbycatsservice(Request $request){
+        //dd($request->input('searchcat'));
+        $services = Service::where(['categorys_id' => $request->input('searchcat')])->get();
+        $categorys = Category::all();
+        return view('serviceAnnouncementList', compact('services', 'categorys'));
     }
 
 }

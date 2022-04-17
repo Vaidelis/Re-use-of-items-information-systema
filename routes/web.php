@@ -86,9 +86,11 @@ Route::put('/messageList/{thread}', 'App\Http\Controllers\MessageController@upda
 //remember service and pins in item announcement
 Route::get('/itemAnnouncement/itemInformation/{id}/service/{servid}', 'App\Http\Controllers\ItemController@saveService')->name('saveserviceinitem');
 Route::get('/itemAnnouncement/itemInformation/{id}/pin/{pin}/tagid/{tagid}', 'App\Http\Controllers\ItemController@savePins')->name('savepininitem');
-
 Route::delete('/itemAnnouncement/itemInformation/{id}/forgetservice/{someid}', 'App\Http\Controllers\ItemController@forgetItemService')->name('itemnoservice');
 
+//Search
+Route::get('/itemAnnouncement/searchcat', 'App\Http\Controllers\ItemController@searchbycats')->name('sreachbycat');
+Route::get('/serviceAnnouncement/searchcat', 'App\Http\Controllers\ItemController@searchbycatsservice')->name('sreachbycatservice');
 
 
 //----Auth

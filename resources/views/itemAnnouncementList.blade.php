@@ -21,11 +21,17 @@
                 <thead>
                 <th>Paieška pagal kategorijas</th>
                 </thead>
+                <form action="{{route('sreachbycat')}}">
                 <tbody>
+                @foreach($categorys as $cat)
                 <tr>
-                    <td>xddd</td>
+                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->id}}"> {{$cat->name}}</td>
                 </tr>
+                    @endforeach
+                <tr><td><button class="btn3 btn-primary">Ieškoti</button></td></tr>
                 </tbody>
+
+                </form>
             </table>
         </div>
         <div class="col-lg-7 col-md-12 col-12">
