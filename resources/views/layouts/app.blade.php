@@ -110,14 +110,16 @@
             </ul>
         </div>
     </div>
+<form action="{{route('keywordsearch')}}">
 <div style="top:5%; left:15%" class="searchBox">
-    <input class="searchInput"type="text" name="" placeholder="Search">
+    <input class="searchInput"type="text" name="search" placeholder="Search">
     <button class="searchButton" href="#">
         <i class="material-icons">
             search
         </i>
     </button>
 </div>
+</form>
 </nav>
 </div>
 
