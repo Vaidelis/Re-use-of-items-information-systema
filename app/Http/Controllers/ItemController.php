@@ -219,6 +219,7 @@ class ItemController extends Controller
         $item->price = $request->get('price');
         $item->address = $request->get('address');
         $item->information = $request->get('info');
+        $item->categorys_id = $request->get('kategorija');
 
         if($request->change == null){
             $item->change = 0;
@@ -288,6 +289,7 @@ class ItemController extends Controller
         $service->name = $request->get('name');
         $service->price = $request->get('price');
         $service->information = $request->get('info');
+        $service->categorys_id = $request->get('kategorija');
 
         $service->user_id = Auth::user()->id;
         $service->save();
