@@ -28,6 +28,7 @@ use Cmgmyr\Messenger\Models\Thread;
 use Cmgmyr\Messenger\Models\Message;
 use Cmgmyr\Messenger\Models\Participant;
 use Carbon\Carbon;
+use ProtoneMedia\LaravelCrossEloquentSearch\Search;
 
 require 'C:\xampp\htdocs\Re-use-of-items-information-systema/vendor/autoload.php';
 
@@ -569,6 +570,15 @@ class ItemController extends Controller
         $services = Service::where(['categorys_id' => $request->input('searchcat')])->get();
         $categorys = Category::all();
         return view('serviceAnnouncementList', compact('services', 'categorys'));
+    }
+    public function searchkey(Request $request){
+
+       $result = Search::addMany([
+           [Item::class, 'name'],
+           [Service::class, 'name']
+       ])->beginWithWildcard()->search($request->input('search'));
+
+        return view('search', compact('result'));
     }
 
 }

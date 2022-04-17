@@ -134,6 +134,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/seregazhuk/pinterest-bot" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cmgmyr/messenger" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/livewire/livewire" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/protonemedia/laravel-cross-eloquent-search" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

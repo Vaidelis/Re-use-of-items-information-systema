@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'cbe3c8a819eaec682731ad9e99fafa2fd22bc031',
+        'reference' => 'e0454405022c925965a7077990e1b370d4fce926',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -409,7 +409,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'cbe3c8a819eaec682731ad9e99fafa2fd22bc031',
+            'reference' => 'e0454405022c925965a7077990e1b370d4fce926',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -714,6 +714,15 @@
             'aliases' => array(),
             'reference' => '1b5856028273bfd855e60a887278857d872ec67a',
             'dev_requirement' => true,
+        ),
+        'protonemedia/laravel-cross-eloquent-search' => array(
+            'pretty_version' => '3.0.0',
+            'version' => '3.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../protonemedia/laravel-cross-eloquent-search',
+            'aliases' => array(),
+            'reference' => '2cc8125a5db0be2dba7f9e498805841dbe4a00a9',
+            'dev_requirement' => false,
         ),
         'psr/container' => array(
             'pretty_version' => '1.1.2',
