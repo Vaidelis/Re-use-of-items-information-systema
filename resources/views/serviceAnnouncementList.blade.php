@@ -7,7 +7,7 @@
         <div class="container">
             <h4 style="border: red"> <strong>Paslaugų skelbimų sąrašas </strong></h4>
             <hr>
-            <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+            <a href="{{ url('/') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
             <hr>
         </div>
     </center>
@@ -49,7 +49,7 @@
 
                     <td>
                         <a href="{{route('serviceshow', $service->id)}}">
-                            <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
+                            <button class="btn3 btn-primary btn-xl">Pasirinkti</button>
                         </a>
                     </td>
                     @endif

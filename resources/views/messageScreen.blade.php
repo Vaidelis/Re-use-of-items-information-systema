@@ -6,7 +6,7 @@
            Tema: {{ $thread->subject }}
         </h2>
         <hr>
-        <a href="{{ url('messageList') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+        <a href="{{ url('messageList') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
     </div>
     <hr>
 
@@ -42,7 +42,7 @@
 
                             <!-- Submit Form Input -->
                             <div class="mt-4">
-                                <x-button class="btn btn-primary">Išsiųsti</x-button>
+                                <x-button class="btn3 btn-primary">Išsiųsti</x-button>
                             </div>
                         </form>
 

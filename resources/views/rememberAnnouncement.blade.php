@@ -7,7 +7,7 @@
         <div class="container">
             <h4 class="testListSplashText">Įsiminusių skelbimų sąrašas</h4>
             <hr>
-            <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+            <a href="{{ url('/') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
             <hr>
         </div>
 
@@ -25,7 +25,7 @@
 
                     <td>
                         <a href="{{route('itemshow', $announcement->item->id)}}">
-                            <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
+                            <button class="btn3 btn-primary btn-xl">Pasirinkti</button>
                         </a>
                     </td>
                     @endforeach
@@ -49,7 +49,7 @@
 
                     <td>
                         <a href="{{route('serviceshow', $services->service->id)}}">
-                            <button class="btn btn-primary btn-xl js-scroll-trigger">Pasirinkti</button>
+                            <button class="btn3 btn-primary btn-xl">Pasirinkti</button>
                         </a>
                     </td>
                     @endforeach

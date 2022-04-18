@@ -22,7 +22,7 @@
             @csrf
             @method('DELETE')
 
-            <x-button class="btn btn-primary">Ištrinti</x-button>
+            <x-button class="btn3 btn-primary">Ištrinti</x-button>
         </form>
     </td>
 </tr>

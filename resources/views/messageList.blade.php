@@ -7,7 +7,7 @@
             <h4 class="">Jūsų žinučių sąrašas</h4>
             <hr>
 
-            <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+            <a href="{{ url('/') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
         </div>
         <hr>
                     @if ($message = Session::get('success'))

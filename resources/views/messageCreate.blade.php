@@ -44,7 +44,7 @@
 
                             <!-- Submit Form Input -->
                             <div class="mt-4">
-                                <x-button class="btn btn-primary">Submit</x-button>
+                                <x-button class="btn3 btn-primary">Išsiųsti</x-button>
                             </div>
                         </div>
                     </form>
