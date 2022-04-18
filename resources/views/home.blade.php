@@ -12,7 +12,7 @@
 <div style="text-align: center;" class="">
     <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="/"><button class="btn btn-primary darkGreen" style="cursor: pointer;">Atgal</button></a>
 </div>
-
+@if($userInfo->google_id == null)
 <div style="text-align: center;" class="">
     <div class="row justify-content-center">
         <div class="">
@@ -50,6 +50,7 @@
         </form>
     </div>
 </div>
+@endif
 </div>
 </div>
 </body>
