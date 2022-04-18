@@ -9,8 +9,8 @@
         <h4 class="testListSplashText">Skelbimų sąrašas</h4>
 
         <hr>
-        <button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;" id="myBtn">Sukurti skelbimą</button>
-        <a href="{{ url('/') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+        <button class="btn btn-primary btn-xl" style="cursor: pointer;" id="myBtn">Įdėti skelbimą</button>
+        <a href="{{ url('/') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
     </div>
 
     </center>

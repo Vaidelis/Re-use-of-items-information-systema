@@ -9,20 +9,20 @@
             <hr>
             @Auth
                 @if(Auth::user()->id == $service->user_id)
-                    <a  href="{{route('servicedestroy', $service->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Išimti skelbimą</button></a>
+                    <a  href="{{route('servicedestroy', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
                         @if(Auth::user()->id == $service->user_id)
-                            <a href="{{route('serviceedit', $service->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Redaguoti</button></a>
+                            <a href="{{route('serviceedit', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Redaguoti</button></a>
                         @endif
                         @endif
                     @endauth
-                    <a  href="{{ url('personalAnnouncement') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+                    <a  href="{{ url('personalAnnouncement') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
             @auth
-                    <a  href="{{route('rememberservice', $service->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
+                    <a  href="{{route('rememberservice', $service->id)}}"><button class="btn3 btn-primary btn-xlr" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
 
                     <form method="POST" action="{{route('serviceforget', $service->id)}}" id="deleteForm">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
+                        <button class="btn3 btn-primary btn-xl" <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
                     </form>
             @endauth
             <hr>
@@ -70,7 +70,7 @@
             <p class="infoHeader">Aprašymas</p>
             <p class="info"><b>{{ $service->information }}</b><p>
                 @auth
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('servicebuy', [ 'id' => $service->id, 'userid' => $service->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $service->user_id){ ?> disabled <?php }?> class="btn btn-primary btn-xl js-scroll-trigger" >Pirkti paslaugą</button></a>
+                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('servicebuy', [ 'id' => $service->id, 'userid' => $service->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $service->user_id){ ?> disabled <?php }?> class="btn3 btn-primary btn-xl" >Pirkti</button></a>
                 @endauth
         </div>
 

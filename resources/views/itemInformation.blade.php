@@ -9,21 +9,21 @@
         <hr>
         @if(Auth::check())
             @if(Auth::user()->id == $item->user_id)
-                   <a href="{{route('itemdestroy', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Išimti skelbimą</button></a>
+                   <a href="{{route('itemdestroy', $item->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
                     @if(Auth::user()->id == $item->user_id)
-                        <a href="{{route('itemedit', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Redaguoti</button></a>
+                        <a href="{{route('itemedit', $item->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Redaguoti</button></a>
                     @endif
                     @endif
         @endif
 
-                <a href="{{ url('personalAnnouncement') }}"><button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer;">Atgal</button></a>
+                <a href="{{ url('personalAnnouncement') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
         @Auth
-                <a href="{{route('rememberitem', $item->id)}}"><button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
+                <a href="{{route('rememberitem', $item->id)}}"><button class="btn3 btn-primary btn-xl" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
         @endauth
                 <form method="POST" action="{{route('itemforget', $item->id)}}" id="deleteForm">
                     @csrf
                     @method('DELETE')
-                 <button class="btn btn-primary btn-xl js-scroll-trigger" style="cursor: pointer; overflow: auto" <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
+                 <button class="btn3 btn-primary btn-xl" style="cursor: pointer; overflow: auto" <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
                 </form>
     </div>
     <hr>
@@ -69,11 +69,11 @@
                 <p style="font-weight: bold">Aprašymas</p>
                 <p>{{ $item->information }}<p>
                     @auth
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button class="btn btn-primary btn-xl js-scroll-trigger" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti daiktą</button></a>
+                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button class="btn3 btn-primary btn-xl" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti</button></a>
 
                         <br>
                     <br>
-                    <a href="#services" class="js-scroll-trigger"><button class="btn btn-primary btn-xl js-scroll-trigger">Perdirbimo paslaugų pasiūlymai</button></a>
+                    <a href="#services" class="js-scroll-trigger"><button style="width: 250px;" class="btn btn-primary btn-xl js-scroll-trigger">Perdirbimo paslaugos</button></a>
                 @endauth
             </div>
         </div>
@@ -135,7 +135,7 @@
                 @if($serv->service->hide == 0)
                     <tr>
                     <td><a class="" href="{{route('serviceshow', $serv->service->id)}}">{{$serv->service->name}}</a></td>
-                   <td> <a href="{{route('saveserviceinitem', ['id' => $item->id, 'servid' => $serv->service->id])}}"><button class="btn btn-primary btn-xl js-scroll-trigger"
+                   <td> <a href="{{route('saveserviceinitem', ['id' => $item->id, 'servid' => $serv->service->id])}}"><button class="btn3 btn-primary btn-xl"
                             <?php foreach($itemhasservice as $itemhas){
                             if($serv->services_announcement_id != $itemhas->services_announcement_id){
                             }
@@ -165,7 +165,7 @@
                            <td> <form method="POST" action="{{route('itemnoservice', ['id' => $item->id, 'someid' => $serv->id])}}" id="deleteForm">
                                 @csrf
                                 @method('DELETE')
-                                <a><button class="btn btn-primary btn-xl js-scroll-trigger" type="submit">Pamiršti</button></a>
+                                <a><button class="btn3 btn-primary btn-xl" type="submit">Pamiršti</button></a>
                             </form> </td>
                         </tr>
                     @endif
