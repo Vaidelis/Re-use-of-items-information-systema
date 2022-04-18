@@ -10,7 +10,7 @@ class Service extends Model
     use HasFactory;
     public $table = "services_announcements";
 
-    protected $fillable = ['name', 'price','user_id'];
+    protected $fillable = ['name', 'price','user_id', 'categorys_id'];
     public $primaryKey = 'id';
 
     public function user()
@@ -29,5 +29,9 @@ class Service extends Model
     }
     public function itemhasserivce(){
         return $this->hasMany(ItemHasService::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'categorys_id');
     }
 }

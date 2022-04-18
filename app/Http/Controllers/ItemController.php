@@ -578,7 +578,8 @@ class ItemController extends Controller
            [Service::class, 'name']
        ])->beginWithWildcard()->search($request->input('search'));
         $images = Image::all();
-        return view('search', compact('result', 'images'));
+        $cats = $result->unique('categorys_id');
+        return view('search', compact('result', 'images', 'cats'));
     }
 
 }

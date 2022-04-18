@@ -16,6 +16,26 @@
 
         </center>
         <hr>
+        <div class="container">
+            <table style="margin-top: -10px;margin-left: 60px" class="content-table">
+
+                <thead>
+                <th>Paieška pagal kategorijas</th>
+                </thead>
+                <form action="{{route('sreachbycat')}}">
+                    <tbody>
+            @foreach($cats as $cat)
+
+                <tr>
+                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}}</td>
+                </tr>
+            @endforeach
+            <tr><td><button class="btn3 btn-primary">Ieškoti</button></td></tr>
+                    </tbody>
+
+                </form>
+            </table>
+        </div>
 
  <div class="row">
      <div  class="col-lg-6 col-md-9 col-9">
@@ -51,7 +71,9 @@
          </tbody>
      </table>
  </div>
+
      <div class="col-lg-6 col-md-10 col-10" style="float: right">
+
          <table class="content-table">
              <thead>
              <th>Paslaugų skelbimas</th>

@@ -12,4 +12,13 @@ class Category extends Model
 
     protected $fillable = ['name'];
     public $primaryKey = 'id';
+
+    public function item()
+    {
+        return $this->hasMany(Item::class);
+    }
+    public function service()
+    {
+        return $this->hasMany(Service::class);
+    }
 }
