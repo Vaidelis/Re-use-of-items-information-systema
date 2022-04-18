@@ -17,7 +17,7 @@
                 </div>
             </center>
                     @endif
-
+                @if($threads->count())
                     <div class="grid grid-cols-12 gap-x-4">
                         <div class="col-span-9">
                             <table style="margin-left: auto;margin-right: auto" class="content-table">
@@ -40,6 +40,10 @@
                             </table>
                         </div>
                     </div>
+        @else
+            @each('partials.thread', $threads, 'thread',
+                        'partials.no-threads')
+        @endif
 
                 </div>
 

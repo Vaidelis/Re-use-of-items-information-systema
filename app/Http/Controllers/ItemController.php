@@ -574,8 +574,8 @@ class ItemController extends Controller
     public function searchkey(Request $request){
 
        $result = Search::addMany([
-           [Item::class, 'name'],
-           [Service::class, 'name']
+           [Item::class, ['name', 'information']],
+           [Service::class, ['name', 'information']]
        ])->beginWithWildcard()->search($request->input('search'));
         $images = Image::all();
         $cats = $result->unique('categorys_id');
