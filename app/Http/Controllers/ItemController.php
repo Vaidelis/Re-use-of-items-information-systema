@@ -577,8 +577,8 @@ class ItemController extends Controller
            [Item::class, 'name'],
            [Service::class, 'name']
        ])->beginWithWildcard()->search($request->input('search'));
-
-        return view('search', compact('result'));
+        $images = Image::all();
+        return view('search', compact('result', 'images'));
     }
 
 }
