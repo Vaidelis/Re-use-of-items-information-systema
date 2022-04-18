@@ -39,7 +39,7 @@
                         <td>{{$por->service->name}} </td>
                         <td>
                             <a href="{{route('portfoliouploadshow',['id' => $id, 'id2' => $por->id])}}">
-                                <button class="btn btn-primary btn-xl js-scroll-trigger">Įkelti</button>
+                                <button class="btn3 btn-primary btn-xl">Įkelti</button>
                             </a>
                         </td>
                 @endif
