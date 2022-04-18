@@ -97,5 +97,8 @@ Route::get('/search', 'App\Http\Controllers\ItemController@searchkey')->name('ke
 
 //----Auth
 Auth::routes();
+//Login google
+Route::get('auth/google', 'App\Http\Controllers\SocialController@redirect');
+Route::get('auth/google/callback', 'App\Http\Controllers\SocialController@callback');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
