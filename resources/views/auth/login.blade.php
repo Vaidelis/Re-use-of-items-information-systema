@@ -54,7 +54,7 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <a href="{{ url('auth/google') }}" class="btn btn-primary"><i class="fa fa-google"></i> Google</a>
+                                <a href="{{ url('auth/google') }}" class="a-button google"> Prisijungti su</a>
                             </div>
                         </div>
                     </form>

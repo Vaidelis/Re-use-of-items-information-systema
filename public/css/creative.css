@@ -576,3 +576,44 @@ header.masthead p {
         padding: 0 6px;
     }
 }
+/* Google button */
+.card .google,
+.card-login .google {
+    padding-right: 20px;
+    margin-top: 10px;
+    float: left;
+}
+
+.card .google:before,
+.card-login .google:before {
+    content: '';
+    background: url("/img/Google.png");
+    background-size: cover;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: 110px;
+}
+
+.a-button {
+    display: inline-block;
+    background-color: #E4EFE7;
+    padding: 10px 0px 10px 0px;
+    border-radius: 7px;
+    min-width: 150px;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    color: #131624;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+.a-button:hover {
+    background-color: #cce0d1;
+}
