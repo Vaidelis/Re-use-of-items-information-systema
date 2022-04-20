@@ -589,5 +589,18 @@ class ItemController extends Controller
 
         return view('search', compact('result', 'images', 'cats', 'countservice', 'countitem'));
     }
+    public function searchbycatsandservices(Request $request){
+
+        $result = Search::addMany([
+            [Item::class, ['categorys_id']],
+            [Service::class, ['categorys_id']]
+        ])->beginWithWildcard()->search($request->input('searchcat'));
+        $images = Image::all();
+        $cats = $result->unique('categorys_id');
+        $countservice = Service::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        $countitem = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+
+        return view('search', compact('result', 'images', 'cats', 'countservice', 'countitem'));
+    }
 
 }

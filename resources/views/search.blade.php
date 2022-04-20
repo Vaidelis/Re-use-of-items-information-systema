@@ -21,7 +21,7 @@
                 <thead>
                 <th>Paieška pagal kategorijas</th>
                 </thead>
-                <form action="{{route('sreachbycat')}}">
+                <form action="{{route('searchitemsservices')}}">
                     <tbody>
                     <?php $smth = 0; ?>
             @foreach($cats as $cat)
