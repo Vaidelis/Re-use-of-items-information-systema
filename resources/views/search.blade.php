@@ -23,11 +23,26 @@
                 </thead>
                 <form action="{{route('sreachbycat')}}">
                     <tbody>
+                    <?php $smth = 0; ?>
             @foreach($cats as $cat)
-
+                <?php $smth = 0; ?>
+                @foreach($countitem as $ci)
+                    @if($cat->categorys_id == $ci->categorys_id && $loop->count > $smth)
+                        <?php $smth++; ?>
                 <tr>
-                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}}</td>
+                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}} (Daiktai - ({{$ci->count}})
+                        @break
+                        @else
+                        <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}}
+                    @endif
+                @endforeach
+                        @foreach($countservice as $cs)
+                            @if($cat->categorys_id == $cs->categorys_id)
+                                (Paslaugos - ({{$cs->count}})
+                    </td>
                 </tr>
+                @endif
+                @endforeach
             @endforeach
             <tr><td><button class="btn3 btn-primary">Ieškoti</button></td></tr>
                     </tbody>

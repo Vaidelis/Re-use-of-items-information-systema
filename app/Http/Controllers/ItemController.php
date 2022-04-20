@@ -584,34 +584,10 @@ class ItemController extends Controller
         $images = Image::all();
         $cats = $result->unique('categorys_id');
 
+        $countservice = Service::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        $countitem = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
 
-        $item = Item::all()->pluck('categorys_id')->toArray();
-        $service = Service::pluck('categorys_id')->toArray();
-        //dd($item);
-        $howmanyitems[] = 0;
-        $howmanyservices[] = 0;
-
-        //count for items how many
-     /*   for($i = 0; $i < $cats->count(); $i++){
-        for($j = 0; $j < count($item); $j++){
-            if($item[$j] == $cats[$i]->categorys_id){
-                //dd($item[$j]);
-                $howmanyitems[$i]++;
-            }
-        }
-        }
-        //count for services how many
-        for($i = 0; $i < $cats->count(); $i++){
-            for($j = 0; $j < count($service); $j++){
-                if($service[$j] == $cats[$i]->categorys_id){
-                    $howmanyservices[$i]++;
-                }
-            }
-        }*/
-        //dd($howmanyservices);
-
-        //dd($howmanyitems);
-        return view('search', compact('result', 'images', 'cats'));
+        return view('search', compact('result', 'images', 'cats', 'countservice', 'countitem'));
     }
 
 }
