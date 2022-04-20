@@ -337,8 +337,8 @@ class ItemController extends Controller
         $services = Service::all();
         $categorys = Category::all();
 
-        $count = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
-        return view('serviceAnnouncementList', compact( 'services', 'categorys'));
+        $count = Service::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        return view('serviceAnnouncementList', compact( 'services', 'categorys', 'count'));
     }
 
     //remember/forget services
