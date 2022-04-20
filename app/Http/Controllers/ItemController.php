@@ -327,13 +327,17 @@ class ItemController extends Controller
         $announcements = Item::all();
         $images = Image::all();
         $categorys = Category::all();
-        return view('itemAnnouncementList', compact('announcements', 'images', 'categorys'));
+
+        $count = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        return view('itemAnnouncementList', compact('announcements', 'images', 'categorys', 'count'));
     }
     public function showServices()
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
         $services = Service::all();
         $categorys = Category::all();
+
+        $count = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
         return view('serviceAnnouncementList', compact( 'services', 'categorys'));
     }
 
@@ -579,6 +583,34 @@ class ItemController extends Controller
        ])->beginWithWildcard()->search($request->input('search'));
         $images = Image::all();
         $cats = $result->unique('categorys_id');
+
+
+        $item = Item::all()->pluck('categorys_id')->toArray();
+        $service = Service::pluck('categorys_id')->toArray();
+        //dd($item);
+        $howmanyitems[] = 0;
+        $howmanyservices[] = 0;
+
+        //count for items how many
+     /*   for($i = 0; $i < $cats->count(); $i++){
+        for($j = 0; $j < count($item); $j++){
+            if($item[$j] == $cats[$i]->categorys_id){
+                //dd($item[$j]);
+                $howmanyitems[$i]++;
+            }
+        }
+        }
+        //count for services how many
+        for($i = 0; $i < $cats->count(); $i++){
+            for($j = 0; $j < count($service); $j++){
+                if($service[$j] == $cats[$i]->categorys_id){
+                    $howmanyservices[$i]++;
+                }
+            }
+        }*/
+        //dd($howmanyservices);
+
+        //dd($howmanyitems);
         return view('search', compact('result', 'images', 'cats'));
     }
 

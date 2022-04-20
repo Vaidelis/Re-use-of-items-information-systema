@@ -24,9 +24,13 @@
                 <form action="{{route('sreachbycat')}}">
                 <tbody>
                 @foreach($categorys as $cat)
+                    @foreach($count as $c)
+                        @if($c->categorys_id == $cat->id)
                 <tr>
-                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->id}}"> {{$cat->name}}</td>
+                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->id}}"> {{$cat->name}} ({{$c->count}})</td>
                 </tr>
+                @endif
+                    @endforeach
                     @endforeach
                 <tr><td><button class="btn3 btn-primary">Ieškoti</button></td></tr>
                 </tbody>
