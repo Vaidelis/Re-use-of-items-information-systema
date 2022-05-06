@@ -21,7 +21,7 @@
                 <thead>
                 <th>Paieška pagal kategorijas</th>
                 </thead>
-                <form action="{{route('searchitemsservices')}}">
+                <form action="">
                     <tbody>
                     <?php $smth = 0; ?>
             @foreach($cats as $cat)
@@ -30,7 +30,8 @@
                     @if($cat->categorys_id == $ci->categorys_id && $loop->count > $smth)
                         <?php $smth++; ?>
                 <tr>
-                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}} (Daiktai - ({{$ci->count}})
+                    <td><a href="{{route('searchitemsservices', $cat->category->id)}}" ><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}}<a> (Daiktai - ({{$ci->count}})
+
                         @break
                         @else
                         <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}}
@@ -39,12 +40,13 @@
                         @foreach($countservice as $cs)
                             @if($cat->categorys_id == $cs->categorys_id)
                                 (Paslaugos - ({{$cs->count}})
-                    </td>
+                        </td>
                 </tr>
                 @endif
                 @endforeach
             @endforeach
             <tr><td><button class="btn3 btn-primary">Ieškoti</button></td></tr>
+
                     </tbody>
 
                 </form>

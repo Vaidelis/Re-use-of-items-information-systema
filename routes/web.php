@@ -91,9 +91,10 @@ Route::delete('/itemAnnouncement/itemInformation/{id}/forgetservice/{someid}', '
 //Search
 Route::get('/itemAnnouncement/searchcat', 'App\Http\Controllers\ItemController@searchbycats')->name('sreachbycat');
 Route::get('/serviceAnnouncement/searchcat', 'App\Http\Controllers\ItemController@searchbycatsservice')->name('sreachbycatservice');
-Route::get('/search/searchbyitemsservices', 'App\Http\Controllers\ItemController@searchbycatsandservices')->name('searchitemsservices');
+
 
 Route::get('/search', 'App\Http\Controllers\ItemController@searchkey')->name('keywordsearch');
+Route::get('/search/searchbyitemsservices/{id}', 'App\Http\Controllers\ItemController@searchbycatsandservices')->name('searchitemsservices');
 
 
 //----Auth

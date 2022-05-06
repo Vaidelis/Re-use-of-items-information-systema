@@ -43,6 +43,7 @@
     </div>
 
         <div class="form-group">
+            <img style="height: 50px; width: 50px" src="/img/picture.svg.png">
             <input id="file-input" type="file" name="images[]" multiple class="file" data-overwrite-initial="false" accept="image/*" required>
             @if ($errors->has('files'))
                 @foreach ($errors->get('files') as $error)
@@ -55,7 +56,7 @@
             <div id="preview"></div>
         </div>
         <div class="form-group">
-            <input <?php if(count($selectedTag) <= 2){?> disabled <?php } ?> type="submit" class="btn btn-success" />
+            <input <?php if(count($selectedTag) <= 2){?> disabled <?php } ?> type="submit" value="Įkelti" class="btn btn-success" />
             <a href="{{ route('personalAnn') }}" class="btn btn-primary">Atgal</a>
         </div>
 </form>
