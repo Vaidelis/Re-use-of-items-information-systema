@@ -28,19 +28,19 @@
             <hr>
         </div>
 
-        <?php $counter = 0; ?>
+        <?php $counter = 0; $ifcan = 0; ?>
         <div class="row">
         <div class="col-lg-5 col-md-12 col-12">
             @foreach($portphotos as $image)
 
-                    @if($counter == 0)
+                    @if($counter == 0 && $image->name != null)
                         <img class="img-fluid pb-1" src="{{asset($image->path)}}" alt="{{ $image->path }}" id="MainImg" style="width: 440px; height: 430px; object-fit: cover;" />
-                        <?php $counter = $counter + 1;?>
+                        <?php $counter = $counter + 1; $ifcan = $ifcan + 1;?>
                         <div class="small-img-group">
                             <div class="small-img-col">
                                 <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" />
                             </div>
-                            @else
+                            @elseif($image->name != null)
                                 <div class="small-img-col">
                                     <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" />
                                 </div>

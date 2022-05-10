@@ -46,7 +46,7 @@
             <tbody>
             @foreach($services as $service)
                 @if(Auth::check())
-                @if(Auth::user()->id != $service->user_id && $service->hide == 0)
+                @if($service->hide == 0)
                 <tr >
                     <td>{{ $service->name }}</td>
                     <td>{{ $service->price }}</td>

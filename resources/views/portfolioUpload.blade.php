@@ -28,7 +28,7 @@
                                      </span>
             @endif
             </label>
-            <img id="output" style="width: 200px; height: 200px; object-fit: cover;"/>
+            <img src="/img/noimg.jpg" id="output" style="width: 200px; height: 200px; object-fit: cover;"/>
         </div>
         <label class="label">Daiktas po perdarymą: </label>
         <div class="form-group">
@@ -41,7 +41,7 @@
                                      </span>
             @endif
             </label>
-            <img id="output2" style="width: 200px; height: 200px; object-fit: cover;"/>
+            <img src="/img/noimg.jpg" id="output2" style="width: 200px; height: 200px; object-fit: cover;"/>
         </div>
         <div class="form-group">
             <input value="Įkelti" type="submit" class="btn btn-success" />

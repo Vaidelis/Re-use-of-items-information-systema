@@ -117,6 +117,7 @@ class ItemController extends Controller
         //dd($service);
         $portphotos = BoughtService::where(['services_announcement_id' => $id])->orderBy('created_at', 'desc')->take(4)->get();
 
+
         if(Auth::check()){
         $remember = RememberService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');
             $bought = BoughtService::where(['services_announcement_id' => $id, 'users_id' => Auth::user()->id])->value('id');

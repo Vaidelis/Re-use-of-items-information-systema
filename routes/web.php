@@ -3,6 +3,7 @@
 use App\Models\Image;
 use App\Models\Item;
 use App\Models\Service;
+use App\Models\BoughtService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,12 @@ Route::get('/', function () {
 
     $images = Image::all();
 
-    return view('welcome', compact('announcements', 'services', 'images'));
+    $services2 = Service::orderBy('created_at', 'desc')->take(3)->pluck('id')->toArray();
+
+    $serviceimg = BoughtService::whereIn('services_announcement_id', $services2)->get();
+    //dd($port);
+
+    return view('welcome', compact('announcements', 'services', 'images', 'serviceimg'));
 });
 //----Personal announcements show, delete, create, edit
 Route::get('/personalAnnouncement', 'App\Http\Controllers\ItemController@index')->name('personalAnn');

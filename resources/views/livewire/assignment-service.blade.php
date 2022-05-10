@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            <input <?php if(count($selectedTag) <= 2){?> disabled <?php } ?>   type="submit" class="btn btn-success" />
+            <input <?php if(count($selectedTag) <= 2){?> disabled <?php } ?>   type="submit" value="Įkelti" class="btn btn-success" />
             <a href="{{ route('personalAnn') }}" class="btn btn-primary">Atgal</a>
         </div>
 

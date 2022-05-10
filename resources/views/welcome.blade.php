@@ -174,20 +174,43 @@
                     <th>Kaina</th>
                     <th>Veiksmai</th>
                     </thead>
+                    <?php $smth = 0?>
                     <tbody>
                     @foreach($services as $service)
+                        <?php $smth = 0;?>
+                        @foreach($serviceimg as $img)
                         @if($service->hide == 0)
-                            <tr >
-                                <td> <img class="img-fluid" src="" alt="" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
-                                <td style="text-align: left">{{ $service->name }}</td>
-                                <td>{{ $service->price }}</td>
+                            <?php $smth = $smth + 1 ?>
 
-                                <td>
-                                    <a href="{{route('serviceshow', $service->id)}}">
-                                        <button class="btn3 btn-primary">Pasirinkti</button>
-                                    </a>
-                                </td>
+                            <tr >
+                                @if($service->id == $img->services_announcement_id && $img->path != null)
+                                    <td> <img class="img-fluid" src="{{asset($img->path)}}" alt="{{$img->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
+
+                                    <td style="text-align: left">{{ $service->name }}</td>
+                                    <td>{{ $service->price }}</td>
+
+                                    <td>
+                                        <a href="{{route('serviceshow', $service->id)}}">
+                                            <button class="btn3 btn-primary">Pasirinkti</button>
+                                        </a>
+                                    </td>
+                                    @break
+                                @elseif($loop->count == $smth)
+                                <td> <img class="img-fluid" src="/img/noimg.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
+
+                                    <td style="text-align: left">{{ $service->name }}</td>
+                                    <td>{{ $service->price }}</td>
+
+                                    <td>
+                                        <a href="{{route('serviceshow', $service->id)}}">
+                                            <button class="btn3 btn-primary">Pasirinkti</button>
+                                        </a>
+                                    </td>
+                                    @endif
+
+
                                 @endif
+                                @endforeach
                                 @endforeach
                                 </td>
 
