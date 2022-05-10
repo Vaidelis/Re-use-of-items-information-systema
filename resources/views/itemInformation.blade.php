@@ -18,7 +18,9 @@
 
                 <a href="{{ url('personalAnnouncement') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
         @Auth
+            @if(Auth::user()->id != $item->user_id)
                 <a href="{{route('rememberitem', $item->id)}}"><button class="btn3 btn-primary btn-xl" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
+                @endif
         @endauth
                 <form method="POST" action="{{route('itemforget', $item->id)}}" id="deleteForm">
                     @csrf

@@ -13,14 +13,20 @@
 
         <table class="content-table">
             <thead>
+            <th></th>
             <th>Daikto skelbimo pavadinimas</th>
             <th>Kaina</th>
             <th>Veiksmai</th>
             </thead>
+            <?php $smth = 0; ?>
             <tbody>
             @foreach($rememberItem as $announcement)
-                @if($announcement->item->hide = 0)
+                <?php $smth = 0;?>
+                @foreach($images as $image)
+                @if($announcement->item->hide == 0 && $announcement->item->id == $image->item->id && $smth == 0)
+                    <?php $smth++; ?>
                 <tr >
+                    <td> <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
                     <td>{{ $announcement->item->name }}</td>
                     <td>{{ $announcement->item->price }}</td>
 
@@ -30,6 +36,7 @@
                         </a>
                     </td>
                     @endif
+                    @endforeach
                     @endforeach
                     </td>
 

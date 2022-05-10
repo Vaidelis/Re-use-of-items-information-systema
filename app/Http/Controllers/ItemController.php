@@ -366,7 +366,8 @@ class ItemController extends Controller
     {
         $rememberItem = RememberItem::where(['users_id' => Auth::User()->id])->get();
         $rememberService = RememberService::where(['users_id' => Auth::User()->id])->get();
-        return view('rememberAnnouncement', compact('rememberItem', 'rememberService'));
+        $images = Image::all();
+        return view('rememberAnnouncement', compact('rememberItem', 'rememberService', 'images'));
     }
     public function forgetService($id){
         $forgetservice = RememberService::where(['services_announcement_id' => $id]);
@@ -415,7 +416,8 @@ class ItemController extends Controller
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
         $announcements = BoughtItem::where(['users_id' => Auth::User()->id])->get();
-        return view('boughtItems', compact('announcements'));
+        $images = Image::all();
+        return view('boughtItems', compact('announcements', 'images'));
     }
 
     public function buyService($id, $user_id){

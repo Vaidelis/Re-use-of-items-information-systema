@@ -17,6 +17,7 @@
                     @endauth
                     <a  href="{{ url('personalAnnouncement') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
             @auth
+                @if(Auth::user()->id != $service->user_id)
                     <a  href="{{route('rememberservice', $service->id)}}"><button class="btn3 btn-primary btn-xlr" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
 
                     <form method="POST" action="{{route('serviceforget', $service->id)}}" id="deleteForm">
@@ -24,6 +25,7 @@
                         @method('DELETE')
                         <button class="btn3 btn-primary btn-xl" <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
                     </form>
+                    @endif
             @endauth
             <hr>
         </div>
