@@ -570,13 +570,15 @@ class ItemController extends Controller
         $announcements = Item::where(['categorys_id' => $request->input('searchcat')])->get();
         $images = Image::all();
         $categorys = Category::all();
-        return view('itemAnnouncementList', compact('announcements', 'images', 'categorys'));
+        $count = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        return view('itemAnnouncementList', compact('announcements', 'images', 'categorys', 'count'));
     }
     public function searchbycatsservice(Request $request){
         //dd($request->input('searchcat'));
         $services = Service::where(['categorys_id' => $request->input('searchcat')])->get();
         $categorys = Category::all();
-        return view('serviceAnnouncementList', compact('services', 'categorys'));
+        $count = Service::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        return view('serviceAnnouncementList', compact('services', 'categorys', 'count'));
     }
     public function searchkey(Request $request){
 
