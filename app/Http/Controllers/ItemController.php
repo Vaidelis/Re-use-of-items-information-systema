@@ -594,8 +594,7 @@ class ItemController extends Controller
 
         return view('search', compact('result', 'images', 'cats', 'countservice', 'countitem'));
     }
-    public function searchbycatsandservices(Request $request, $id){
-        dd($id);
+    public function searchbycatsandservices(Request $request){
         $result = Search::addMany([
             [Item::class, ['categorys_id']],
             [Service::class, ['categorys_id']]

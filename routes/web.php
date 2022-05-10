@@ -100,7 +100,7 @@ Route::get('/serviceAnnouncement/searchcat', 'App\Http\Controllers\ItemControlle
 
 
 Route::get('/search', 'App\Http\Controllers\ItemController@searchkey')->name('keywordsearch');
-Route::get('/search/searchbyitemsservices/{id}', 'App\Http\Controllers\ItemController@searchbycatsandservices')->name('searchitemsservices');
+Route::get('/search/searchbyitemsservices', 'App\Http\Controllers\ItemController@searchbycatsandservices')->name('searchitemsservices');
 
 
 //----Auth
