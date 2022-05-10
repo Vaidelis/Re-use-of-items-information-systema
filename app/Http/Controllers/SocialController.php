@@ -24,11 +24,19 @@ class SocialController extends Controller
         try {
             $user = Socialite::driver('google')->stateless()->user();
             $finduser = User::where('google_id', $user->id)->first();
+            $finduserregister = User::where('email', $user->email)->first();
 
             if($finduser){
                 Auth::login($finduser);
                 return redirect('/');
-            }else{
+            }
+            elseif($finduserregister){
+                $finduserregister->google_id = $user->id;
+                $finduserregister->save();
+                Auth::login($finduserregister);
+                return redirect('/');
+            }
+            else{
                 $newUser = User::create([
                     'name' => $user->user['given_name'],
                     'email' => $user->email,

@@ -19,6 +19,7 @@
             </thead>
             <tbody>
             @foreach($rememberItem as $announcement)
+                @if($announcement->item->hide = 0)
                 <tr >
                     <td>{{ $announcement->item->name }}</td>
                     <td>{{ $announcement->item->price }}</td>
@@ -28,6 +29,7 @@
                             <button class="btn3 btn-primary btn-xl">Pasirinkti</button>
                         </a>
                     </td>
+                    @endif
                     @endforeach
                     </td>
 
