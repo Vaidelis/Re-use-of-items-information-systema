@@ -93,7 +93,7 @@ Route::put('/messageList/{thread}', 'App\Http\Controllers\MessageController@upda
 Route::get('/itemAnnouncement/itemInformation/{id}/service/{servid}', 'App\Http\Controllers\ItemController@saveService')->name('saveserviceinitem');
 Route::get('/itemAnnouncement/itemInformation/{id}/pin/{pin}/tagid/{tagid}', 'App\Http\Controllers\ItemController@savePins')->name('savepininitem');
 Route::delete('/itemAnnouncement/itemInformation/{id}/forgetservice/{someid}', 'App\Http\Controllers\ItemController@forgetItemService')->name('itemnoservice');
-
+Route::delete('/itemAnnouncement/itemInformation/{id}/forgetpin/{pinsid}', 'App\Http\Controllers\ItemController@forgetPins')->name('pinsforget');
 //Search
 Route::get('/itemAnnouncement/searchcat', 'App\Http\Controllers\ItemController@searchbycats')->name('sreachbycat');
 Route::get('/serviceAnnouncement/searchcat', 'App\Http\Controllers\ItemController@searchbycatsservice')->name('sreachbycatservice');

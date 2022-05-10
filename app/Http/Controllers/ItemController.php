@@ -558,6 +558,11 @@ class ItemController extends Controller
         $itemhpin->save();
         return redirect()->route('itemshow', $id);
     }
+    public function forgetPins($id, $pinsid){
+        $pins = ItemHasPins::where(['pinpicture' => $pinsid]);
+        $pins->delete();
+        return redirect()->route('itemshow', $id);
+    }
     public function forgetItemService($id, $someid){
         $noservice = ItemHasService::find($someid);
         $noservice->delete();

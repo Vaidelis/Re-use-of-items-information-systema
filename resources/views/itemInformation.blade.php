@@ -176,15 +176,20 @@
             </table>
 
         </div>
-        <div style="clear:both" class="col-lg-7 col-md-10 col-8">
+        <div style="clear:both" class="container2">
             <table class="content-table">
                 <thead>
                 <th style="text-align: center">Išsaugoti pinai</th>
                 </thead>
                 <tbody class="row">
                     @foreach($itemhaspins as $pins)
-                        <td class="container col-md-6">
+                        <td class="container col-md-6" style="position:relative">
                         <a data-pin-do="embedPin" href="https://www.pinterest.com/pin/{{$pins->pinpicture}}/"></a>
+                        <form method="POST" action="{{route('pinsforget', ['id' => $item->id, 'pinsid' => $pins->pinpicture])}}" id="deleteForm">
+                                @csrf
+                                @method('DELETE')
+                           <a> <button class="btn2">Pamiršti</button></a>
+                            </form> </td>
                         </td>
                     @endforeach
 
