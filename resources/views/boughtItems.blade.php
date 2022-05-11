@@ -44,6 +44,12 @@
                     </tr>
             </tbody>
         </table>
+        {{-- Pagination --}}
+        <div class="" name="action" value='html' style="text-align: center">
+            <div class="bottom">
+                {!! $announcements->links() !!}
+            </div>
+        </div>
 
     </div>
     </body>
