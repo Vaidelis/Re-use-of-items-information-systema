@@ -325,7 +325,7 @@ class ItemController extends Controller
     public function showItems()
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
-        $announcements = Item::all();
+        $announcements = Item::orderBy('created_at', 'desc')->paginate(20);
         $images = Image::all();
         $categorys = Category::all();
 
@@ -335,7 +335,7 @@ class ItemController extends Controller
     public function showServices()
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
-        $services = Service::all();
+        $services = Service::orderBy('created_at', 'desc')->paginate(20);
         $categorys = Category::all();
 
         $count = Service::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
@@ -364,8 +364,8 @@ class ItemController extends Controller
     }
     public function showRememberAnnoun()
     {
-        $rememberItem = RememberItem::where(['users_id' => Auth::User()->id])->get();
-        $rememberService = RememberService::where(['users_id' => Auth::User()->id])->get();
+        $rememberItem = RememberItem::where(['users_id' => Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
+        $rememberService = RememberService::where(['users_id' => Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20, ['*'], 'paramName');
         $images = Image::all();
         return view('rememberAnnouncement', compact('rememberItem', 'rememberService', 'images'));
     }
@@ -415,7 +415,7 @@ class ItemController extends Controller
     public function showBoughtItems()
     {
         //$announcements = Post::where(['User_idUser'=> Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
-        $announcements = BoughtItem::where(['users_id' => Auth::User()->id])->get();
+        $announcements = BoughtItem::where(['users_id' => Auth::User()->id])->orderBy('created_at', 'desc')->paginate(20);
         $images = Image::all();
         return view('boughtItems', compact('announcements', 'images'));
     }

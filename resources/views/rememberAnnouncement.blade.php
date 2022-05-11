@@ -44,6 +44,12 @@
                 </tr>
             </tbody>
         </table>
+        {{-- Pagination --}}
+        <div class="" name="action" value='html' style="text-align: center">
+            <div class="bottom">
+                {!! $rememberItem->links() !!}
+            </div>
+        </div>
         <table class="content-table">
             <thead>
             <th>Paslaugų skelbimo pavadinimas</th>
@@ -68,6 +74,12 @@
                 </tr>
             </tbody>
         </table>
+        {{-- Pagination --}}
+        <div class="" name="paramName" value='html' style="text-align: center">
+            <div class="bottom">
+                {!! $rememberService->links() !!}
+            </div>
+        </div>
     </div>
     </body>
     </center>

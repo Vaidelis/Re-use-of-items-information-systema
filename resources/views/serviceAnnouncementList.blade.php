@@ -73,8 +73,16 @@
 
                     </td>
                 </tr>
+
             </tbody>
+
         </table>
+            {{-- Pagination --}}
+            <div class="" name="action" value='html' style="text-align: center">
+                <div class="bottom">
+                    {!! $services->links() !!}
+                </div>
+            </div>
         </div>
     </div>
     </div>
