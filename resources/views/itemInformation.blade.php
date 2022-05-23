@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
+
+
 <body style="margin-top: 0px;">
 
 <div class="container">
@@ -79,7 +81,9 @@
                 <p>{{ $item->information }}<p>
                     @auth
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button class="btn3 btn-primary btn-xl" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti</button></a>
-
+                        @if($bought == null || Auth::User()->id != $item->user_id)
+                <div id="paypal-button-container"> </div>
+                @endif
                         <br>
                     <br>
                     <a href="#services" class="js-scroll-trigger"><button style="width: 250px;" class="btn btn-primary btn-xl js-scroll-trigger">Perdirbimo paslaugos</button></a>
@@ -213,6 +217,40 @@
     @endauth
 
         <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AV8fUiAHK7J8KOabpygdfCxRRxs4aS3vleP6EY6yFKGgWEHOlcDippe4p5tJpq-F_qiWt-sOk7IeShD0&currency=USD"></script>
+
+    <script>
+        paypal.Buttons({
+            // Sets up the transaction when a payment button is clicked
+            createOrder: (data, actions) => {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{{$item->price}}' // Can also reference a variable or function
+                        }
+                    }]
+                });
+            },
+            // Finalize the transaction after payer approval
+            onApprove: (data, actions) => {
+                return actions.order.capture().then(function(orderData) {
+                    // Successful capture! For dev/demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                    const transaction = orderData.purchase_units[0].payments.captures[0];
+                    actions.redirect("{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}");
+                    alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details1`);
+
+
+
+                    // When ready to go live, remove the alert and show a success message within this page. For example:
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
     <script>
         var MainImg = document.getElementById('MainImg');
         var smallimg = document.getElementsByClassName('img-fluid');

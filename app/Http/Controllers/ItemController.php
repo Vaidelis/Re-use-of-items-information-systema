@@ -381,7 +381,10 @@ class ItemController extends Controller
     }
 
     //------Buy items and services
-    public function buyItem($id, $user_id){
+    public function buyItem(Request $request, $id, $user_id){
+        if($request->ajax()){
+            return "AJAX";
+        }
         $buy = new BoughtItem();
         $buy->items_announcement_id = $id;
         $buy->users_id = Auth::User()->id;
