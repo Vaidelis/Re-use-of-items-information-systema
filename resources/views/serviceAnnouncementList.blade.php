@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <center>
     <body>
     <div class="container" style="margin-bottom: 20px">
+        <center>
         <div class="container">
             <h4 style="border: red"> <strong>Paslaugų skelbimų sąrašas </strong></h4>
             <hr>
             <a href="{{ url('/') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
             <hr>
         </div>
-    </center>
+        </center>
     <div class="row">
         <div class="col-lg-4 col-md-10 col-10">
 
-            <table style="margin-top: -10px;margin-left: 60px" class="content-table">
+            <table style="margin-top: -10px;margin-left: -150px" class="content-table">
 
                 <thead>
                 <th>Paieška pagal kategorijas</th>

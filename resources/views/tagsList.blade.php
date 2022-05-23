@@ -7,13 +7,21 @@
                 Pinterest segtukų sąrašas
             </h4>
             <hr>
-            <a href="{{route('taglist')}}" ><button class="btn btn-primary" >Atgal</button></a>
+            <a href="{{url('/')}}" ><button class="btn btn-primary" >Atgal</button></a>
             <hr>
+            @if ($message = Session::get('success'))
+                <center>
+                    <div style="width: 70%;height: 50px;text-align: center;" class="alert alert-success">
+                        <span style="text-align: center">{{ $message }}</span>
+                    </div>
+                </center>
+            @endif
         </div>
 
         <div>
             <form method="post" action="{{route('tagcreate')}}">
                 @csrf
+                <strong>Pinterest segtukas: </strong>
                 <input size="15" name="newtag" type="text" required>
                 <strong>Kategorija</strong>
                 <select name="kategorija">

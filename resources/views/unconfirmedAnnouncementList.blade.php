@@ -28,7 +28,7 @@
                     @foreach($announcements as $announcement)
                         <?php $smth = 0;?>
                         @foreach($images as $image)
-                            @if($announcement->hide == 0 && $announcement->id == $image->item->id && $smth == 0 && $announcement->user->id == Auth::user()->id)
+                            @if($announcement->aprooved == 0 && $announcement->id == $image->item->id && $smth == 0)
                                 <?php $smth++; ?>
                                 <tr >
                                     <td> <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
@@ -59,7 +59,7 @@
                     </thead>
                     <tbody>
                     @foreach($services as $service)
-                        @if($service->hide == 0 && $service->user->id == Auth::user()->id)
+                        @if($service->aprooved == 0)
                             <tr >
                                 <td>{{ $service->name }}</td>
                                 <td>{{ $service->price }}</td>

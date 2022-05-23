@@ -12,6 +12,20 @@
 <div style="text-align: center;" class="">
     <a style="height: 40px; margin-top:auto; margin-bottom: auto; margin-right: -10px;" href="/"><button class="btn btn-primary darkGreen" style="cursor: pointer;">Atgal</button></a>
 </div>
+<hr>
+@if($status != null)
+    <center>
+        <div style="width: 70%;height: 50px;text-align: center;" class="alert alert-success">
+            <span style="text-align: center">{{ $status }}</span>
+        </div>
+    </center>
+@elseif($status2 != null)
+    <center>
+        <div style="width: 70%;height: 50px;text-align: center;" class="alert alert-success">
+            <span style="text-align: center">{{ $status2 }}</span>
+        </div>
+    </center>
+@endif
 @if($userInfo->google_id == null)
 <div style="text-align: center;" class="">
     <div class="row justify-content-center">
@@ -38,11 +52,6 @@
                         <label for="password-confirm" class="">{{ __('Pakartokite slaptažodį') }}</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Pakartotas naujas slaptažodis">
                     </div>
-                    @if($status != null)
-                        <h3 style="color: red; margin-bottom: 0px;">  {{ $status }}</h3>
-                        @elseif($status2 != null)
-                        <h3 style="color: green; margin-bottom: 0px;">  {{ $status2 }}</h3>
-                @endif
             </div>
             <br>
             <button id="Save" type="submit" class="btn btn-primary darkGreen">Saugoti</button>

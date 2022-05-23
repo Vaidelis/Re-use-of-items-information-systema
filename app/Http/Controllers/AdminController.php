@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Carbon\Carbon;
+use Cmgmyr\Messenger\Models\Message;
+use Cmgmyr\Messenger\Models\Participant;
+use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\User;
@@ -55,6 +59,28 @@ class AdminController extends Controller
     public function acceptAnnouncement($id){
         $item = Item::find($id);
         $item->aprooved = 1;
+        //send system message
+        $thread = Thread::create([
+            'subject' => 'Daikto skelbimo Patvirtinimas',
+        ]);
+
+        // Message
+        Message::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'body' => 'Sveiki, jūsų skelbimas buvo patalpinas!',
+        ]);
+
+        // Sender
+        Participant::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'last_read' => new Carbon,
+        ]);
+
+        // Recipients
+        $thread->addParticipant($item->user_id);
+
         $item->save();
 
         return redirect()->route('unconfirmedann')->with('status', 'Skelbimas sėkmingai priimtas');
@@ -62,6 +88,27 @@ class AdminController extends Controller
     public function declineItem($id){
         $item = Item::find($id);
         $item->hide = 1;
+        //send system message
+        $thread = Thread::create([
+            'subject' => 'Daikto skelbimo atmetimas',
+        ]);
+
+        // Message
+        Message::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'body' => 'Sveiki, jūsų skelbimas nebuvo patalpinas, nes neatitiko reikalavimų',
+        ]);
+
+        // Sender
+        Participant::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'last_read' => new Carbon,
+        ]);
+
+        // Recipients
+        $thread->addParticipant($item->user_id);
         $item->save();
 
         return redirect()->route('unconfirmedann')->with('status', 'Skelbimas sėkmingai ištrintas');
@@ -78,6 +125,30 @@ class AdminController extends Controller
     public function acceptService($id){
         $service = Service::find($id);
         $service->aprooved = 1;
+
+        //send system message
+        $thread = Thread::create([
+            'subject' => 'Paslaugos skelbimo Patvirtinimas',
+        ]);
+
+        // Message
+        Message::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'body' => 'Sveiki, jūsų skelbimas buvo patalpinas!',
+        ]);
+
+        // Sender
+        Participant::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'last_read' => new Carbon,
+        ]);
+
+        // Recipients
+        $thread->addParticipant($service->user_id);
+
+
         $service->save();
 
         return redirect()->route('unconfirmedann')->with('status', 'Skelbimas sėkmingai priimtas');
@@ -85,8 +156,30 @@ class AdminController extends Controller
     public function declineService($id){
         $service = Service::find($id);
         $service->hide = 1;
+
+        //send system message
+        $thread = Thread::create([
+            'subject' => 'Paslaugos skelbimo atmetimas',
+        ]);
+
+        // Message
+        Message::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'body' => 'Sveiki, jūsų skelbimas nebuvo patalpinas, nes neatitiko reikalavimų',
+        ]);
+
+        // Sender
+        Participant::create([
+            'thread_id' => $thread->id,
+            'user_id' => Auth::id(),
+            'last_read' => new Carbon,
+        ]);
+
+        // Recipients
+        $thread->addParticipant($service->user_id);
         $service->save();
-        return redirect()->route('unconfirmedann')->with('status', 'Skelbimas sėkmingai ištrintas');
+        return redirect()->route('unconfirmedann');
     }
 
     //Pinterest tags
@@ -145,7 +238,7 @@ class AdminController extends Controller
 
         $createtag->save();
 
-        return redirect()->route('taglist');
+        return redirect()->route('taglist')->with('success', 'Pinterest segtukas sėkmingai pridėtas');
     }
     //categories
     public function openCatslist(){

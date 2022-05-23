@@ -110,7 +110,7 @@ class ItemController extends Controller
         $item->hide = 1;
         $item->save();
 
-        return redirect()->route('personalAnn')->with('status', 'Skelbimas sėkmingai ištrintas');
+        return redirect()->route('personalAnn')->with('success', 'Skelbimas sėkmingai ištrintas');
     }
     public function serviceInfo($id){
         $service = Service::find($id);
@@ -150,7 +150,7 @@ class ItemController extends Controller
         $service = Service::find($id);
         $service->hide = 1;
         $service->save();
-        return redirect()->route('personalAnn')->with('status', 'Skelbimas sėkmingai ištrintas');
+        return redirect()->route('personalAnn')->with('success', 'Skelbimas sėkmingai ištrintas');
     }
     //update announcements
     public function editItem($id){
@@ -180,7 +180,7 @@ class ItemController extends Controller
 
 
         $item->save();
-        return redirect()->route('itemshow', $id)->with('status','Testo informacija atnaujinta');
+        return redirect()->route('itemshow', $id)->with('success','Skelbimo informacija atnaujinta');
     }
     public function editservice($id){
 
@@ -206,7 +206,7 @@ class ItemController extends Controller
 
 
         $service->save();
-        return redirect()->route('serviceshow', $id)->with('status','Skelbimo informacija atnaujinta');
+        return redirect()->route('serviceshow', $id)->with('success','Skelbimo informacija atnaujinta');
     }
 
     //create
@@ -329,7 +329,7 @@ class ItemController extends Controller
         $images = Image::all();
         $categorys = Category::all();
 
-        $count = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        $count = Item::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
         return view('itemAnnouncementList', compact('announcements', 'images', 'categorys', 'count'));
     }
     public function showServices()
@@ -338,7 +338,7 @@ class ItemController extends Controller
         $services = Service::orderBy('created_at', 'desc')->paginate(20);
         $categorys = Category::all();
 
-        $count = Service::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        $count = Service::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
         return view('serviceAnnouncementList', compact( 'services', 'categorys', 'count'));
     }
 
@@ -531,7 +531,7 @@ class ItemController extends Controller
         $rate->users_id = $id;
 
         $rate->save();
-        return redirect()->route('portfolioshow', $id);
+        return redirect()->route('portfolioshow', $id)->with('success', 'Paslaugų tiekėjas įvertintas');
     }
 
     //Save pin and services in announcement
@@ -594,9 +594,8 @@ class ItemController extends Controller
         $images = Image::all();
         $cats = $result->unique('categorys_id');
 
-        $countservice = Service::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
-        $countitem = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
-
+        $countservice = Service::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
+        $countitem = Item::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
         return view('search', compact('result', 'images', 'cats', 'countservice', 'countitem'));
     }
     public function searchbycatsandservices(Request $request){

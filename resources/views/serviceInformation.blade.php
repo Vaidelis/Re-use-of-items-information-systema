@@ -9,7 +9,7 @@
             <hr>
             @Auth
                 @if(Auth::user()->id == $service->user_id)
-                    <a  href="{{route('servicedestroy', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
+                    <a onclick="return confirm('Ar tikrai norite ištrinti šį skelbimą?')"  href="{{route('servicedestroy', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
                         @if(Auth::user()->id == $service->user_id)
                             <a href="{{route('serviceedit', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Redaguoti</button></a>
                         @endif
@@ -28,6 +28,13 @@
                     @endif
             @endauth
             <hr>
+            @if ($message = Session::get('success'))
+                <center>
+                    <div style="width: 70%;height: 50px;text-align: center;" class="alert alert-success">
+                        <span style="text-align: center">{{ $message }}</span>
+                    </div>
+                </center>
+            @endif
         </div>
 
         <?php $counter = 0; $ifcan = 0; ?>

@@ -9,7 +9,7 @@
         <hr>
         @if(Auth::check())
             @if(Auth::user()->id == $item->user_id)
-                   <a href="{{route('itemdestroy', $item->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
+                   <a onclick="return confirm('Ar tikrai norite ištrinti šį skelbimą?')" href="{{route('itemdestroy', $item->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
                     @if(Auth::user()->id == $item->user_id)
                         <a href="{{route('itemedit', $item->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Redaguoti</button></a>
                     @endif
@@ -29,6 +29,13 @@
                 </form>
     </div>
     <hr>
+    @if ($message = Session::get('success'))
+        <center>
+            <div style="width: 70%;height: 50px;text-align: center;" class="alert alert-success">
+                <span style="text-align: center">{{ $message }}</span>
+            </div>
+        </center>
+    @endif
     <?php $counter = 0; ?>
 
         <div class="row">

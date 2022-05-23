@@ -15,6 +15,13 @@
 
     </center>
     <hr>
+    @if ($message = Session::get('success'))
+        <center>
+            <div style="width: 70%;height: 50px;text-align: center;" class="alert alert-success">
+                <span style="text-align: center">{{ $message }}</span>
+            </div>
+        </center>
+    @endif
     <div class="row">
         <div  class="col-lg-6 col-md-9 col-9">
     <table class="content-table">

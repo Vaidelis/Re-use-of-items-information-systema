@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    <div style="text-align: center">
+        <h4>
+            Kategorijų sąrašas
+        </h4>
+        <hr>
+        <a href="{{url('/')}}" ><button class="btn btn-primary" >Atgal</button></a>
+        <hr>
+    </div>
     <div class="container">
         <div>
             <form method="post" action="{{route('catcreate')}}">

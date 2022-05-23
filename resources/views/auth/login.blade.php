@@ -1,63 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Prisijungimas') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('El. pašto adresas') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
+    <div class="row">
+        <div class="col-md-11 mt-60 mx-md-auto">
+            <div class="login-box bg-white pl-lg-5 pl-0">
+                <div class="row no-gutters align-items-center">
+                    <div class="col-md-6">
+                        <div class="form-wrap bg-white">
+                            <h4 class="btm-sep pb-3 mb-5">Prisijungimas</h4>
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group position-relative">
+                                            <span class="zmdi zmdi-account"></span>
+                                            <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="El. Pašto adresas" autocomplete="email" autofocus required>
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Slaptažodis') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group position-relative">
+                                            <span class="zmdi zmdi-email"></span>
+                                            <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password"  name="password" required autocomplete="current-password">
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-lg-right">
+                                        <a href="{{ route('password.request') }}" class="c-black">Pamiršai slaptažodį?</a>
+                                    </div>
+                                    <div class="col-12 mt-30">
+                                        <button type="submit" id="submit" class="btn btn-lg btn-custom btn-dark btn-block">Prisijungti
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="content text-center">
+                            <div class="border-bottom pb-5 mb-5">
+                                <h3 class="c-black">Naujas naudotojas?</h3>
+                                <a href="{{ route('register') }}" class="btn btn-custom">Registracija</a>
+                            </div>
+                            <h5 class="c-black mb-4 mt-n1">Arba prisijungti su</h5>
+                            <div class="socials">
+                                <a href="{{ url('auth/google') }}" class="zmdi zmdi-google"></a>
                             </div>
                         </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Prisijungimas') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Pamiršai slaptažodį?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <a href="{{ url('auth/google') }}" class="a-button google"> Prisijungti su</a>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

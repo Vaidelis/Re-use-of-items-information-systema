@@ -36,9 +36,11 @@
                     @endif
                 @endforeach
                         @foreach($countservice as $cs)
-                            @if($cat->categorys_id == $cs->categorys_id)
+                            @if($cat->categorys_id == $cs->categorys_id && $countitem->count() > 0)
                                 (Paslaugos - ({{$cs->count}})
                         </td>
+                    @else
+                        <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}} (Paslaugos - ({{$cs->count}}) </td>
                 </tr>
                 @endif
                 @endforeach
@@ -66,7 +68,7 @@
             @if(class_basename($resul) == "Item")
                 <?php $smth = 0;?>
                 @foreach($images as $image)
-                    @if($resul->hide == 0 && $resul->id == $image->item->id && $smth == 0)
+                    @if($resul->hide == 0 && $resul->aprooved == 1 && $resul->id == $image->item->id && $smth == 0)
                         <?php $smth++; ?>
             <tr>
                 <td> <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
@@ -95,7 +97,7 @@
              <th>Veiksmai</th>
              </thead>
              @foreach($result as $resul)
-                 @if(class_basename($resul) == "Service" && $resul->hide == 0)
+                 @if(class_basename($resul) == "Service" && $resul->hide == 0 && $resul->aprooved == 1)
                      <tr>
                          <td>{{$resul->name}}</td>
                          <td>{{$resul->price}}</td>

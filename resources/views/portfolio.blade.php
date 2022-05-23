@@ -20,6 +20,13 @@
             <hr>
         </div>
     <div>
+        @if ($message = Session::get('success'))
+            <center>
+                <div style="width: 70%;height: 50px;text-align: center;" class="alert alert-success">
+                    <span style="text-align: center">{{ $message }}</span>
+                </div>
+            </center>
+        @endif
         @if($id == Auth::User()->id)
         <table class="content-table">
             <thead>
@@ -156,7 +163,7 @@
                 <br>
             <br>
             <div class="form-group">
-                <input  type="submit" class="btn btn-success" />
+                <input  type="submit" value="Įvertinti" class="btn btn-success" />
             </div>
             </form>
         </div>

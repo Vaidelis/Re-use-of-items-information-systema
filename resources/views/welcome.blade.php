@@ -127,8 +127,8 @@
                 </h2>
                 <hr>
             </div>
-                @auth
-            @if(Auth::User()->role == 1)
+
+            @if(Auth::check() && Auth::User()->role == 1)
 
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
                 <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
@@ -145,9 +145,6 @@
                     <div style="margin-top: 1em" class="col-lg-8 mx-auto">
                         <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('listcats')}}">Kategorijų valdymas</a>
                     </div>
-
-
-                    @endauth
                 @else
 
             <div class="row">
@@ -200,8 +197,8 @@
                     <tbody>
                     @foreach($services as $service)
                         <?php $smth = 0;?>
+                        @if($serviceimg == null)
                         @foreach($serviceimg as $img)
-                        @if($service->hide == 0)
                             <?php $smth = $smth + 1 ?>
 
                             <tr >
@@ -217,7 +214,7 @@
                                         </a>
                                     </td>
                                     @break
-                                @elseif($loop->count == $smth)
+                                @elseif($loop->count <= $smth)
                                 <td> <img class="img-fluid" src="/img/noimg.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
 
                                     <td style="text-align: left">{{ $service->name }}</td>
@@ -230,12 +227,22 @@
                                     </td>
                                     @endif
 
-
-                                @endif
                                 @endforeach
+                                    @else
+
+                                    @endif
                                 @endforeach
                                 </td>
+                                    <td> <img class="img-fluid" src="/img/noimg.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
 
+                                    <td style="text-align: left">{{ $service->name }}</td>
+                                    <td>{{ $service->price }}</td>
+
+                                    <td>
+                                        <a href="{{route('serviceshow', $service->id)}}">
+                                            <button class="btn3 btn-primary">Pasirinkti</button>
+                                        </a>
+                                    </td>
                                 </td>
                             </tr>
                     </tbody>

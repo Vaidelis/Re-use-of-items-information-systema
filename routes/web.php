@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $announcements = Item::orderBy('created_at', 'desc')->take(3)->get();
-    $services = Service::orderBy('created_at', 'desc')->take(3)->get();
+    $announcements = Item::where(['aprooved' => 1, 'hide' => 0])->orderBy('created_at', 'desc')->take(3)->get();
+    $services = Service::where(['aprooved' => 1, 'hide' => 0])->orderBy('created_at', 'desc')->take(3)->get();
 
     $images = Image::all();
 
-    $services2 = Service::orderBy('created_at', 'desc')->take(3)->pluck('id')->toArray();
+    $services2 = Service::where(['aprooved' => 1])->orderBy('created_at', 'desc')->take(3)->pluck('id')->toArray();
 
     $serviceimg = BoughtService::whereIn('services_announcement_id', $services2)->get();
     //dd($port);
