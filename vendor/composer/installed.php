@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6858384c5d314ed1f0d6c52631d82095ff28733a',
+        'reference' => '362a514f41085067eb7440edeb749b6aff5e06c9',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -409,7 +409,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6858384c5d314ed1f0d6c52631d82095ff28733a',
+            'reference' => '362a514f41085067eb7440edeb749b6aff5e06c9',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -1041,6 +1041,15 @@
             'install_path' => __DIR__ . '/../seregazhuk/pinterest-bot',
             'aliases' => array(),
             'reference' => '9621d078fb3b0b6651ac5987841a2a8ccc4f2a2d',
+            'dev_requirement' => false,
+        ),
+        'stichoza/google-translate-php' => array(
+            'pretty_version' => 'v4.1.6',
+            'version' => '4.1.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../stichoza/google-translate-php',
+            'aliases' => array(),
+            'reference' => 'ea96d2ca42af3e40890cd0ca043d1c3efb46f292',
             'dev_requirement' => false,
         ),
         'swiftmailer/swiftmailer' => array(

@@ -21,4 +21,8 @@ class Category extends Model
     {
         return $this->hasMany(Service::class);
     }
+    public function tag()
+    {
+        return $this->hasMany(Tag::class);
+    }
 }

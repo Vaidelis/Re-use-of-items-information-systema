@@ -14,8 +14,15 @@
         <div>
             <form method="post" action="{{route('tagcreate')}}">
                 @csrf
-                <input size="15" name="newtag" type="text">
-                <input type="submit" value="Sukurti">
+                <input size="15" name="newtag" type="text" required>
+                <strong>Kategorija</strong>
+                <select name="kategorija">
+                    <option value="">Pasirinkite kategorija</option>
+                    @foreach($cats as $cat)
+                        <option name="category" value="{{$cat->id}}">{{$cat->name}}</option>
+                    @endforeach
+                </select>
+                <input type="submit" value="Sukurti" />
             </form>
 
         </div>
@@ -29,6 +36,7 @@
                                 <tr>
                                     <th>Pinterest segtuko pavadiniams(LT)</th>
                                     <th>Pinterest segtuko pavadiniams(EN)</th>
+                                    <th>Kategorija</th>
                                     <th>Įsiminimų skaičius</th>
                                     <th style="width: 150px">Sukūrimo data</th>
                                     <th></th>
@@ -39,6 +47,7 @@
                                 <tr>
                                     <td>{{$tag->namelt}}</td>
                                     <td>{{$tag->name}}</td>
+                                    <td>{{$tag->category->name}}</td>
                                     <td>{{$tag->like}}</td>
                                     <td>{{$tag->created_at->todatestring()}}</td>
                                     <td><a href="{{route('opentag', $tag->id)}}"><button>Atidaryti</button></a></td>

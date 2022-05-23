@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Service;
@@ -10,6 +11,7 @@ use App\Models\ItemHasTags;
 use App\Models\Tag;
 use seregazhuk\PinterestBot\Factories\PinterestBot;
 use App\Support\Collection;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class AdminController extends Controller
 {
@@ -88,8 +90,9 @@ class AdminController extends Controller
     //Pinterest tags
     public function opentaglist(){
         $tags = Tag::all();
+        $cats = Category::all();
 
-        return view('tagsList', compact('tags'));
+        return view('tagsList', compact('tags', 'cats'));
     }
     public function showedittag($id){
         $tag = Tag::find($id);
@@ -124,8 +127,23 @@ class AdminController extends Controller
 
     }
     public function createtag(Request $request){
+
+        $request->validate([
+            'newtag' => 'required',
+            'kategorija' => 'required',
+        ]);
         $newtag = $request->input('newtag');
-        dd($newtag);
+        $tr = new GoogleTranslate('en');
+        $tagenglish = $tr->translate($newtag);
+
+        $createtag = new Tag;
+        $createtag->name = $tagenglish;
+        $createtag->namelt = $newtag;
+        $createtag->categorys_id = $request->get('kategorija');
+
+        $createtag->save();
+
+        return redirect()->route('taglist');
     }
 
 }

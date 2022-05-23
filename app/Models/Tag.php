@@ -19,4 +19,8 @@ class Tag extends Model
     public function servicehastags(){
         return $this->hasMany(ServiceHasTags::class);
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'categorys_id');
+    }
 }
