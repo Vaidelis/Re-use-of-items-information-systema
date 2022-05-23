@@ -102,6 +102,15 @@ Route::get('/serviceAnnouncement/searchcat', 'App\Http\Controllers\ItemControlle
 Route::get('/search', 'App\Http\Controllers\ItemController@searchkey')->name('keywordsearch');
 Route::get('/search/searchbyitemsservices', 'App\Http\Controllers\ItemController@searchbycatsandservices')->name('searchitemsservices');
 
+//Admin functions
+Route::get('/unconfirmedannouncements', 'App\Http\Controllers\AdminController@openUnconfirmedAnnouncementList')->name('unconfirmedann');
+Route::get('/unconfirmedannouncements/item/{id}', 'App\Http\Controllers\AdminController@openUnconfirmedAnnouncementInformation')->name('unconfirmediteminfo');
+Route::get('/unconfirmedannouncements/item/{id}/aproove', 'App\Http\Controllers\AdminController@acceptAnnouncement')->name('itemaccept');
+Route::get('/unconfirmedannouncements/item/{id}/decline', 'App\Http\Controllers\AdminController@declineItem')->name('itemdecline');
+
+Route::get('/unconfirmedannouncements/service/{id}', 'App\Http\Controllers\AdminController@openUnconfirmedServiceInformation')->name('unconfirmedserviceinfo');
+Route::get('/unconfirmedannouncements/service/{id}/decline', 'App\Http\Controllers\AdminController@declineService')->name('servicedecline');
+Route::get('/unconfirmedannouncements/service/{id}/aproove', 'App\Http\Controllers\AdminController@acceptService')->name('serviceaccept');
 
 //----Auth
 Auth::routes();

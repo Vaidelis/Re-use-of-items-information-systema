@@ -126,8 +126,30 @@
                     <strong>Daiktų antrinio panaudojimo skatininimo informacinė sistema</strong>
                 </h2>
                 <hr>
-
             </div>
+                @auth
+            @if(Auth::User()->role == 1)
+
+            <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+                <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
+            </div>
+                <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+                    <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('serviceannounc')}}">Paslaugų skelbimai</a>
+                </div>
+                    <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('unconfirmedann')}}">Nepatvirtinti skelbimai</a>
+                    </div>
+                    <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="">Pinterest segtukai</a>
+                    </div>
+                    <div style="margin-top: 1em" class="col-lg-8 mx-auto">
+                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="">Kategorijų valdymas</a>
+                    </div>
+
+
+                    @endauth
+                @else
+
             <div class="row">
             <div class="col-lg-7 col-md-10 col-10" style="margin-left: -100px">
                 <a class="btn btn-primary btn-xl2 js-scroll-trigger" style="margin-left: -150px" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
@@ -222,6 +244,7 @@
             </div>
         </div>
     </div>
+    @endif
 </header>
 
 

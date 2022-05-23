@@ -22,6 +22,7 @@ class CreateItemsAnnouncementTable extends Migration
             $table->string('information');
             $table->integer('change');
             $table->integer('hide')->default(0);
+            $table->integer('aprooved')->default(0);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('categorys_id')->constrained();
             $table->date('expiration')->default(Carbon::now()->addDays(30));

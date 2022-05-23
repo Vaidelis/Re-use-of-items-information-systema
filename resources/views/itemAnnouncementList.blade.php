@@ -52,7 +52,7 @@
                 <?php $smth = 0;?>
                 @foreach($images as $image)
                 @if(Auth::check())
-                @if($announcement->hide == 0 && $announcement->id == $image->item->id && $smth == 0)
+                @if($announcement->hide == 0 && $announcement->id == $image->item->id && $smth == 0 && $announcement->aprooved == 1)
                     <?php $smth++; ?>
                 <tr >
                     <td> <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
