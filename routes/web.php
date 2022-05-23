@@ -117,6 +117,9 @@ Route::get('/tagslist/tagedit/{id}', 'App\Http\Controllers\AdminController@showe
 Route::match(['put','patch'],'tagedit/{id}', 'App\Http\Controllers\AdminController@edittag')->name('tagedit');
 Route::post('/tagslist/store', 'App\Http\Controllers\AdminController@createtag')->name('tagcreate');
 
+Route::get('/catslist', 'App\Http\Controllers\AdminController@openCatslist')->name('listcats');
+Route::post('/catslist/store', 'App\Http\Controllers\AdminController@createcat')->name('catcreate');
+
 //----Auth
 Auth::routes();
 //Login google

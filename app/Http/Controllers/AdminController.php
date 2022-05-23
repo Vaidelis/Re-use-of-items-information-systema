@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\User;
 use App\Models\Service;
 use App\Models\Image;
+use Auth;
 use App\Models\ItemHasTags;
 use App\Models\Tag;
 use seregazhuk\PinterestBot\Factories\PinterestBot;
@@ -89,7 +91,7 @@ class AdminController extends Controller
 
     //Pinterest tags
     public function opentaglist(){
-        $tags = Tag::all();
+        $tags = Tag::orderBy('created_at', 'desc')->paginate(20);
         $cats = Category::all();
 
         return view('tagsList', compact('tags', 'cats'));
@@ -144,6 +146,27 @@ class AdminController extends Controller
         $createtag->save();
 
         return redirect()->route('taglist');
+    }
+    //categories
+    public function openCatslist(){
+        $cats = Category::orderBy('created_at', 'desc')->paginate(20);
+
+        //test purpose
+        $user = User::find(Auth::User()->id);
+        return view('categoryList', compact('cats', 'user'));
+    }
+    public function createcat(Request $request){
+
+        $request->validate([
+            'newcat' => 'required',
+        ]);
+
+        $createcat = new Category;
+        $createcat->name = $request->get('newcat');
+
+        $createcat->save();
+
+        return redirect()->route('listcats');
     }
 
 }

@@ -56,6 +56,11 @@
 
                                 </tbody>
                             </table>
+                            <div class="" name="action" value='html' style="text-align: center">
+                                <div class="bottom">
+                                    {!! $tags->links() !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

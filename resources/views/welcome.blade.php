@@ -143,7 +143,7 @@
                         <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('taglist')}}">Pinterest segtukai</a>
                     </div>
                     <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="">Kategorijų valdymas</a>
+                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('listcats')}}">Kategorijų valdymas</a>
                     </div>
 
 
