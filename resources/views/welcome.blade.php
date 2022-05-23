@@ -140,7 +140,7 @@
                         <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('unconfirmedann')}}">Nepatvirtinti skelbimai</a>
                     </div>
                     <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="">Pinterest segtukai</a>
+                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('taglist')}}">Pinterest segtukai</a>
                     </div>
                     <div style="margin-top: 1em" class="col-lg-8 mx-auto">
                         <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="">Kategorijų valdymas</a>

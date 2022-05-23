@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\Service;
 use App\Models\Image;
 use App\Models\ItemHasTags;
+use App\Models\Tag;
 use seregazhuk\PinterestBot\Factories\PinterestBot;
 use App\Support\Collection;
 
@@ -82,6 +83,49 @@ class AdminController extends Controller
         $service->hide = 1;
         $service->save();
         return redirect()->route('unconfirmedann')->with('status', 'Skelbimas sėkmingai ištrintas');
+    }
+
+    //Pinterest tags
+    public function opentaglist(){
+        $tags = Tag::all();
+
+        return view('tagsList', compact('tags'));
+    }
+    public function showedittag($id){
+        $tag = Tag::find($id);
+
+        //PinterestAPI and keywords
+        $bot = PinterestBot::create();
+
+        //First keyword
+        $pins = $bot->pins->search($tag->name)->take(30)->toArray();
+        $per_page = 3;
+        $pins = (new Collection($pins))->paginate($per_page);
+
+
+        return view('tagsEdit', compact('tag', 'pins'));
+    }
+    public function edittag(Request $request, $id){
+
+        $this->validate($request, [
+            'namelt' => 'required',
+            'name' => 'required',
+
+        ]);
+        $tag = Tag::findOrFail($id);
+        $name = $request->input('name');
+        $namelt = $request->input('namelt');
+        $tag->name = $name;
+        $tag->namelt = $namelt;
+
+
+        $tag->save();
+        return redirect()->route('opentag', $id)->with('status','Skelbimo informacija atnaujinta');
+
+    }
+    public function createtag(Request $request){
+        $newtag = $request->input('newtag');
+        dd($newtag);
     }
 
 }

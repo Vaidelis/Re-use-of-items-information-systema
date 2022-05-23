@@ -112,6 +112,11 @@ Route::get('/unconfirmedannouncements/service/{id}', 'App\Http\Controllers\Admin
 Route::get('/unconfirmedannouncements/service/{id}/decline', 'App\Http\Controllers\AdminController@declineService')->name('servicedecline');
 Route::get('/unconfirmedannouncements/service/{id}/aproove', 'App\Http\Controllers\AdminController@acceptService')->name('serviceaccept');
 
+Route::get('/tagslist', 'App\Http\Controllers\AdminController@opentaglist')->name('taglist');
+Route::get('/tagslist/tagedit/{id}', 'App\Http\Controllers\AdminController@showedittag')->name('opentag');
+Route::match(['put','patch'],'tagedit/{id}', 'App\Http\Controllers\AdminController@edittag')->name('tagedit');
+Route::post('/tagslist/store', 'App\Http\Controllers\AdminController@createtag')->name('tagcreate');
+
 //----Auth
 Auth::routes();
 //Login google
