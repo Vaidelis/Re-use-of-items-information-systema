@@ -81,8 +81,10 @@
                 <p>{{ $item->information }}<p>
                     @auth
                 <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button class="btn3 btn-primary btn-xl" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti</button></a>
-                        @if($bought == null || Auth::User()->id != $item->user_id)
-                <div id="paypal-button-container"> </div>
+                        @if($bought != null || Auth::User()->id == $item->user_id)
+                <div hidden id="paypal-button-container"> </div>
+                @else
+                    <div id="paypal-button-container"> </div>
                 @endif
                         <br>
                     <br>
