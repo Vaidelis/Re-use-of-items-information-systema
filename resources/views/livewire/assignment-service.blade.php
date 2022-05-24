@@ -23,7 +23,7 @@
                 </div>
             @endif
             <label class="label">Skelbimo pavadinimas: </label>
-            <input placeholder="Skelbimo pavadinimas" type="text" name="name" class="form-control" required/>
+            <input style="padding-left:12px" placeholder="Skelbimo pavadinimas" type="text" name="name" class="form-control" required/>
         </div>
         <div class="form-group">
             <label class="label">Skelbimo kaina: </label>
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <label class="label">Informacija: </label>
-            <input style="height:120px;" placeholder="Informacija apie paslaugas" type="text" name="info" class="form-control" required/>
+            <textarea style="padding-left:12px" style="height:120px;" placeholder="Informacija apie paslaugas" type="text" name="info" class="form-control" required> </textarea>
         </div>
 
         <div class="form-group">

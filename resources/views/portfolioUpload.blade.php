@@ -15,7 +15,7 @@
             @csrf
 
             <label class="label">Daikto pavadinimas: </label>
-            <input placeholder="Daikto pavadinimas" type="text" name="postname" class="form-control" required/>
+            <input style="padding-left:20px" placeholder="Daikto pavadinimas" type="text" name="postname" class="form-control" required/>
         </div>
         <label class="label">Daiktas prieš perdarymą: </label>
         <div class="form-group">

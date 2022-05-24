@@ -17,22 +17,41 @@
                 </center>
             @endif
         </div>
+        <br>
 
-        <div>
+
+        <div class="col-md-11 mt-60 mx-md-auto">
+            <div style="-webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0);box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0);position: center" class="login-box bg-white pl-lg-5 pl-0">
+                <div class="row no-gutters align-items-center">
+        <div class="col-md-6">
+            <div class="form-wrap bg-white">
+                <h4 class="btm-sep pb-3 mb-5">Pinterest segtukų pridėjimas</h4>
             <form method="post" action="{{route('tagcreate')}}">
                 @csrf
+                <div class="col-12">
+                    <div class="form-group position-relative">
                 <strong>Pinterest segtukas: </strong>
-                <input size="15" name="newtag" type="text" required>
-                <strong>Kategorija</strong>
-                <select name="kategorija">
+                <input style="width: 70%;padding-left:10px;border: 1px solid #e1e1e1;-webkit-box-shadow: none;border-radius: 5px;-webkit-transition: all .3s ease;" size="15" name="newtag" type="text" required>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group position-relative">
+                <strong>Kategorija: </strong>
+                        <br>
+                <select style="width: 70%; height: 30px;border: 1px solid #e1e1e1;-webkit-box-shadow: none;border-radius: 5px;-webkit-transition: all .3s ease;" name="kategorija">
                     <option value="">Pasirinkite kategorija</option>
                     @foreach($cats as $cat)
-                        <option name="category" value="{{$cat->id}}">{{$cat->name}}</option>
+                        <option value="{{$cat->id}}">{{$cat->name}}</option>
                     @endforeach
                 </select>
-                <input type="submit" value="Sukurti" />
+                    </div>
+                </div>
+                <input style="height: 40px;width: 110px" class="btn3 btn-primary btn-xl" type="submit" value="Sukurti" />
             </form>
-
+        </div>
+        </div>
+                </div>
+            </div>
         </div>
         <div class="row py-5">
             <div class="col-lg-10 mx-auto">
@@ -58,7 +77,7 @@
                                     <td>{{$tag->category->name}}</td>
                                     <td>{{$tag->like}}</td>
                                     <td>{{$tag->created_at->todatestring()}}</td>
-                                    <td><a href="{{route('opentag', $tag->id)}}"><button>Atidaryti</button></a></td>
+                                    <td><a href="{{route('opentag', $tag->id)}}"><button style="height: 40px;width: 110px;" class="btn3 btn-primary btn-xl">Atidaryti</button></a></td>
                                 </tr>
                                 @endforeach
 

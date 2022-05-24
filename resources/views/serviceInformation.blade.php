@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
+
+
+
     <body style="margin-top: 0px;">
 
     <div class="container">
@@ -9,7 +12,8 @@
             <hr>
             @Auth
                 @if(Auth::user()->id == $service->user_id)
-                    <a onclick="return confirm('Ar tikrai norite ištrinti šį skelbimą?')"  href="{{route('servicedestroy', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
+                    <!-- Button HTML (to Trigger Modal) -->
+                    <a href="#modalCenter" role="button" data-bs-toggle="modal"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
                         @if(Auth::user()->id == $service->user_id)
                             <a href="{{route('serviceedit', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Redaguoti</button></a>
                         @endif
@@ -79,7 +83,7 @@
             <p class="infoHeader">Aprašymas</p>
             <p class="info"><b>{{ $service->information }}</b><p>
                 @auth
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('servicebuy', [ 'id' => $service->id, 'userid' => $service->user_id])}}"><button <?php if($bought != null || Auth::User()->id == $service->user_id){ ?> disabled <?php }?> class="btn3 btn-primary btn-xl" >Pirkti</button></a>
+                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="#modalBuy" role="button" data-bs-toggle="modal"><button <?php if($bought != null || Auth::User()->id == $service->user_id){ ?> disabled <?php }?> class="btn3 btn-primary btn-xl" >Pirkti</button></a>
                 @endauth
         </div>
 
@@ -100,5 +104,81 @@
 
             <!-- Custom scripts for this template -->
             <script src="/js/creative.min.js"></script>
+
+
+            <!-- Modal HTML -->
+            <div id="modalCenter" class="modal fade" tabindex="-1">
+                <div class="modal-dialog modal-confirm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="icon-box">
+                                <span style="font-size: 35px" class="material-icons">&#xE5CD;</span>
+                            </div>
+                            <h4 class="modal-title">Ar tikrai norite ištrinti?</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Ar tikrai norite ištrinti šį skelbimą? Po ištrynimo skelbimo nebebus.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Atšaukti</button>
+                            <a href={{route('servicedestroy', $service->id)}}><button style="width:25px" class="btn btn-danger">Ištrinti</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal buy HTML -->
+            <div id="modalBuy" class="modal fade" tabindex="-1">
+                <div class="modal-dialog modal-confirm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Daikto įsigyjimas</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="paypal-button-container"> </div>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=AV8fUiAHK7J8KOabpygdfCxRRxs4aS3vleP6EY6yFKGgWEHOlcDippe4p5tJpq-F_qiWt-sOk7IeShD0&currency=USD"></script>
+
+            <script>
+                paypal.Buttons({
+                    // Sets up the transaction when a payment button is clicked
+                    createOrder: (data, actions) => {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: '{{$service->price}}' // Can also reference a variable or function
+                                }
+                            }]
+                        });
+                    },
+                    // Finalize the transaction after payer approval
+                    onApprove: (data, actions) => {
+                        return actions.order.capture().then(function(orderData) {
+                            // Successful capture! For dev/demo purposes:
+                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                            const transaction = orderData.purchase_units[0].payments.captures[0];
+                            actions.redirect("{{route('servicebuy', [ 'id' => $service->id, 'userid' => $service->user_id])}}");
+                            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details1`);
+
+
+
+                            // When ready to go live, remove the alert and show a success message within this page. For example:
+                            // const element = document.getElementById('paypal-button-container');
+                            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                            // Or go to another URL:  actions.redirect('thank_you.html');
+                        });
+                    }
+                }).render('#paypal-button-container');
+            </script>
     </body>
 @endsection

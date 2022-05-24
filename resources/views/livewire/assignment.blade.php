@@ -23,7 +23,7 @@
     </div>
     @endif
     <label class="label">Skelbimo pavadinimas: </label>
-    <input placeholder="Skelbimo pavadinimas" type="text" name="name" class="form-control" required/>
+    <input style="padding-left:12px" placeholder="Skelbimo pavadinimas" type="text" name="name" class="form-control" required/>
 </div>
         <div class="form-group">
             <label class="label">Skelbimo kaina: </label>
@@ -31,11 +31,11 @@
         </div>
         <div class="form-group">
             <label class="label">Adresas: </label>
-            <input placeholder="Adresas"  type="text" name="address" class="form-control" required/>
+            <input style="padding-left:12px" placeholder="Adresas"  type="text" name="address" class="form-control" required/>
         </div>
         <div class="form-group">
             <label class="label">Informacija: </label>
-            <input style="height:120px;" placeholder="Informacija apie daiktą" type="text" name="info" class="form-control" required/>
+            <textarea style="height:120px; vertical-align: top" placeholder="Informacija apie daiktą" type="text" name="info" class="form-control" required> </textarea>
         </div>
     <div class="form-group">
         <strong>Ar domina keitimosi pasiūlymai?:</strong>

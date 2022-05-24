@@ -17,7 +17,7 @@
                                     <div class="col-12">
                                         <div class="form-group position-relative">
                                             <span class="zmdi zmdi-account"></span>
-                                            <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Slapyvardis" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                            <input type="text" style="padding-left: 60px" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Slapyvardis" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                             @error('name')
                                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -3,6 +3,11 @@
 @section('content')
 
     <body style="margin-top: 0px;">
+    <style>
+        .text{
+            padding-left: 10px;
+        }
+    </style>
 
     <div class="container">
         <div style="text-align: center">
@@ -36,7 +41,7 @@
                 {{Form::text('name', $tag->name, ['size' => 20, 'placeholder' => 'Pinterest segtuko angliškas pavadinimas'])}}
             </div>
             <div class="form-group">
-                {{ Form::submit('Saugoti', ['class'=>'btn btn-primary'])}}
+                {{ Form::submit('Saugoti', ['class'=>'btn3 btn-primary'])}}
             </div>
         </div>
                 <div class="col-lg-9 col-md-12 col-12">

@@ -7,6 +7,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            textarea {
+                width: 100%;
+                height: 150px;
+                padding: 12px 20px;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                background-color: #f8f8f8;
+                font-size: 16px;
+                resize: none;
+            }
+        </style>
     </head>
 
 
@@ -151,7 +164,8 @@
 
             <label class="label">Komenataras apie tiekėjo suteiktas paslaugas: </label>
                 @csrf
-            <input placeholder="Komentaras" type="text" name="comment" class="form-control" required/>
+                <textarea cols="25" rows="5" placeholder="Komentaras" name="comment" class="form-control" style="resize: none;padding: 10px;" autofocus required> </textarea>
+
                 <br>
                 <select name="stars" placeholder="Testo lygis" style="width: 300px; position: center;">
                     <option value="1">&#9733;</option>

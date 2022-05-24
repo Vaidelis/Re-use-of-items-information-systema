@@ -2,7 +2,6 @@
 @section('content')
 
 
-
 <body style="margin-top: 0px;">
 
 <div class="container">
@@ -11,7 +10,8 @@
         <hr>
         @if(Auth::check())
             @if(Auth::user()->id == $item->user_id)
-                   <a onclick="return confirm('Ar tikrai norite ištrinti šį skelbimą?')" href="{{route('itemdestroy', $item->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
+                <!-- Button HTML (to Trigger Modal) -->
+                <a href="#modalCenter" role="button" data-bs-toggle="modal"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Ištrinti</button></a>
                     @if(Auth::user()->id == $item->user_id)
                         <a href="{{route('itemedit', $item->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Redaguoti</button></a>
                     @endif
@@ -80,12 +80,7 @@
                 <p style="font-weight: bold">Aprašymas</p>
                 <p>{{ $item->information }}<p>
                     @auth
-                <a style="height: 40px; margin-top:auto; margin-bottom: auto;" href="{{route('itembuy', ['id' => $item->id, 'userid' => $item->user_id])}}"><button class="btn3 btn-primary btn-xl" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti</button></a>
-                        @if($bought != null || Auth::User()->id == $item->user_id)
-                <div hidden id="paypal-button-container"> </div>
-                @else
-                    <div id="paypal-button-container"> </div>
-                @endif
+                        <a href="#modalBuy" role="button" style="height: 40px; margin-top:auto; margin-bottom: auto;"  data-bs-toggle="modal"><button class="btn3 btn-primary btn-xl" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti</button></a>
                         <br>
                     <br>
                     <a href="#services" class="js-scroll-trigger"><button style="width: 250px;" class="btn btn-primary btn-xl js-scroll-trigger">Perdirbimo paslaugos</button></a>
@@ -208,6 +203,7 @@
 
                 </tbody>
             </table>
+
             {{-- Pagination --}}
             <div class="" name="paramName" value='html' style="float:left">
                 <div class="bottom">
@@ -217,8 +213,49 @@
         </div>
     </div>
     @endauth
+    <!-- Modal HTML -->
+    <div id="modalCenter" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-confirm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <span style="font-size: 35px" class="material-icons">&#xE5CD;</span>
+                    </div>
+                    <h4 class="modal-title">Ar tikrai norite ištrinti?</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Ar tikrai norite ištrinti šį skelbimą? Po ištrynimo skelbimo nebebus.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Atšaukti</button>
+                    <a href="{{route('itemdestroy', $item->id)}}"><button style="width:25px" class="btn btn-danger">Ištrinti</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    <!-- Modal buy HTML -->
+    <div id="modalBuy" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-confirm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Daikto įsigyjimas</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="paypal-button-container"> </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     <script src="https://www.paypal.com/sdk/js?client-id=AV8fUiAHK7J8KOabpygdfCxRRxs4aS3vleP6EY6yFKGgWEHOlcDippe4p5tJpq-F_qiWt-sOk7IeShD0&currency=USD"></script>
 
     <script>
@@ -264,11 +301,12 @@
             }
         })(i);
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="/js/creative.min.js"></script>
-        </body>
+
 @endsection
