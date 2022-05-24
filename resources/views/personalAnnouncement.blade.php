@@ -93,7 +93,7 @@
 <div id="myModal" class="modal">
 
     <!-- Modal content -->
-    <div class="modal-content">
+    <div class="modal-content" style="width: 30%;height: 20%">
         <span class="close">&times;</span>
         <h4 style="text-align: center" class="testListSplashText">Skelbimo tipas</h4>
         <hr>

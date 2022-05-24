@@ -158,7 +158,7 @@
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content" style="width: 30%;height: 40%">
             <span class="close">&times;</span>
             <form method="post" action="{{route('servicerate', $id)}}" enctype="multipart/form-data">
 

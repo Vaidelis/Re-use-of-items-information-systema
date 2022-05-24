@@ -39,7 +39,7 @@
                         <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <p>Ar tikrai norite ištrinti šį skelbimą? Po ištrynimo skelbimo nebebus.</p>
+                        <p>Ar tikrai norite ištrinti šį pokalbį? Po ištrynimo pokalbio nebebus.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" data-bs-dismiss="modal">Atšaukti</button>

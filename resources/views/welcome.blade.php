@@ -200,10 +200,9 @@
                     <tbody>
                     @foreach($services as $service)
                         <?php $smth = 0;?>
-                        @if($serviceimg == null)
+                        @if($serviceimg != null)
                         @foreach($serviceimg as $img)
                             <?php $smth = $smth + 1 ?>
-
                             <tr >
                                 @if($service->id == $img->services_announcement_id && $img->path != null)
                                     <td> <img class="img-fluid" src="{{asset($img->path)}}" alt="{{$img->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
@@ -232,22 +231,19 @@
 
                                 @endforeach
                                     @else
+                                        <td> <img class="img-fluid" src="/img/noimg.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
 
+                                        <td style="text-align: left">{{ $service->name }}</td>
+                                        <td>{{ $service->price }}</td>
+
+                                        <td>
+                                            <a href="{{route('serviceshow', $service->id)}}">
+                                                <button class="btn3 btn-primary">Pasirinkti</button>
+                                            </a>
+                                        </td>
+                            </tr>
                                     @endif
                                 @endforeach
-                                </td>
-                                    <td> <img class="img-fluid" src="/img/noimg.jpg" alt="" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
-
-                                    <td style="text-align: left">{{ $service->name }}</td>
-                                    <td>{{ $service->price }}</td>
-
-                                    <td>
-                                        <a href="{{route('serviceshow', $service->id)}}">
-                                            <button class="btn3 btn-primary">Pasirinkti</button>
-                                        </a>
-                                    </td>
-                                </td>
-                            </tr>
                     </tbody>
                 </table>
             </div>

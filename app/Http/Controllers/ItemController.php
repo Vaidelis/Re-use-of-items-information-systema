@@ -575,41 +575,42 @@ class ItemController extends Controller
     //Search by categorys items
     public function searchbycats(Request $request){
        //dd($request->input('searchcat'));
-        $announcements = Item::where(['categorys_id' => $request->input('searchcat')])->get();
+        $announcements = Item::where(['categorys_id' => $request->input('searchcat')])->paginate(20);
         $images = Image::all();
         $categorys = Category::all();
-        $count = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        $count = Item::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
         return view('itemAnnouncementList', compact('announcements', 'images', 'categorys', 'count'));
     }
     public function searchbycatsservice(Request $request){
         //dd($request->input('searchcat'));
-        $services = Service::where(['categorys_id' => $request->input('searchcat')])->get();
+        $services = Service::where(['categorys_id' => $request->input('searchcat')])->paginate(20);
         $categorys = Category::all();
-        $count = Service::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        $count = Service::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
         return view('serviceAnnouncementList', compact('services', 'categorys', 'count'));
     }
     public function searchkey(Request $request){
-
        $result = Search::addMany([
-           [Item::class, ['name', 'information']],
-           [Service::class, ['name', 'information']]
+           [Item::where(['aprooved' => 1, 'hide' => 0]), 'name', 'information'],
+           [Service::where(['aprooved' => 1, 'hide' => 0]), 'name', 'information']
        ])->beginWithWildcard()->search($request->input('search'));
         $images = Image::all();
         $cats = $result->unique('categorys_id');
 
         $countservice = Service::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
         $countitem = Item::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
+
+        
         return view('search', compact('result', 'images', 'cats', 'countservice', 'countitem'));
     }
     public function searchbycatsandservices(Request $request){
         $result = Search::addMany([
-            [Item::class, ['categorys_id']],
-            [Service::class, ['categorys_id']]
+            [Item::where(['aprooved' => 1, 'hide' => 0]), ['categorys_id']],
+            [Service::where(['aprooved' => 1, 'hide' => 0]), ['categorys_id']]
         ])->beginWithWildcard()->search($request->input('searchcat'));
         $images = Image::all();
         $cats = $result->unique('categorys_id');
-        $countservice = Service::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
-        $countitem = Item::groupBy('categorys_id')->selectRaw('count(*) as count, categorys_id')->get();
+        $countservice = Service::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
+        $countitem = Item::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
 
         return view('search', compact('result', 'images', 'cats', 'countservice', 'countitem'));
     }

@@ -23,26 +23,25 @@
                 </thead>
                 <form action="{{route('searchitemsservices')}}">
                     <tbody>
-                    <?php $smth = 0; ?>
-            @foreach($cats as $cat)
-                <?php $smth = 0; ?>
-                @foreach($countitem as $ci)
-                    @if($cat->categorys_id == $ci->categorys_id && $loop->count > $smth)
-                        <?php $smth++; ?>
-                <tr>
-                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}} (Daiktai - ({{$ci->count}})
 
+            @foreach($cats as $cat)
+                @foreach($countitem as $c)
+                    @if($c->categorys_id == $cat->category->id)
+                <tr>
+                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}} Daiktai - ({{$c->count}})</td>
+                </tr>
+                        @break
+                @endif
+                @endforeach
+            @endforeach
+            @foreach($cats as $cat)
+                @foreach($countservice as $c)
+                    @if($c->categorys_id == $cat->category->id)
+                        <tr>
+                            <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}} Paslaugos - ({{$c->count}})</td>
+                        </tr>
                         @break
                     @endif
-                @endforeach
-                        @foreach($countservice as $cs)
-                            @if($cat->categorys_id == $cs->categorys_id && $countitem->count() > 0)
-                                (Paslaugos - ({{$cs->count}})
-                        </td>
-                    @else
-                        <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}} (Paslaugos - ({{$cs->count}}) </td>
-                </tr>
-                @endif
                 @endforeach
             @endforeach
             <tr><td><button class="btn3 btn-primary">Ieškoti</button></td></tr>
