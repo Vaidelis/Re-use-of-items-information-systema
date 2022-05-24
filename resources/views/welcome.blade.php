@@ -34,8 +34,20 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Daiktų antrinio IS</a>
+    <div class="container" style="display:flex; flex-direction: row">
+        <div style="width: 132px;margin-left: 35px;">
+            <form action="{{route('keywordsearch')}}">
+                <div style="clear:both; text-align: left" class="searchBox" style="top: 0;left:0;transform: translate(-60%, 60%);margin-top: -65px;margin-right: 30px">
+                    <input class="searchInput" type="text" name="search" placeholder="Search">
+                    <button class="searchButton" href="#">
+                        <i class="material-icons">
+                            search
+                        </i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <a class="navbar-brand js-scroll-trigger" style="padding: 10px 0px" href="#page-top">DAPIS</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -103,16 +115,7 @@
             </ul>
         </div>
     </div>
-    <form action="{{route('keywordsearch')}}">
-    <div style="clear:both; text-align: left" class="searchBox">
-        <input class="searchInput" type="text" name="search" placeholder="Search">
-        <button class="searchButton" href="#">
-            <i class="material-icons">
-                search
-            </i>
-        </button>
-    </div>
-    </form>
+
 </nav>
 
 

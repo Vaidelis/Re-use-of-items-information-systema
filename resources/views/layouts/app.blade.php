@@ -42,7 +42,19 @@
 <div>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="headerNav">
     <div class="container">
-        <a href="{{url('')}}" class="navbar-brand js-scroll-trigger" href="#page-top">Daiktų antrinio panaudojimo IS</a>
+        <div style="width: 132px;margin-left: 35px;">
+        <form action="{{route('keywordsearch')}}">
+            <div class="searchBox">
+                <input class="searchInput"type="text" name="search" placeholder="Search">
+                <button class="searchButton" href="#">
+                    <i class="material-icons">
+                        search
+                    </i>
+                </button>
+            </div>
+        </form>
+        </div>
+        <a href="{{url('')}}" class="navbar-brand js-scroll-trigger" href="#page-top">DAPIS</a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -111,16 +123,7 @@
             </ul>
         </div>
     </div>
-<form action="{{route('keywordsearch')}}">
-<div style="top:5%; left:15%" class="searchBox">
-    <input class="searchInput"type="text" name="search" placeholder="Search">
-    <button class="searchButton" href="#">
-        <i class="material-icons">
-            search
-        </i>
-    </button>
-</div>
-</form>
+
 </nav>
 </div>
 
