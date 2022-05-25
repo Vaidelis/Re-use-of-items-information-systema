@@ -22,14 +22,17 @@
 
 
         <div class="row">
+
             <div class="col-lg-3 col-md-12 col-12">
+                <table class="content-table">
             {!! Form::open(['action' => ['App\Http\Controllers\AdminController@edittag',$tag->id], 'method'=>'POST']) !!}
             @csrf
             {{Form::hidden('_method', 'PATCH')}}
 
 
+                    <tbody>
 
-            <div class="form-group">
+          <td> <div class="form-group">
                 {{Form::label('namelt', 'Pinterest segtukas(LT)')}}
                 <br>
                 {{Form::text('namelt', $tag->namelt, ['size' => 20, 'placeholder' => 'Pinterest segtuko lietuviškas pavadinimas'])}}
@@ -43,7 +46,11 @@
             <div class="form-group">
                 {{ Form::submit('Saugoti', ['class'=>'btn3 btn-primary'])}}
             </div>
+          </td>
+                    </tbody>
+                </table>
         </div>
+
                 <div class="col-lg-9 col-md-12 col-12">
                     <table class="content-table">
                         <thead>
@@ -60,7 +67,7 @@
                     @csrf
                     {{-- Pagination --}}
                     <div class="" name="action" value='html' style="float:right">
-                        <div class="bottom">
+                        <div style="margin-left: -600px" class="bottom">
                             {!! $pins->links() !!}
                         </div>
                     </div>

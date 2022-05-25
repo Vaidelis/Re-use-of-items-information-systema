@@ -11,11 +11,20 @@
     </div>
     <div class="container">
         <div>
-            <form method="post" action="{{route('catcreate')}}">
-                @csrf
-                <input size="15" name="newcat" type="text" required>
-                <input type="submit" value="Sukurti" />
-            </form>
+            <table style="width: 31%" class="content-table">
+                <tbody>
+                <td>
+                    <form method="post" action="{{route('catcreate')}}">
+                        @csrf
+                        <strong>Kategorijos pavadinimas: </strong>
+                        <br>
+                        <input style="width: 65%;padding-left:10px;border: 1px solid #e1e1e1;-webkit-box-shadow: none;border-radius: 5px;-webkit-transition: all .3s ease;" size="15" name="newcat" type="text" required>
+                        <input style="height: 40px;width: 100px" class="btn3 btn-primary btn-xl" type="submit" value="Sukurti" />
+                    </form>
+                </td>
+                </tbody>
+            </table>
+
 
         </div>
 <div class="form-group">

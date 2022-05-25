@@ -80,7 +80,7 @@
                 <p style="font-weight: bold">Aprašymas</p>
                 <p>{{ $item->information }}<p>
                     @auth
-                        <a href="#modalBuy" role="button" style="height: 40px; margin-top:auto; margin-bottom: auto;"  data-bs-toggle="modal"><button class="btn3 btn-primary btn-xl" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti</button></a>
+                        <a href="#modalBuy" role="button" style="height: 40px; margin-top:auto; margin-bottom: auto;"  data-bs-toggle="modal"><button style="width: 110px" class="btn3 btn-primary btn-xl" <?php if($bought != null || Auth::User()->id == $item->user_id){ ?> disabled <?php }?>  class="">Pirkti</button></a>
                         <br>
                     <br>
                     <a href="#services" class="js-scroll-trigger"><button style="width: 250px;" class="btn btn-primary btn-xl js-scroll-trigger">Perdirbimo paslaugos</button></a>
@@ -145,7 +145,7 @@
                 @if($serv->service->hide == 0)
                     <tr>
                     <td><a class="" href="{{route('serviceshow', $serv->service->id)}}">{{$serv->service->name}}</a></td>
-                   <td> <a href="{{route('saveserviceinitem', ['id' => $item->id, 'servid' => $serv->service->id])}}"><button class="btn3 btn-primary btn-xl"
+                   <td> <a href="{{route('saveserviceinitem', ['id' => $item->id, 'servid' => $serv->service->id])}}"><button style="width: 100px" class="btn3 btn-primary btn-xl"
                             <?php foreach($itemhasservice as $itemhas){
                             if($serv->services_announcement_id != $itemhas->services_announcement_id){
                             }
@@ -175,7 +175,7 @@
                            <td> <form method="POST" action="{{route('itemnoservice', ['id' => $item->id, 'someid' => $serv->id])}}" id="deleteForm">
                                 @csrf
                                 @method('DELETE')
-                                <a><button class="btn3 btn-primary btn-xl" type="submit">Pamiršti</button></a>
+                                <a><button style="width: 110px" class="btn3 btn-primary btn-xl" type="submit">Pamiršti</button></a>
                             </form> </td>
                         </tr>
                     @endif

@@ -134,19 +134,19 @@
             @if(Auth::check() && Auth::User()->role == 1)
 
             <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
+                <a style="width: 230px" class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
             </div>
                 <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                    <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('serviceannounc')}}">Paslaugų skelbimai</a>
+                    <a style="width: 230px" class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('serviceannounc')}}">Paslaugų skelbimai</a>
                 </div>
                     <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('unconfirmedann')}}">Nepatvirtinti skelbimai</a>
+                        <a style="width: 230px" class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('unconfirmedann')}}">Nepatvirtinti skelbimai</a>
                     </div>
                     <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('taglist')}}">Pinterest segtukai</a>
+                        <a style="width: 230px" class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('taglist')}}">Pinterest segtukai</a>
                     </div>
                     <div style="margin-top: 1em" class="col-lg-8 mx-auto">
-                        <a class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('listcats')}}">Kategorijų valdymas</a>
+                        <a style="width: 230px" class="btn btn-primary btn-xl2 js-scroll-trigger" href="{{route('listcats')}}">Kategorijų valdymas</a>
                     </div>
                 @else
 

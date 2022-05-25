@@ -599,7 +599,7 @@ class ItemController extends Controller
         $countservice = Service::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
         $countitem = Item::groupBy('categorys_id')->where(['aprooved' => 1, 'hide' => 0])->selectRaw('count(*) as count, categorys_id')->get();
 
-        
+
         return view('search', compact('result', 'images', 'cats', 'countservice', 'countitem'));
     }
     public function searchbycatsandservices(Request $request){
