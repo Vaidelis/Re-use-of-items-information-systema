@@ -43,8 +43,9 @@
     </div>
 
         <div class="form-group">
+            <label>
             <img style="height: 50px; width: 50px" src="/img/picture.svg.png">
-            <input id="file-input" type="file" name="images[]" multiple class="file" data-overwrite-initial="false" accept="image/*" required>
+            <input id="file-input" type="file" style="display: none" name="images[]" multiple class="file" data-overwrite-initial="false" accept="image/*" required>
             @if ($errors->has('files'))
                 @foreach ($errors->get('files') as $error)
                     <span class="invalid-feedback" role="alert">
@@ -52,7 +53,7 @@
                                      </span>
                 @endforeach
             @endif
-
+            </label>
             <div id="preview"></div>
         </div>
         <div class="form-group">

@@ -7,9 +7,9 @@
         <div style="text-align: center">
             <h4 class="">Pasirinktos paslaugos skelbimo informacija</h4>
             <hr>
-            <a  href="{{route('servicedecline', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Nepatvirtinti</button></a>
-            <a  href="{{route('serviceaccept', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Patvirtinti</button></a>
-            <a  href="{{ url('unconfirmedann') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;">Atgal</button></a>
+            <a  href="{{route('serviceaccept', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;width: 150px">Patvirtinti</button></a>
+            <a  href="{{route('servicedecline', $service->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;width: 150px">Nepatvirtinti</button></a>
+            <a  href="{{ url('unconfirmedann') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;width: 150px">Atgal</button></a>
             <hr>
         </div>
 
