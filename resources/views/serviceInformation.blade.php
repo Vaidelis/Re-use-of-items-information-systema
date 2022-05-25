@@ -24,7 +24,7 @@
                 @if(Auth::user()->id != $service->user_id)
                     <a  href="{{route('rememberservice', $service->id)}}"><button class="btn3 btn-primary btn-xlr" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
 
-                    <form method="POST" action="{{route('serviceforget', $service->id)}}" id="deleteForm">
+                    <form style="display: inline" method="POST" action="{{route('serviceforget', $service->id)}}" id="deleteForm">
                         @csrf
                         @method('DELETE')
                         <button class="btn3 btn-primary btn-xl" <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
@@ -47,15 +47,15 @@
             @foreach($portphotos as $image)
 
                     @if($counter == 0 && $image->name != null)
-                        <img class="img-fluid pb-1" src="{{asset($image->path)}}" alt="{{ $image->path }}" id="MainImg" style="width: 440px; height: 430px; object-fit: cover;" />
+                        <img class="img-fluid pb-1" src="{{asset($image->path2)}}" alt="{{ $image->path2 }}" id="MainImg" style="width: 440px; height: 430px; object-fit: cover;" />
                         <?php $counter = $counter + 1; $ifcan = $ifcan + 1;?>
                         <div class="small-img-group">
                             <div class="small-img-col">
-                                <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" />
+                                <img class="img-fluid" src="{{asset($image->path2)}}" alt="{{ $image->path2 }}" style="width: 100px; height: 100px; object-fit: cover;" />
                             </div>
                             @elseif($image->name != null)
                                 <div class="small-img-col">
-                                    <img class="img-fluid" src="{{asset($image->path)}}" alt="{{ $image->path }}" style="width: 100px; height: 100px; object-fit: cover;" />
+                                    <img class="img-fluid" src="{{asset($image->path2)}}" alt="{{ $image->path2 }}" style="width: 100px; height: 100px; object-fit: cover;" />
                                 </div>
                             @endif
 

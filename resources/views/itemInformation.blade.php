@@ -24,7 +24,7 @@
                 <a href="{{route('rememberitem', $item->id)}}"><button class="btn3 btn-primary btn-xl" <?php if($remember != null){ ?> hidden <?php }?> style="cursor: pointer;">Įsiminti</button></a>
                 @endif
         @endauth
-                <form method="POST" action="{{route('itemforget', $item->id)}}" id="deleteForm">
+                <form style="display: inline" method="POST" action="{{route('itemforget', $item->id)}}" id="deleteForm">
                     @csrf
                     @method('DELETE')
                  <button class="btn3 btn-primary btn-xl" style="cursor: pointer; overflow: auto" <?php if($remember == null){ ?> hidden <?php }?> type="submit">Pamiršti</button>
@@ -62,7 +62,7 @@
             </div>
             <div class="col-lg-6 col-md-12 col-12">
               <h3 style="font-weight: bold">{{ $item->name }}</h3>
-                <h2 style="font-weight: bold">{{ $item->price }} eurų</h2>
+                <h2 style="font-weight: bold">{{ $item->price }} €</h2>
                 @if($bought != null)
                     <p style="color:red" class="name"><b>Daiktas yra nupirktas</b></p>
                 @endif
@@ -187,7 +187,7 @@
         <div style="clear:both" class="container2">
             <table class="content-table">
                 <thead>
-                <th style="text-align: center">Išsaugoti pinai</th>
+                <th style="text-align: center">Perdarymo pavyzdžiai </th>
                 </thead>
                 <tbody class="row">
                     @foreach($itemhaspins as $pins)

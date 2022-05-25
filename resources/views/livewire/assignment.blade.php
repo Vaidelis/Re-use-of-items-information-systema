@@ -13,7 +13,7 @@
     <br>
     @if(!is_null($tags))
     <div class="form-group">
-        <strong>Žymos:</strong>
+        <strong>Pinterest segtukai:</strong>
 
         <div class="rows">
             @foreach($tags as $tag)
@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
             <label class="label">Informacija: </label>
-            <textarea style="height:120px; vertical-align: top" placeholder="Informacija apie daiktą" type="text" name="info" class="form-control" required> </textarea>
+            <textarea rows="4" cols="50" style="height:120px; vertical-align: top" name="info" class="form-control" required></textarea>
         </div>
     <div class="form-group">
         <strong>Ar domina keitimosi pasiūlymai?:</strong>

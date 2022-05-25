@@ -14,7 +14,7 @@
             <br>
             @if(!is_null($tags))
                 <div class="form-group">
-                    <strong>Žymos:</strong>
+                    <strong>Pinterest segtukai:</strong>
                     <div class="rows">
                     @foreach($tags as $tag)
                     <div><input class="single-checkbox" name="tags[]" type="checkbox" wire:model="selectedTag" value="{{$tag->id}}"<?php if(count($selectedTag) >= 3){ ?> onclick="return false;" <?php } ?>>  {{$tag->namelt}}</div>
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <label class="label">Informacija: </label>
-            <textarea style="padding-left:12px" style="height:120px;" placeholder="Informacija apie paslaugas" type="text" name="info" class="form-control" required> </textarea>
+            <textarea style="padding-left:12px" style="height:120px;" placeholder="Informacija apie paslaugas" type="text" name="info" class="form-control" required></textarea>
         </div>
 
         <div class="form-group">

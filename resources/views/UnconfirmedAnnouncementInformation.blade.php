@@ -9,7 +9,7 @@
             <hr>
             <a href="{{route('itemaccept', $item->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer; width: 150px">Patvirtinti</button></a>
             <a href="{{route('itemdecline', $item->id)}}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer; width: 150px">Nepatvirtinti</button></a>
-            <a href="{{ url('personalAnnouncement') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;width: 150px">Atgal</button></a>
+            <a href="{{ route('unconfirmedann') }}"><button class="btn3 btn-primary btn-xl" style="cursor: pointer;width: 150px">Atgal</button></a>
         </div>
         <hr>
         <?php $counter = 0; ?>

@@ -204,8 +204,8 @@
                         @foreach($serviceimg as $img)
                             <?php $smth = $smth + 1 ?>
                             <tr >
-                                @if($service->id == $img->services_announcement_id && $img->path != null)
-                                    <td> <img class="img-fluid" src="{{asset($img->path)}}" alt="{{$img->path }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
+                                @if($service->id == $img->services_announcement_id && $img->path2 != null)
+                                    <td> <img class="img-fluid" src="{{asset($img->path2)}}" alt="{{$img->path2 }}" style="width: 100px; height: 100px; object-fit: cover;" /> </td>
 
                                     <td style="text-align: left">{{ $service->name }}</td>
                                     <td>{{ $service->price }}</td>

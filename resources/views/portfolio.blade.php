@@ -164,7 +164,7 @@
 
             <label class="label">Komenataras apie tiekėjo suteiktas paslaugas: </label>
                 @csrf
-                <textarea cols="25" rows="5" placeholder="Komentaras" name="comment" class="form-control" style="resize: none;padding: 10px;" autofocus required> </textarea>
+                <textarea cols="25" rows="5" placeholder="Komentaras" name="comment" class="form-control" style="resize: none;padding: 10px;" autofocus required></textarea>
 
                 <br>
                 <select name="stars" placeholder="Testo lygis" style="width: 300px; position: center;">

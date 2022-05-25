@@ -25,24 +25,9 @@
                     <tbody>
 
             @foreach($cats as $cat)
-                @foreach($countitem as $c)
-                    @if($c->categorys_id == $cat->category->id)
                 <tr>
-                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}} Daiktai - ({{$c->count}})</td>
+                    <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}}</td>
                 </tr>
-                        @break
-                @endif
-                @endforeach
-            @endforeach
-            @foreach($cats as $cat)
-                @foreach($countservice as $c)
-                    @if($c->categorys_id == $cat->category->id)
-                        <tr>
-                            <td><input type="radio" class="single-checkbox" name="searchcat" value="{{$cat->category->id}}"> {{$cat->category->name}} Paslaugos - ({{$c->count}})</td>
-                        </tr>
-                        @break
-                    @endif
-                @endforeach
             @endforeach
             <tr><td><button class="btn3 btn-primary">Ieškoti</button></td></tr>
 
