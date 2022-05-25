@@ -81,7 +81,7 @@
                     </li>
                 @endauth
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">Apie</a>
+                    <a class="nav-link js-scroll-trigger" href="{{url('/')}}#about">Apie</a>
 
                 </li>
                     @auth
@@ -90,7 +90,7 @@
                 </li>
                     @endauth
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Kontaktai</a>
+                    <a class="nav-link js-scroll-trigger" href="{{url('/')}}#contact">Kontaktai</a>
                 </li>
                 @if (Route::has('login'))
                     @auth

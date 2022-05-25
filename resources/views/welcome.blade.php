@@ -59,7 +59,7 @@
                         <a class="nav-link dropdown-toggle" id="dropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Mano skelbimai
                         </a>
-                        <div style="" class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                        <div style="transform: translate(130px, 0px)" class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{{route('personalAnn')}}">Mano skelbimai</a>
                             <a class="dropdown-item" href="{{route('rememberAnn')}}">Įsiminti skelbimai</a>
                             <a class="dropdown-item" href="{{route('boughtitemshow')}}">Nupirkti daiktai</a>
@@ -152,7 +152,7 @@
 
             <div class="row">
             <div class="col-lg-7 col-md-10 col-10" style="margin-left: -100px">
-                <a class="btn btn-primary btn-xl2 js-scroll-trigger" style="margin-left: -150px" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
+                <a class="btn btn-primary btn-xl2 js-scroll-trigger" style="margin-left: -10px" href="{{route('itemannounc')}}">Daiktų skelbimai</a>
                 <table class="content-table">
                     <thead>
                     <th></th>
