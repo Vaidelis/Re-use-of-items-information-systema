@@ -99,19 +99,35 @@
                 <td class="container col-md-6" style="position:relative">
                     @foreach($pins as $pin)
                     <a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/{{$pin['id']}}/"></a>
-                    <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id'], 'tagid' => $tagid])}}"><button class="btn2">Įsiminti</button></a>
+                    <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin['id'], 'tagid' => $tagid])}}"><button class="btn2"
+                      <?php foreach($itemhaspins as $itemhas){
+                        if($pin['id'] != $itemhas->pinpicture){
+                        }
+                        else{
+                        ?> disabled
+                        <?php }} ?> >Įsiminti</button></a>
                     @endforeach
                 </td>
                 <td class="container col-md-6" style="position:relative">
                     @foreach($pins2 as $pin2)
                     <a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/{{$pin2['id']}}/"></a>
-                    <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id'], 'tagid' => $tagid2])}}"><button class="btn2">Įsiminti</button></a>
+                    <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin2['id'], 'tagid' => $tagid2])}}"><button class="btn2"  <?php foreach($itemhaspins as $itemhas){
+                        if($pin2['id'] != $itemhas->pinpicture){
+                        }
+                        else{
+                        ?> disabled
+                        <?php }} ?>>Įsiminti</button></a>
                     @endforeach
                 </td>
                 <td class="container col-md-6"style="position:relative">
                     @foreach($pins3 as $pin3)
                     <a data-pin-do="embedPin" data-pin-width="medium" href="https://www.pinterest.com/pin/{{$pin3['id']}}/"></a>
-                    <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id'], 'tagid' => $tagid3])}}"><button class="btn2">Įsiminti</button></a>
+                    <a href="{{route('savepininitem', ['id' => $item->id, 'pin' => $pin3['id'], 'tagid' => $tagid3])}}"><button class="btn2"  <?php foreach($itemhaspins as $itemhas){
+                        if($pin3['id'] != $itemhas->pinpicture){
+                        }
+                        else{
+                        ?> disabled
+                        <?php }} ?>>Įsiminti</button></a>
                     @endforeach
                 </td>
                 </tbody>
